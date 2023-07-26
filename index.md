@@ -20,7 +20,7 @@ $$
    E = mc^2
 \end{equation}
 
-In equation $\eqref{eq:sample}$, we find the value of an
+In equation \eqref{eq:sample}, we find the value of an
 interesting integral:
 
 \begin{equation}
@@ -28,7 +28,7 @@ interesting integral:
   \label{eq:sample}
 \end{equation}
 
-Why does $\eqref{eq:sample}$ work?
+Why does \eqref{eq:sample} work?
 
 It's not clear.
 
@@ -319,4 +319,4 @@ void update_LSM6DS3(void){
 
 ```
 
-Do you still agree about $\eqref{eq:sample}$?
+Do you still agree about \eqref{eq:sample}?

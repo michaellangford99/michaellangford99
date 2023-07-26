@@ -13,6 +13,7 @@
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@andatoshiki/markdown-it-image-caption": "^0.0.2",
+    "@sunt-programator/eleventy-plugin-mathjax": "^1.0.1",
     "eleventy-plugin-mathjax": "^2.0.4"
   },
   "dependencies": {
