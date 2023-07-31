@@ -10,6 +10,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(mathjaxPlugin, {
     outputFormat: 'svg',tex: {tags: 'ams'}});
   eleventyConfig.addPassthroughCopy('assets')
+  eleventyConfig.addPassthroughCopy("hiking/grays_torreys_kelso/*.jpg");
+  eleventyConfig.addPassthroughCopy("hiking/**/*.png");
   eleventyConfig.addLayoutAlias('default', 'default.njk');
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItImageCaption));
   //eleventyConfig.amendLibrary("md", mdLib => mdLib.use(mdownmjax, { tex: {tags: 'ams'} }));
