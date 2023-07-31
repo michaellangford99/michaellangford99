@@ -7,6 +7,12 @@ background_img: IMG_20230730_053402808_HDR-PANO.jpg
 ---
 # {{ title }}
 
+**Start Time:** 03:57
+**Distance:** 7.3 Miles
+**Elevation Gain:** 3,533 ft
+**End Time:** 09:56
+**RT Time:** 05:59
+
 ![alt text](IMG_20230730_050358569.jpg "Climbing the ridgeline ~5am, hikers headlamps visible below")
 
 ![alt text](IMG_20230730_053300289_HDR.jpg "First edges of light appear in the East")
