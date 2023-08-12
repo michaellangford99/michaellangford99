@@ -19,7 +19,7 @@ background_img: IMG_20230805_090556944-PANO.jpg
 
 ![Alt text](IMG_20230805_061518898-PANO-EDIT.jpg "We got to the ridge crest just before sunrise to catch this")
 
-![Alt text](IMG_20230805_060931965_HDR.jpg "Prima luce, facing East")
+![Alt text](IMG_20230805_060931965_HDR.jpg "Sunrise")
 
 ![Alt text](IMG_20230805_064844396_HDR-EDIT.jpg "Beautiful view of the Bowl of Tears")
 
