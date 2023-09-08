@@ -3,10 +3,12 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const mathjaxPlugin = require("@sunt-programator/eleventy-plugin-mathjax");
 /*const Image = require("@11ty/eleventy-img");*/
 const markdownItImageCaption = require("@andatoshiki/markdown-it-image-caption");
+const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 //const mdownmjax = require("markdown-it-mathjax3")
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(mathjaxPlugin, {
     outputFormat: 'svg',tex: {tags: 'ams'}});
   eleventyConfig.addPassthroughCopy('assets')

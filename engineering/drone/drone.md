@@ -5,6 +5,9 @@ description:
 top_bar: This was going to be the nav bar but now I might get rid of this lol.
 left_sidebar: I haven't written hardly any code yet
 right_sidebar: and what I have written is truly awful
+
+eleventyNavigation:
+  key: drone
 ---
 # 8/10/2023
 
@@ -46,3 +49,5 @@ printf("%f,\t%f,\t%f,\t%f,\n", -accel_x, -accel_y, accel_z, current_time - last_
 ```
 
 ![Alt text](image.png "caption")
+
+![Alt text](image-1.png "Streamed results")
