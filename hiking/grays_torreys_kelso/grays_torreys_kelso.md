@@ -4,6 +4,12 @@ title: Gray's & Torrey's Peaks via Kelso Ridge
 description: 14er buy one get one free deal
 top_bar: This was going to be the nav bar but now I might get rid of this lol.
 background_img: IMG_20230730_053402808_HDR-PANO.jpg
+
+eleventyNavigation:
+  key: grays_torreys_kelso
+  #parent: 
+  title: Gray's & Torrey's Peaks via Kelso Ridge
+
 ---
 # {{ title }}
 

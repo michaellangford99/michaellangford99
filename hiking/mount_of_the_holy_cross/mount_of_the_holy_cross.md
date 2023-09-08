@@ -4,6 +4,11 @@ title: Mount of the Holy Cross via Halo Ridge
 description: 14er + 13ers + pain
 top_bar: This was going to be the nav bar but now I might get rid of this lol.
 background_img: IMG_20230805_090556944-PANO.jpg
+
+eleventyNavigation:
+  key: mount_of_the_holy_cross
+  #parent: 
+  title: Mount of the Holy Cross via Halo Ridge
 ---
 # {{ title }}
 

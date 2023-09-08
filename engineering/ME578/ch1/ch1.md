@@ -8,7 +8,7 @@ right_sidebar: and what I have written is truly awful
 
 eleventyNavigation:
   key: ch1
-  parent: ME578
+  #parent: ME578
   title: ME578 Chapter 1
 
 ---

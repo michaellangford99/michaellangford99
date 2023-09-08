@@ -13,6 +13,7 @@ module.exports = function(eleventyConfig) {
     outputFormat: 'svg',tex: {tags: 'ams'}});
   eleventyConfig.addPassthroughCopy('assets')
   eleventyConfig.addPassthroughCopy("hiking/grays_torreys_kelso/*.jpg");
+  eleventyConfig.addPassthroughCopy("hiking/wetterhorn_loop/*.jpg");
   eleventyConfig.addPassthroughCopy("hiking/**/*.png");
   eleventyConfig.addPassthroughCopy("hiking/**/*.jpg");
   eleventyConfig.addPassthroughCopy("engineering/drone/*.png");
