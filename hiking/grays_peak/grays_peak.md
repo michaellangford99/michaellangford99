@@ -16,7 +16,7 @@ eleventyNavigation:
 **Distance:** 7.1 Miles
 **Elevation Gain:** 2,995 ft
 **End Time:** 09:16
-**RT Time:** 05:59
+**RT Time:** 05:45
 
 ![Alt text](IMG_20230909_061317402.jpg "Edges of pre-dawn light creeping in")
 

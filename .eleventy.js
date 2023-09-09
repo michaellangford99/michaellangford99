@@ -10,8 +10,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(mathjaxPlugin, {
-    outputFormat: 'svg',tex: {tags: 'ams'}});
-  eleventyConfig.addPassthroughCopy('assets')
+  outputFormat: 'svg',tex: {tags: 'ams'}});
+  eleventyConfig.addPassthroughCopy('assets');
   eleventyConfig.addPassthroughCopy("hiking/grays_torreys_kelso/*.jpg");
   eleventyConfig.addPassthroughCopy("hiking/wetterhorn_loop/*.jpg");
   eleventyConfig.addPassthroughCopy("hiking/**/*.png");
