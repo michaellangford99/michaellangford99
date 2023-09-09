@@ -8,7 +8,16 @@ right_sidebar: and what I have written is truly awful
 
 eleventyNavigation:
   key: drone
+  parent: engineering
+
+navToMdOptions:
+  # Show excerpts (if they exist in data, read more above)
+  showExcerpt: false
 ---
+
+
+{{ collections.all | eleventyNavigation: "drone" | eleventyNavigationToMarkdown: navToMdOptions}}
+
 # 8/10/2023
 
 Today I fired up the drone and the code editor for the first time since the end of Senior Design. Things were a bit rusty in my memory as well as the hardware. Eventually I got all the necessary cables dug up and connected, and removed the non-operational I2C harness for the LiDAR. We'll get that working eventually.

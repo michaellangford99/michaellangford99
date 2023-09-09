@@ -29,9 +29,20 @@ title: My Rad Blog
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    {% set navPages = collections.all | eleventyNavigation %}
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    {%- for entry in navPages %}
+      <li class="nav-item" >
+        <a {% if entry.url == page.url %} class="nav-link active"{% else %} class = "nav-link" {% endif %}
+        href="{{ entry.url }}">{{ entry.title }}</a>
+      </li>
+    {%- endfor %}
+    </ul>
+
+<!--
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <!--use this to mark the active page. idk how to do that lol-->
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
 
@@ -42,7 +53,7 @@ title: My Rad Blog
         
         
         
-        <!--<li class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
           </a>
@@ -55,11 +66,11 @@ title: My Rad Blog
         </li>
         <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
-        </li>-->
+        </li>
 
 
       </ul>
-
+-->
 
       <!--<form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -68,9 +79,6 @@ title: My Rad Blog
     </div>
   </div>
 </nav>
-
-{{ collections.all | eleventyNavigation | eleventyNavigationToHtml | safe }}
-
     
 <div
   class="bg-image p-5 text-center shadow-1-strong mb-2 text-white"
@@ -84,26 +92,22 @@ title: My Rad Blog
 </div>
 </div>
 
-<div class="container-md">
+<!--<div class="container-md">
   <div class="alert alert-primary" role="alert">
     {{ top_bar }}
   </div>
-</div>
+</div>-->
 
      <div class="container-md">
         <div class="row justify-content-center">
             <div class="col-2 ">
-              <div class="alert alert-primary" role="alert">
-                {{ left_sidebar }}
-              </div>
+              
             </div>
             <div class="col-md-8 ">
                  {{ content | safe }}
             </div>
             <div class="col-2 ">
-              <div class="alert alert-primary" role="alert">
-                {{ right_sidebar }}
-              </div>
+              
             </div>
         </div>
     </div>

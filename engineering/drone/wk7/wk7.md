@@ -8,7 +8,7 @@ right_sidebar: and what I have written is truly awful
 
 eleventyNavigation:
   key: wk7
-  #parent: drone
+  parent: drone
   title: wk_7
 
 ---

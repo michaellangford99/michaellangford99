@@ -7,7 +7,7 @@ background_img: IMG_20230902_071905852_HDR.jpg
 
 eleventyNavigation:
   key: wetterhorn
-  #parent: 
+  parent: hiking
   title: Loop around Mount Wetterhorn
 ---
 # {{ title }}

@@ -25,20 +25,31 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/hiking/">Hiking &amp; Photography</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/engineering/">Engineering</a>
+      </li>
+    </ul>
+
+<!--
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <!--use this to mark the active page. idk how to do that lol-->
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
 
-        <li class="nav-item"><a class="nav-link" href="#">Hiking &amp; Photograpy</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Hiking & Photograpy</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Engineering</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Computer Graphics</a></li>       
         <li class="nav-item"><a class="nav-link" href="#">Thoughts</a></li>
         
         
         
-        <!--<li class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
           </a>
@@ -51,11 +62,11 @@
         </li>
         <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
-        </li>-->
+        </li>
 
 
       </ul>
-
+-->
 
       <!--<form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -64,16 +75,6 @@
     </div>
   </div>
 </nav>
-
-<ul><li><a href="/hiking/grays_torreys_kelso/">Gray's &amp; Torrey's Peaks via Kelso Ridge</a></li>
-<li><a href="/engineering/drone/">drone</a></li>
-<li><a href="/engineering/drone/wk7/">wk_7</a></li>
-<li><a href="/engineering/drone/wk11/">wk_11</a></li>
-<li><a href="/hiking/mount_of_the_holy_cross/">Mount of the Holy Cross via Halo Ridge</a></li>
-<li><a href="/engineering/drone/8-19-23/">Pi setup and new goals</a></li>
-<li><a href="/engineering/ME578/ch1/">ME578 Chapter 1</a></li>
-<li><a href="/hiking/wetterhorn_loop/">Loop around Mount Wetterhorn</a></li></ul>
-
     
 <div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
 <div style="padding: 100px 0 130px ">
@@ -84,21 +85,24 @@
 </div>
 </div>
 
-<div class="container-md">
+<!--<div class="container-md">
   <div class="alert alert-primary" role="alert">
     This was going to be the nav bar but now I might get rid of this lol.
   </div>
-</div>
+</div>-->
 
      <div class="container-md">
         <div class="row justify-content-center">
             <div class="col-2 ">
-              <div class="alert alert-primary" role="alert">
-                I haven't written hardly any code yet
-              </div>
+              
             </div>
             <div class="col-md-8 ">
-                 <h1>8/10/2023</h1>
+                 <ul>
+<li><a href="/engineering/drone/wk7/">wk_7</a></li>
+<li><a href="/engineering/drone/wk11/">wk_11</a></li>
+<li><a href="/engineering/drone/8-19-23/">Pi setup and new goals</a></li>
+</ul>
+<h1>8/10/2023</h1>
 <p>Today I fired up the drone and the code editor for the first time since the end of Senior Design. Things were a bit rusty in my memory as well as the hardware. Eventually I got all the necessary cables dug up and connected, and removed the non-operational I2C harness for the LiDAR. We'll get that working eventually.</p>
 <p>My first objective is to play around with the MPU9250 onboard, and see if I can't coax some better performance out of the DSP.
 I think this would be the perfect situation to implement a Kalman filter or something similar.</p>
@@ -129,9 +133,7 @@ I think this would be the perfect situation to implement a Kalman filter or some
 
             </div>
             <div class="col-2 ">
-              <div class="alert alert-primary" role="alert">
-                and what I have written is truly awful
-              </div>
+              
             </div>
         </div>
     </div>

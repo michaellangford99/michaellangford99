@@ -7,7 +7,7 @@ background_img: IMG_20230730_053402808_HDR-PANO.jpg
 
 eleventyNavigation:
   key: grays_torreys_kelso
-  #parent: 
+  parent: hiking
   title: Gray's & Torrey's Peaks via Kelso Ridge
 
 ---
