@@ -8,9 +8,12 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 const markdownItTable = require("markdown-it-multimd-table");
 
+const embedEverything = require("eleventy-plugin-embed-everything");
+
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  eleventyConfig.addPlugin(embedEverything);
   eleventyConfig.addPlugin(mathjaxPlugin, {
   outputFormat: 'svg',tex: {tags: 'ams'}});
   eleventyConfig.addPassthroughCopy('assets');
@@ -25,6 +28,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("engineering/drone/wk11/*.png");
   eleventyConfig.addLayoutAlias('default', 'default.njk');
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItImageCaption));
+  
   //eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItTable));
   //eleventyConfig.amendLibrary("md", mdLib => mdLib.use(mdownmjax, { tex: {tags: 'ams'} }));
   /*eleventyConfig.addShortcode("image", async function(src, alt) {

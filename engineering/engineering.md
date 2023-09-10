@@ -11,6 +11,10 @@ eleventyNavigation:
 navToMdOptions:
   # Show excerpts (if they exist in data, read more above)
   showExcerpt: false
+  
+#for later when you use a custom engineering tree  
+# | sort(false, false, "data.title")
 ---
 
 {{ collections.all | eleventyNavigation: "engineering" | eleventyNavigationToMarkdown: navToMdOptions}}
+

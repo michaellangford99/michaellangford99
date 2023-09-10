@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-   <title>Engineering</title> 
+   <title>ECE477 Drone</title> 
    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!---<link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css"/>  -->
@@ -32,7 +32,7 @@
         <a class="nav-link" href="/hiking/">Hiking &amp; Photography</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="/engineering/">Engineering</a>
+        <a class="nav-link" href="/engineering/">Engineering</a>
       </li>
     </ul>
 
@@ -78,9 +78,9 @@
     
 <div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
 <div style="padding: 100px 0 130px ">
-  <h1 class="mb-2 h1">Engineering</h1>
+  <h1 class="mb-2 h1">ECE477 Drone</h1>
   <p>
-    I need more free time
+    
   </p>
 </div>
 </div>
@@ -97,21 +97,22 @@
               
             </div>
             <div class="col-md-8 ">
-                 <ul>
-<li><a href="/engineering/drone/">drone</a>
-<ul>
-<li><a href="/engineering/drone/wk7/">wk_7</a></li>
-<li><a href="/engineering/drone/wk11/">wk_11</a></li>
-<li><a href="/engineering/drone/8-19-23/">Pi setup and new goals</a></li>
-<li><a href="/engineering/drone/wk3/">wk_3</a></li>
-<li><a href="/engineering/drone/wk4/">wk_4</a></li>
-<li><a href="/engineering/drone/wk5/">wk_5</a></li>
-<li><a href="/engineering/drone/wk6/">wk_6</a></li>
-<li><a href="/engineering/drone/wk9/">wk_9</a></li>
-</ul>
-</li>
-<li><a href="/engineering/ME578/ch1/">ME578 Chapter 1</a></li>
-</ul>
+                 <h1>Week 9</h1>
+<p><strong>PCB Design</strong></p>
+<p>This week was mostly spent finishing the schematic and PCB layout for the flight controller. I took the input and corrections gathered from the midterm design review and implemented that guidance on the board design.</p>
+<p>The critical points noted during the design review were:
+•	Extend pads on QFN for IMUs and FTDI
+•	Fix voltage divider inversion
+•	Add capacitor on VSense
+•	Remove ground plane around and beneath oscillator
+•	Change footprint of voltage regulator to the actual footprint, rather than a footprint of equal size and pads with improper silkscreen and boundary.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 8.1. Resizing pads on LSM6DS3 to allow for easier hand soldering."><figcaption class="figure-caption text-center" align="center">Fig. 8.1. Resizing pads on LSM6DS3 to allow for easier hand soldering.</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-1.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 8.2. Fixed voltage divider setup for VSense."><figcaption class="figure-caption text-center" align="center">Fig. 8.2. Fixed voltage divider setup for VSense.</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 8.3. Added keepouts below and surrounding oscillator."><figcaption class="figure-caption text-center" align="center">Fig. 8.3. Added keepouts below and surrounding oscillator.</figcaption></figure></div></p>
+<p>The fix for the voltage regulator was significantly more involved. I first had to find a 3D model for the part itself, which luckily Pololu provides as a .STEP file, a common Autodesk part file. I then struggled with multiple export utilities, trying to find one that would export to .WRL (KiCAD’s supported 3D model filetype), but retain it’s material / color information.</p>
+<p>After a few tries, I then imported the model file and set its position, scale and the boundary for the footprint.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 8.4. Correct 3D model of footprint."><figcaption class="figure-caption text-center" align="center">Fig. 8.4. Correct 3D model of footprint.</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 8.5. Regulator correctly imported into rest of PCB 3D model."><figcaption class="figure-caption text-center" align="center">Fig. 8.5. Regulator correctly imported into rest of PCB 3D model.</figcaption></figure></div></p>
 
             </div>
             <div class="col-2 ">
