@@ -1,0 +1,187 @@
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+   <title>ECE477 Drone</title> 
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!---<link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css"/>  -->
+    <!---<link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/assets/css/prism-vs.css">
+    <link rel="stylesheet" href="/assets/css/clean-blog.css">
+    
+  </head>
+  <body>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Michaelangelo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/hiking/">Hiking &amp; Photography</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/engineering/">Engineering</a>
+      </li>
+    </ul>
+
+<!--
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="#">Hiking & Photograpy</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Engineering</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Computer Graphics</a></li>       
+        <li class="nav-item"><a class="nav-link" href="#">Thoughts</a></li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+
+
+      </ul>
+-->
+
+      <!--<form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>-->
+    </div>
+  </div>
+</nav>
+    
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div style="padding: 100px 0 130px ">
+  <h1 class="mb-2 h1">ECE477 Drone</h1>
+  <p>
+    
+  </p>
+</div>
+</div>
+
+<!--<div class="container-md">
+  <div class="alert alert-primary" role="alert">
+    
+  </div>
+</div>-->
+
+     <div class="container-md">
+        <div class="row justify-content-center">
+            <div class="col-2 ">
+              
+            </div>
+            <div class="col-md-8 ">
+                 <h1>Week 6</h1>
+<p>The first improvements done on the receiver code were proper interpretations of the channel bit data. They were actually 11 bit values rather than the 10 bits stated online. I assume this is just due to the sign bit and that is why it was not included. After creating a packed struct, the bits are easily extracted and the ensuing data could be extracted properly mapped to the correct channel.</p>
+<p>To improve the existing radio receiver code, I had to put bounds on the input data streaming in. There were periodic packets coming in with valid frame starts, but with different content than channel data. This resulted in every 50 or so packets being invalid data, creating a useless and choppy input signal. To begin, I put a bound on the length of a packet before it gets parsed. If it fell within the valid range, it can then be processed.</p>
+<p>The prior output of the parsing algorithm shows the clear issue:</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 6.1. Original throttle channel data showing periodic data corruption"><figcaption class="figure-caption text-center" align="center">Fig. 6.1. Original throttle channel data showing periodic data corruption</figcaption></figure></div></p>
+<p>After properly filtering the packets to the proper data content, the data smoothly varies as expected.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-1.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 6.2. Correct output of all 8 channels after parsing improved."><figcaption class="figure-caption text-center" align="center">Fig. 6.2. Correct output of all 8 channels after parsing improved.</figcaption></figure></div></p>
+<p><strong>PWM development</strong></p>
+<p>PWM is a very common protocol for controlling brushless ESCs. They commonly use a simple protocol of a 20ms period, and a pulse width varying from 1 to 2ms depending on throttle value (0% = 1ms, 100% = 2ms). Santiago had already created the driver code to produce this signal, but we had to implement it with the correct timing.</p>
+<p>Next, the calculations had to be done to create a PWM signal working off of Santiago’s code that had the correct pulse width and duty cycle. After refreshing myself about the internal timer operation, I created both code and an excel tool to calculate the PSC and ARR and CCMR values for the PWM driver.</p>
+<div class="d-flex justify-content-center">
+<table>
+<thead>
+<tr>
+<th>PWM PSC &amp; ARR</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>period</td>
+<td>0.02</td>
+</tr>
+<tr>
+<td>Fclk</td>
+<td>1.60E+07</td>
+</tr>
+<tr>
+<td>freq</td>
+<td>50</td>
+</tr>
+<tr>
+<td>PSC</td>
+<td>15</td>
+</tr>
+<tr>
+<td>ARR</td>
+<td>19999.00</td>
+</tr>
+<tr>
+<td>freq_out</td>
+<td>50</td>
+</tr>
+<tr>
+<td>period_out</td>
+<td>0.02</td>
+</tr>
+<tr>
+<td>period_ms</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="d-flex justify-content-center">
+Table 6.1. Table to calculate the registers.
+</div>
+<p>After calculating the proper register values, the oscilloscope data displays the desired PWM signal. As can be seen in Figure 6.3., the pulse width is the desired 20ms.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 6.3. PWM pulse measured on oscilloscope."><figcaption class="figure-caption text-center" align="center">Figure 6.3. PWM pulse measured on oscilloscope.</figcaption></figure></div></p>
+<p><strong>Radio and PWM integration</strong></p>
+<p>Now with both PWM and radio receiver working, I thought it would be a good demonstration, and also good work towards system integration, to make a radio channel value control the pulse width of the radio receiver. After changing some pins and channel values, and writing more configurable pin and register setup code, we were able to vary the pulse width by moving the sticks on the radio transmitter.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div>
+<div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 6.4. Pulse width actively varied by radio receiver stick input."><figcaption class="figure-caption text-center" align="center">Fig. 6.4. Pulse width actively varied by radio receiver stick input.</figcaption></figure></div></p>
+<div id="zwQ3Dvz2RXk" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/zwQ3Dvz2RXk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Schematic development and PCB development are also ongoing, although the details are somewhat tedious. Suffice it to say that footprints are being laid out in logical manner, more capacitors added, datasheets checked to ensure compliance with suggested implementation. Current schematic and PCB shown:</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-5.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 6.5. Current (in progress) schematic."><figcaption class="figure-caption text-center" align="center">Fig. 6.5. Current (in progress) schematic.</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 6.6. PCB (currently), still getting the footprints in the right spots."><figcaption class="figure-caption text-center" align="center">Fig. 6.6. PCB (currently), still getting the footprints in the right spots.</figcaption></figure></div></p>
+
+            </div>
+            <div class="col-2 ">
+              
+            </div>
+        </div>
+    </div>
+
+<!--<div class="b-example-divider"></div>-->
+
+<div class="container">
+  <footer class="flex-wrap border-top">
+      <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
+  </footer>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="/assets/js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,894 @@
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+   <title>ECE477 Drone</title> 
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!---<link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css"/>  -->
+    <!---<link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/assets/css/prism-vs.css">
+    <link rel="stylesheet" href="/assets/css/clean-blog.css">
+    
+  </head>
+  <body>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Michaelangelo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/hiking/">Hiking &amp; Photography</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/engineering/">Engineering</a>
+      </li>
+    </ul>
+
+<!--
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="#">Hiking & Photograpy</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Engineering</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Computer Graphics</a></li>       
+        <li class="nav-item"><a class="nav-link" href="#">Thoughts</a></li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+
+
+      </ul>
+-->
+
+      <!--<form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>-->
+    </div>
+  </div>
+</nav>
+    
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div style="padding: 100px 0 130px ">
+  <h1 class="mb-2 h1">ECE477 Drone</h1>
+  <p>
+    
+  </p>
+</div>
+</div>
+
+<!--<div class="container-md">
+  <div class="alert alert-primary" role="alert">
+    
+  </div>
+</div>-->
+
+     <div class="container-md">
+        <div class="row justify-content-center">
+            <div class="col-2 ">
+              
+            </div>
+            <div class="col-md-8 ">
+                 <h1>Week 4</h1>
+<p>Rx Tx Swapped trace - After success with soldering the FT230XQ onto the PCB, I tested the functionality of both receive and transmit. I could tell that sending data from the computer over PuTTY lit the RX LED when data was sent, but when the STM32 sent data, none was received in PuTTY. After some investigation using my oscilloscope, and looking at my circuit diagram, I realized I had wired Rx to Rx and Tx to Tx for the connection between the FT230XQ and the STM32. This resulted in both devices attempting to transmit on the same line and listen on a different one. As one can see in Fig. 4.1, the traces are both wired improperly.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 4.1. USART_RX Trace"><figcaption class="figure-caption text-center" align="center">Fig. 4.1. USART_RX Trace</figcaption></figure></div></p>
+<p>In order to repair this, I did some surgery on the board, slicing both traces and exposing the bare copper to rewire it by hand. I then soldered wires to the bare copper and swapped the traces, reassigning the wires to their correct orientation. The trace slice can be seen in Fig. 4.2 while still being soldered.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-1.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 4.2. Sliced traces and exposed, tinned copper on RX+TX traces. (Taken via magnifying scope)"><figcaption class="figure-caption text-center" align="center">Fig. 4.2. Sliced traces and exposed, tinned copper on RX+TX traces. (Taken via magnifying scope)</figcaption></figure></div></p>
+<p>The completed trace fix is shown in Fig. 4.3, fully complete with very thin noodle wire used to complete connections.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 4.3. Completed repairs to UART"><figcaption class="figure-caption text-center" align="center">Fig. 4.3. Completed repairs to UART</figcaption></figure></div></p>
+<p>Working transmission data can be seen in PuTTY after completing these repairs. See. Fig. 4.5.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 4.5. Working Putty Data"><figcaption class="figure-caption text-center" align="center">Fig. 4.5. Working Putty Data</figcaption></figure></div></p>
+<p>Next my efforts focused on getting DMA working to send newly received bytes from the computer to a FIFO. I had multiple issues configuring it, even having to install a reset button, as I improperly configured the IO pins so much that Software System Reset stopped working! Eventually I determined the improper assignment to the NVIC byte, and that I was trying to write to the control registers before I enabled the clock to it. Wonder why it didn’t work huh.</p>
+<p>For the deliverables this week, I created a more precise power budget for the particular components and subsystems within the PCB and larger system. I looked up ballpark values for large devices, made estimates, and looked at datasheets. Table 4.1 shows the resulting power budget.</p>
+<div class="d-flex justify-content-center">
+<table>
+<thead>
+<tr>
+<th>Supply</th>
+<th>Device</th>
+<th>Current Typ [mA]</th>
+<th>Current Min [mA]</th>
+<th>Current Max [mA]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4S Battery</td>
+<td>Motor controller(ESC)</td>
+<td>400</td>
+<td>400</td>
+<td>400</td>
+</tr>
+<tr>
+<td></td>
+<td>Motors</td>
+<td>26000</td>
+<td>13000</td>
+<td>38000</td>
+</tr>
+<tr>
+<td></td>
+<td>10V Supply</td>
+<td>439.6</td>
+<td>184.2</td>
+<td>567.6</td>
+</tr>
+<tr>
+<td>10V Supply</td>
+<td>5V Supply</td>
+<td>424.6</td>
+<td>169.2</td>
+<td>552.6</td>
+</tr>
+<tr>
+<td></td>
+<td>Power LED</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+</tr>
+<tr>
+<td>5V Supply</td>
+<td>Radio Receiver</td>
+<td>3.4</td>
+<td>3.4</td>
+<td>3.4</td>
+</tr>
+<tr>
+<td></td>
+<td>Pi Zero</td>
+<td>200</td>
+<td>50</td>
+<td>250</td>
+</tr>
+<tr>
+<td></td>
+<td>Camera</td>
+<td>100</td>
+<td>50</td>
+<td>150</td>
+</tr>
+<tr>
+<td></td>
+<td>Power LED</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+</tr>
+<tr>
+<td></td>
+<td>3.3V Supply</td>
+<td>106.2</td>
+<td>50.8</td>
+<td>134.2</td>
+</tr>
+<tr>
+<td>3.3V Supply</td>
+<td>STM32 Microcontroller</td>
+<td>80</td>
+<td>30</td>
+<td>100</td>
+</tr>
+<tr>
+<td></td>
+<td>LSM6DSR 6-axis IMU</td>
+<td>1.2</td>
+<td>0.8</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td></td>
+<td>FT230XQ UART to USB</td>
+<td>8</td>
+<td>5</td>
+<td>8</td>
+</tr>
+<tr>
+<td></td>
+<td>Power LED</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+</tr>
+<tr>
+<td></td>
+<td>RX/TX LED</td>
+<td>2</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Total Current [mA]</td>
+<td></td>
+<td>26839.6</td>
+<td>13584.2</td>
+<td>38967.6</td>
+</tr>
+<tr>
+<td>Total Current [A]</td>
+<td></td>
+<td>26.84</td>
+<td>13.58</td>
+<td>38.97</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="d-flex justify-content-center">
+Table 4.1. Power Budget Results
+</div>
+<p>This week the frame arrived for the drone as well as the motor controller and motors. After unpacking all the parts, I began assembling the beginnings of the frame, and experimenting with setup of the onboard electronics. Fig. 4.6a shows the frame parts, and Fig. 4.6b shows them (mostly) assembled.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-5.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 4.6a,b. Parts and assembled drone frame"><figcaption class="figure-caption text-center" align="center">Fig. 4.6a,b. Parts and assembled drone frame</figcaption></figure></div></p>
+<p>Schedule creation was a critical product of one of this week’s team meetings. Together with the team I developed a Gantt style chart to show dependency and project trajectory for various subtasks and how they integrate into the project as a whole. Table 6.2 Shows the schedule devised.</p>
+<div class="d-flex justify-content-center">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th>Week 4</th>
+<th>Week 5</th>
+<th>Week 6</th>
+<th>Week 7</th>
+<th>Week 8</th>
+<th>Week 9</th>
+<th>Week 10</th>
+<th>Week 11</th>
+<th>Week 12</th>
+<th>Week 13</th>
+<th>Week 14</th>
+<th>Week 15</th>
+<th>Week 16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interfacing</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Protocols</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>SPI</td>
+<td><div class="p-3 mb-2 bg-secondary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-secondary text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>I2C</td>
+<td><div class="p-3 mb-2 bg-secondary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-secondary text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>UART</td>
+<td><div class="p-3 mb-2 bg-secondary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-secondary text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>PWM</td>
+<td><div class="p-3 mb-2 bg-secondary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-secondary text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Analog Read</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Drivers</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Motor PWM</td>
+<td></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Radio</td>
+<td></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>MPU9250</td>
+<td></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>LSM6DSOWTR</td>
+<td></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>ICM20948</td>
+<td></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>VL53L1X</td>
+<td></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Pi communication</td>
+<td></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Battery monitor</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Driver integration</td>
+<td></td>
+<td></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td><div class="p-3 mb-2 bg-primary text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Algorithms</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Sensor Fusion</td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="p-3 mb-2 bg-danger text-white"></div></td>
+<td><div class="p-3 mb-2 bg-danger text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>PID Loop</td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="p-3 mb-2 bg-danger text-white"></div></td>
+<td><div class="p-3 mb-2 bg-danger text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Push to motors</td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="p-3 mb-2 bg-danger text-white"></div></td>
+<td><div class="p-3 mb-2 bg-danger text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Calibration</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="p-3 mb-2 bg-danger text-white"></div></td>
+<td><div class="p-3 mb-2 bg-danger text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Prototyping</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Assemble prototype board</td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="p-3 mb-2 bg-info text-white"></div></td>
+<td><div class="p-3 mb-2 bg-info text-white"></div></td>
+<td><div class="p-3 mb-2 bg-info text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Physical drone assembly</td>
+<td></td>
+<td><div class="p-3 mb-2 bg-success text-white"></div></td>
+<td><div class="p-3 mb-2 bg-success text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>3D printed mounts</td>
+<td></td>
+<td></td>
+<td><div class="p-3 mb-2 bg-success text-white"></div></td>
+<td><div class="p-3 mb-2 bg-success text-white"></div></td>
+<td><div class="p-3 mb-2 bg-success text-white"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>PCB Design</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Schematic Design</td>
+<td></td>
+<td><div class="p-3 mb-2 bg-warning text-dark"></div></td>
+<td><div class="p-3 mb-2 bg-warning text-dark"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>PCB Layout</td>
+<td></td>
+<td></td>
+<td><div class="p-3 mb-2 bg-warning text-dark"></div></td>
+<td><div class="p-3 mb-2 bg-warning text-dark"></div></td>
+<td><div class="p-3 mb-2 bg-warning text-dark"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Verify / Order PCB</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="p-3 mb-2 bg-warning text-dark"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Assemble PCB</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="p-3 mb-2 bg-warning text-dark"></div></td>
+<td><div class="p-3 mb-2 bg-warning text-dark"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Unit test PCB hardware</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="p-3 mb-2 bg-warning text-dark"></div></td>
+<td><div class="p-3 mb-2 bg-warning text-dark"></div></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Install PCB</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><div class="p-3 mb-2 bg-warning text-dark"></div></td>
+<td><div class="p-3 mb-2 bg-warning text-dark"></div></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In addition to the schedule, a more precise block diagram for the project was made, shown in Fig. 4.7a and 4.7b.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 4.7a. System Block Diagram"><figcaption class="figure-caption text-center" align="center">Fig. 4.7a. System Block Diagram</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 4.7b. Flight Controller Block Diagram"><figcaption class="figure-caption text-center" align="center">Fig. 4.7b. Flight Controller Block Diagram</figcaption></figure></div></p>
+
+            </div>
+            <div class="col-2 ">
+              
+            </div>
+        </div>
+    </div>
+
+<!--<div class="b-example-divider"></div>-->
+
+<div class="container">
+  <footer class="flex-wrap border-top">
+      <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
+  </footer>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="/assets/js/index.js"></script>
+  </body>
+</html>
