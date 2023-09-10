@@ -20,6 +20,8 @@ eleventyNavigation:
 **End Time:** 18:43
 **RT Time:** 14:21
 
+<iframe class="alltrails" src="https://www.alltrails.com/widget/map/map-september-3-2023-fa3a3c4?u=i&sh=lc1gzx" width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="AllTrails: Trail Guides and Maps for Hiking, Camping, and Running"></iframe>
+
 ![Alt text](IMG_20230902_063735444_HDR.jpg "Fiery morning clouds")
 
 ![Alt text](IMG_20230902_063954801_HDR.jpg "Looking back down the valley")
@@ -50,10 +52,4 @@ eleventyNavigation:
 
 ![Alt text](IMG_20230902_165822532_HDR.jpg "Looking back up the valley on the way back")
 
-![Alt text](image.png "Route map plotted in AllTrails")
-
-![Alt text](image-1.png "Elevation vs. distance plot")
- 
-![this is wrong]( _IMG_20230902_071905852_HDR.jpg "Beautiful morning view of Matterhorn and Wetterhorn")
-
-
+![this is wrong]( IMG_20230902_071905852_HDR.jpg "Beautiful morning view of Matterhorn and Wetterhorn")
