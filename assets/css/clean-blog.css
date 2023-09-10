@@ -18,3 +18,20 @@ pre {
     border-width: 1px 0;
     box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, .1), inset 0 0.125em 0.5em rgba(54, 54, 54, 0.15);
 }
+
+tr, th, td {
+  padding: 5.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #333;
+  border: 1px solid #9d9d9d;
+}
+/*
+table { 
+  display: block;
+  line-height: 1.4;
+  color: #333;
+  border: 1px solid #9d9d9d;
+  border-radius: 8px;
+}*/
