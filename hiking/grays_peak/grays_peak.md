@@ -24,9 +24,7 @@ eleventyNavigation:
 
 ![Alt text](IMG_20230909_063622744_HDR.jpg "Sunrise!")
 
-![Alt text](IMG_20230909_064831573_HDR.jpg "Miles-long shadow of Grays peak")
-
-![Alt text](IMG_20230909_070147888_HDR.jpg "It was frigid")
+![Alt text](IMG_20230909_064831573_HDR.jpg "On the summit, miles-long shadow of Grays peak")
 
 ![Alt text](IMG_20230909_074819866_HDR.jpg "Gavin pondering the gravy-train")
 

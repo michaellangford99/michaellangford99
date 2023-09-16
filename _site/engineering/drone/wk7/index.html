@@ -124,7 +124,41 @@
 <p>I also revisited my radio CRSF interpretation code this week, in order to improve my relatively hacky code – which worked but performed almost no data validation (dangerous!), and was very inefficient.</p>
 <p>For the new design, I chose a circular buffer, where the ‘start’ of the buffer would be shifted up until the end of the buffer, and then back around, rather than shifting the buffer contents while looking for a valid packet. This is significantly more efficient. Once it sees a valid starting character, it places a struct pointer at that location in memory, and begins to decode the data from that position, pulling out descriptors like the frame length from the point indicated my the struct definition. If needed, the ‘rolled over’ part of memory in the circular buffer is copied over to free space at the end of the buffer so the data frame is contiguous. Then the address, frame type, and CRC are checked. If these are valid, then the channel data is copied over to the global location for the latest radio channel data.</p>
 <p>This system actually worked almost perfectly first try, which was great! I only had to fix a couple pointer casts and offsets, and the system was good to go. Another benefit is I went to the source code on the ELRS site and used their #defines and enums, so that my code is using not only the right values, but the canonical names for each field.</p>
-<p><img src="image-11.png" alt="Alt text"></p>
+<pre class="language-c"><code class="language-c">
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>crsf_addr_e<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token operator">*</span>rx_buffer_start<span class="token punctuation">)</span> <span class="token operator">==</span> CRSF_ADDRESS_FLIGHT_CONTROLLER<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token comment">//go through and attempt to parse</span>
+  <span class="token comment">//place the data struct at this location and see if it passes</span>
+  <span class="token comment">//first task is to verify the length is within bounds, and</span>
+  <span class="token comment">//that the message type is what we're looking for</span>
+  <span class="token comment">//Then verify it has a valid CRC</span>
+  <span class="token comment">//move everything from the beginning of memory to</span>
+
+  <span class="token class-name">crsf_packet_t</span><span class="token operator">*</span> crsf_packet <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">crsf_packet_t</span><span class="token operator">*</span><span class="token punctuation">)</span>rx_buffer_start<span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>crsf_packet<span class="token operator">-&gt;</span>header<span class="token punctuation">.</span>type <span class="token operator">==</span> CRSF_FRAMETYPE_RC_CHANNELS_PACKED<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>crsf_packet<span class="token operator">-&gt;</span>header<span class="token punctuation">.</span>frame_size <span class="token operator">==</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token class-name">crsf_channels_t</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">2</span><span class="token comment">/*type, crc, and payload*/</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">//validate CRC</span>
+
+      <span class="token comment">//copy everything from bottom to the rx_buffer_start point into the upper half of the array to make it contiguous</span>
+      <span class="token function">memcpy</span><span class="token punctuation">(</span>rx_buffer <span class="token operator">+</span> BUFFER_SIZE<span class="token punctuation">,</span> rx_buffer<span class="token punctuation">,</span> rx_buffer_start<span class="token operator">-</span>rx_buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token class-name">uint8_t</span> calculated_crc <span class="token operator">=</span> <span class="token function">calc_crc</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token punctuation">(</span>crsf_packet<span class="token operator">-&gt;</span>header<span class="token punctuation">.</span>type<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token class-name">crsf_channels_t</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token comment">/*don't include the CRC in the CRC calc haha*/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">uint8_t</span> rx_crc <span class="token operator">=</span> crsf_packet<span class="token operator">-&gt;</span>crc<span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>rx_crc <span class="token operator">==</span> calculated_crc<span class="token punctuation">)</span>
+      <span class="token punctuation">{</span>
+        <span class="token comment">//valid packet</span>
+        <span class="token comment">//TODO save the last 30 or so channel packets for filtering if needed</span>
+        <span class="token function">memcpy</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>saved_channel_data<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token punctuation">(</span>crsf_packet<span class="token operator">-&gt;</span>channels<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token class-name">crsf_channels_t</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-12.png" class="figure-img img-fluid rounded" alt="Alt text" title="Data streaming in"><figcaption class="figure-caption text-center" align="center">Data streaming in</figcaption></figure></div></p>
 
             </div>

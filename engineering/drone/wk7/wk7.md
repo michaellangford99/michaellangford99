@@ -67,6 +67,42 @@ For the new design, I chose a circular buffer, where the ‘start’ of the buff
 
 This system actually worked almost perfectly first try, which was great! I only had to fix a couple pointer casts and offsets, and the system was good to go. Another benefit is I went to the source code on the ELRS site and used their #defines and enums, so that my code is using not only the right values, but the canonical names for each field.
 
-![Alt text](image-11.png)
+```c
+
+if ((crsf_addr_e)(*rx_buffer_start) == CRSF_ADDRESS_FLIGHT_CONTROLLER)
+{
+  //go through and attempt to parse
+  //place the data struct at this location and see if it passes
+  //first task is to verify the length is within bounds, and
+  //that the message type is what we're looking for
+  //Then verify it has a valid CRC
+  //move everything from the beginning of memory to
+
+  crsf_packet_t* crsf_packet = (crsf_packet_t*)rx_buffer_start;
+
+  if (crsf_packet->header.type == CRSF_FRAMETYPE_RC_CHANNELS_PACKED)
+  {
+    if (crsf_packet->header.frame_size == sizeof(crsf_channels_t)+2/*type, crc, and payload*/)
+    {
+      //validate CRC
+
+      //copy everything from bottom to the rx_buffer_start point into the upper half of the array to make it contiguous
+      memcpy(rx_buffer + BUFFER_SIZE, rx_buffer, rx_buffer_start-rx_buffer);
+
+      uint8_t calculated_crc = calc_crc(&(crsf_packet->header.type), sizeof(crsf_channels_t)+1/*don't include the CRC in the CRC calc haha*/);
+      uint8_t rx_crc = crsf_packet->crc;
+
+      if (rx_crc == calculated_crc)
+      {
+        //valid packet
+        //TODO save the last 30 or so channel packets for filtering if needed
+        memcpy((void*)&saved_channel_data, (void*)&(crsf_packet->channels), sizeof(crsf_channels_t));
+        return 1;
+      }
+    }
+  }
+}
+
+```
 
 ![Alt text](image-12.png "Data streaming in")
