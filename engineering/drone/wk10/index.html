@@ -1,0 +1,213 @@
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+   <title>ECE477 Drone</title> 
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!---<link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css"/>  -->
+    <!---<link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/assets/css/prism-vs.css">
+    <link rel="stylesheet" href="/assets/css/clean-blog.css">
+    
+  </head>
+  <body>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Michaelangelo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/hiking/">Hiking &amp; Photography</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/engineering/">Engineering</a>
+      </li>
+    </ul>
+
+<!--
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="#">Hiking & Photograpy</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Engineering</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Computer Graphics</a></li>       
+        <li class="nav-item"><a class="nav-link" href="#">Thoughts</a></li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+
+
+      </ul>
+-->
+
+      <!--<form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>-->
+    </div>
+  </div>
+</nav>
+    
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div style="padding: 100px 0 130px ">
+  <h1 class="mb-2 h1">ECE477 Drone</h1>
+  <p>
+    
+  </p>
+</div>
+</div>
+
+<!--<div class="container-md">
+  <div class="alert alert-primary" role="alert">
+    
+  </div>
+</div>-->
+
+     <div class="container-md">
+        <div class="row justify-content-center">
+            <div class="col-2 ">
+              
+            </div>
+            <div class="col-md-8 ">
+                 <h1>Week 10</h1>
+<p><strong>Accelerometer</strong></p>
+<p>Much effort was spent this week taking the working example code from Owen and getting the axis values to be read properly, calibrated, and integrated into gyro headings in correct units.</p>
+<p>Starting out, the data was too slow, and had the wrong bit format. After fixing the bit shifting etc., and setting a higher data rate, it was clear all 6 axes were being properly read.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 10.1. 6 axes being read, accelerometer X,Y,Z, and gyro X, Y, Z."><figcaption class="figure-caption text-center" align="center">Fig. 10.1. 6 axes being read, accelerometer X,Y,Z, and gyro X, Y, Z.</figcaption></figure></div></p>
+<p>Once this was clearly working, I created a working timing driver to measure sub-millisecond time deltas as well as those with sub-millisecond fidelity but multi-millisecond span.</p>
+<p>To do this, I combined the Systick timer’s countdown register, and a ‘tick’ variable incremented on every systick interrupt. I calculated the Systick roll-over value based on the clock frequency such that the interrupt occurs once every millisecond, giving a simple 1KHz timer.</p>
+<pre class="language-c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">AHB_CLOCK</span> 		<span class="token expression">SystemCoreClock		</span><span class="token comment">//48 MHz</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">AHB_CLOCK_DIV_8</span> <span class="token expression"><span class="token punctuation">(</span>AHB_CLOCK<span class="token operator">/</span><span class="token number">8</span><span class="token punctuation">)</span>	</span><span class="token comment">//6 MHz</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">SYSTICK_INT_FREQ</span> <span class="token expression"><span class="token number">1000</span>			</span><span class="token comment">//1KHz desired interrupt frequency</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">SYSTICK_LOAD</span>	<span class="token expression"><span class="token punctuation">(</span><span class="token punctuation">(</span>AHB_CLOCK_DIV_8<span class="token operator">/</span>SYSTICK_INT_FREQ<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></span></span>
+
+<span class="token keyword">void</span> <span class="token function">init_SYSTICK</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	SysTick<span class="token operator">-&gt;</span>LOAD <span class="token operator">=</span> SYSTICK_LOAD<span class="token punctuation">;</span>
+	SysTick<span class="token operator">-&gt;</span>VAL <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+	SysTick<span class="token operator">-&gt;</span>CTRL <span class="token operator">|=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&lt;&lt;</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	SysTick<span class="token operator">-&gt;</span>CTRL <span class="token operator">|=</span> <span class="token punctuation">(</span>SysTick_CTRL_TICKINT_Msk <span class="token operator">|</span> SysTick_CTRL_ENABLE_Msk<span class="token comment">/* | SysTick_CTRL_CLKSOURCE_Msk*/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"SYSTICK:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\tSYSTICK_LOAD:		%d\n"</span><span class="token punctuation">,</span> SYSTICK_LOAD<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\tAHB_CLOCK:		%d\n"</span><span class="token punctuation">,</span> AHB_CLOCK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\tAHB_CLOCK_DIV_8:	%d\n"</span><span class="token punctuation">,</span> AHB_CLOCK_DIV_8<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-1.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 10.2. #defines determining Systick configuration."><figcaption class="figure-caption text-center" align="center">Fig. 10.2. #defines determining Systick configuration.</figcaption></figure></div></p>
+<p>To calculate inter-interrupt timing, I use the value of the systick down-counting register to determine how many decrements remain before rollover. When compared to the clock frequency (how many decrements per second), a floating point time in units of seconds can be calculated. I still need to determine however if fixed point math would be better suited to this though. The STM32F4 has an FPU to accelerate these calculations, although 32 bit fixed point may be better.</p>
+<pre class="language-c"><code class="language-c"><span class="token class-name">uint32_t</span> ticks <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">SysTick_Handler</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	ticks<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token comment">//GPIOC-&gt;ODR ^= 0x1 &lt;&lt; 13;</span>
+
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">check_arm_code</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>watchdog <span class="token operator">&gt;</span> <span class="token number">50</span><span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>
+			<span class="token class-name">pwm_output_t</span> zeros<span class="token punctuation">;</span>
+			zeros<span class="token punctuation">.</span>duty_cycle_ch0 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+			zeros<span class="token punctuation">.</span>duty_cycle_ch1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+			zeros<span class="token punctuation">.</span>duty_cycle_ch2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+			zeros<span class="token punctuation">.</span>duty_cycle_ch3 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+			<span class="token function">set_PWM_duty_cycle</span><span class="token punctuation">(</span>zeros<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">else</span>
+		<span class="token punctuation">{</span>
+			<span class="token comment">//that way watchdog won't rollover.</span>
+			watchdog<span class="token operator">++</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span>
+	<span class="token punctuation">{</span>
+		watchdog <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">systick_clear_watchdog</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	watchdog <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">uint32_t</span> <span class="token function">millis</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">return</span> ticks<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">uint32_t</span> <span class="token function">ahb_clock_ticks</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">return</span> SysTick<span class="token operator">-&gt;</span>VAL<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">float</span> <span class="token function">ftime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>ticks <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>SYSTICK_INT_FREQ<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span><span class="token punctuation">(</span>SYSTICK_LOAD<span class="token operator">-</span>SysTick<span class="token operator">-&gt;</span>VAL<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>AHB_CLOCK_DIV_8<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 10.3. Code to calculated floating point timestamp in seconds."><figcaption class="figure-caption text-center" align="center">Fig. 10.3. Code to calculated floating point timestamp in seconds.</figcaption></figure></div></p>
+<p>Once this was created, I could calculate the precise timestep between readings of the gyro data. This is crucial for accurate integration of the gyro angular rate data. Although much remains to be configured in terms of low pass filters, aliasing prevention, etc. I was able to obtain unit-correct heading data.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 10.4. Code sample including LSB scaling and time delta."><figcaption class="figure-caption text-center" align="center">Fig. 10.4. Code sample including LSB scaling and time delta.</figcaption></figure></div></p>
+<p>(max 245 Degrees per second, signed 16 bit number -&gt; 32768 max value)</p>
+<p>Before this was usable however, I had to create calibration code, so that the average value returned by the gyro for angular rate would be zero. Otherwise the integration of the angular rate to get heading would result in immediate drift and a useless measurement. Therefore, the system sums up for each axis a few thousand readings at reasonable time intervals, then divides that sum by the umber of samples to get the average reading. That is then subtracted from all future readings to get a zero mean angular rate reading.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 10.5. Calibration code"><figcaption class="figure-caption text-center" align="center">Fig. 10.5. Calibration code</figcaption></figure></div></p>
+<p>Owen is working this week on incorporating everything into #defines so that this code is much more configurable as we start tuning these parameters.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-5.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 10.6. Integrated gyro heading data (before scaling applied)"><figcaption class="figure-caption text-center" align="center">Fig. 10.6. Integrated gyro heading data (before scaling applied)</figcaption></figure></div></p>
+<p><strong>Code organization</strong></p>
+<p>Now that interfacing code is nearly complete, I am integrating each example source code project into its own driver file, headers, and separating base hardware drivers from device drivers (i.e. separate IMU driver from SPI driver). I am also ensuring all code is driven by #defines, so that clock frequency changes, baud rates, etc. can be quickly changed to their proper values, and register values based off those parameters can automatically scale.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig.10.7. Project organization."><figcaption class="figure-caption text-center" align="center">Fig.10.7. Project organization.</figcaption></figure></div></p>
+<p><strong>Lidar ToF research and debugging</strong></p>
+<p>Lastly, I’ve been helping those working on the LIDAR to get it working. To improve timing, I have added the systick driver, and to add debugging functionality, I implemented a USB Uart driver to allow printf to debug their incoming data.</p>
+<p>This allowed me to determine that although the primary read function was returning a not-so-accurate reading of distance, using an FIR filter on one of the internal variables to the driver provided a much higher fidelity distance measurement.</p>
+<p>Work still remains, but it is a huge jump in functionality from before!</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-8.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 10.8. LIDAR internal data being printed. Note the purple trace is much higher fidelity than the returned data (green)."><figcaption class="figure-caption text-center" align="center">Fig. 10.8. LIDAR internal data being printed. Note the purple trace is much higher fidelity than the returned data (green).</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-9.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 10.9. High fidelity data passed through FIR filter. Range measurement is a result of moving my hand back in forth in front of the sensor."><figcaption class="figure-caption text-center" align="center">Fig. 10.9. High fidelity data passed through FIR filter. Range measurement is a result of moving my hand back in forth in front of the sensor.</figcaption></figure></div></p>
+
+            </div>
+            <div class="col-2 ">
+              
+            </div>
+        </div>
+    </div>
+
+<!--<div class="b-example-divider"></div>-->
+
+<div class="container">
+  <footer class="flex-wrap border-top">
+      <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
+  </footer>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="/assets/js/index.js"></script>
+  </body>
+</html>
