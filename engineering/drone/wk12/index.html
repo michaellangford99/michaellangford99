@@ -1,0 +1,149 @@
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+   <title>ECE477 Drone</title> 
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!---<link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css"/>  -->
+    <!---<link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/assets/css/prism-vs.css">
+    <link rel="stylesheet" href="/assets/css/clean-blog.css">
+    
+  </head>
+  <body>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Michaelangelo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/hiking/">Hiking &amp; Photography</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/engineering/">Engineering</a>
+      </li>
+    </ul>
+
+<!--
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="#">Hiking & Photograpy</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Engineering</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Computer Graphics</a></li>       
+        <li class="nav-item"><a class="nav-link" href="#">Thoughts</a></li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+
+
+      </ul>
+-->
+
+      <!--<form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>-->
+    </div>
+  </div>
+</nav>
+    
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div style="padding: 100px 0 130px ">
+  <h1 class="mb-2 h1">ECE477 Drone</h1>
+  <p>
+    
+  </p>
+</div>
+</div>
+
+<!--<div class="container-md">
+  <div class="alert alert-primary" role="alert">
+    This was going to be the nav bar but now I might get rid of this lol.
+  </div>
+</div>-->
+
+     <div class="container-md">
+        <div class="row justify-content-center">
+            <div class="col-2 ">
+              
+            </div>
+            <div class="col-md-8 ">
+                 <h1>Week 12</h1>
+<p><strong>PCB Development</strong></p>
+<p>My time this week was largely devoted to soldering, testing, resoldering, and retesting the FTDI and IMU devices on the board. Both of these were rather difficult to solder by hand, and took a lot of time to get right. I don’t have a ton of pictures of the carnage, but a lot of mistakes were made and subsequently repaired.</p>
+<p>Unfortunately, in the process of debugging the IMU, I lifted a few pads, and shorted out the microcontroller, apparently bricking it. So I removed most the components from the first board, and have started building up a new one. Thankfully I learned what I needed to know from the hand-soldered board, which is that the schematic and layout</p>
+<p>The results from my additions to the board this week were a successful test of the radio along with the motors and serial output over the FTDI to USB, as well as an almost working IMU.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 12.1. FTDI soldered"><figcaption class="figure-caption text-center" align="center">Fig. 12.1. FTDI soldered</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-1.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 12.2. LSM6DSO soldered (poorly in my opinion)"><figcaption class="figure-caption text-center" align="center">Fig. 12.2. LSM6DSO soldered (poorly in my opinion)</figcaption></figure></div></p>
+<p>Issues encountered soldering the FTDI, LSM6DSO and USB connector:</p>
+<ul>
+<li>The USB connector proved very difficult to heat up enough to get a good solder joint for the large connectors. Adding lots of solder to this ended up bridging the data pins and making the rest of the process very delicate</li>
+<li>The data pins were difficult to access well due to the FDTI chip being already in place, so any soldering done on those pins was lower quality and resulted more often in errors.</li>
+<li>The high temp solder used to coat the pins before reflowing was not sufficient to get contact with all pins initially. It would have been much better to start with paste and reheat the board rather than try to use strand solder, fail, and then move to reheating it.</li>
+<li>The 2 consecutive ground pads on the LSM6DSO when reheated resulted in much of the nearby solder mask detaching from the heated ground plane. This wasn’t a huge problem until a lot of solder got onto it. In the future, watch out for this spot and apply very little solder.</li>
+</ul>
+<p>Once the LSM6DSO was soldered, I tried to get communications to it to work, but with no success. After fly-wiring a 2 diode solution to drop the voltage to VddIO, I could see that the device was listening to the SPI commands sent to it, however its responses were being transmitted in a very strange way. The MISO line would be tristated or floating, not sure which, when not transmitting, resulting in odd noise and exponential decay on the line at those times. When the bus was driven for communications, it would show up as a nice clean signal.</p>
+<p>For some reason, this noise seemed to be confusing the STM32 SPI driver layer, which I assume didn’t ignore the noise when it was outside of normal data reception time. I could be wrong, but I anticipate that fixing this noise will solve the comm problems.</p>
+<p>Debugging this issue on a dev board showed a similar, but less egregious issue. The noise was still present, but with no DC offset, averaging about 0V. This somehow makes it not interfere with normal communication. Adding a pull-down resistor of about 5K helped remove this noise, at the cost of destabilizing the VDDIO reference voltage due to the modulated current through the pull-down being drawn from the diode-drop circuit. Because the diodes have very little current drawn when the bus is idle, their voltage drop is less than the asymptotic voltage drop of the typical 0.7V. Once the pull-down draws current however as the bus drives the line, that current spikes, and the diode voltage drop increases towards 0.7V.</p>
+<p><strong>Flight Controller Mount Design</strong></p>
+<p>This week I also finished my design of the flight controller mount that we will be 3D printing. I had started last week with a rather simple plate to hold the Pi Zero, with the flight controller mounted directly above it with standoffs.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 12.3. A very lazy screen grab of the initial design."><figcaption class="figure-caption text-center" align="center">Fig. 12.3. A very lazy screen grab of the initial design.</figcaption></figure></div></p>
+<p>So this week I went through and applied correct dimensions to each subsection according to the dimensions of the Pi Zero and flight controller, as well as adding the necessary framing, standoffs, screw holes, etc. to properly mount everything.</p>
+<p>I also decided to model everything in Inventor including the Pi Zero and the PCB, so I spent quite a bit of time figuring out how to export a model from KiCAD that Inventor could understand without it losing a significant amount of information. I also added the screws and nuts that we will use, both because I think it looks nice, and it makes sure that each part has the needed clearance to be screwed in.</p>
+<p>Because I think it looks cool, here’s a bunch of screenshots of it with the full models. Don’t mind the fact that the part is mounted within the chassis -  that’s a mistake I didn’t bother fixing in the assembly. That’s a MechE problem.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-5.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-8.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. (Alot).(too many) Da Chassisssss"><figcaption class="figure-caption text-center" align="center">Fig. (Alot).(too many) Da Chassisssss</figcaption></figure></div></p>
+
+            </div>
+            <div class="col-2 ">
+              
+            </div>
+        </div>
+    </div>
+
+<!--<div class="b-example-divider"></div>-->
+
+<div class="container">
+  <footer class="flex-wrap border-top">
+      <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
+  </footer>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="/assets/js/index.js"></script>
+  <script data-goatcounter="https://michaellangford99.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
