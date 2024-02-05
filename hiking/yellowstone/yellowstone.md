@@ -16,7 +16,7 @@ eleventyNavigation:
 
 ![Alt text](IMG_20231005_073316908_HDR.jpg "drive in")
 
-![Alt text](IMG_20231005_160050081_HDR.jpg "test")
+![Alt text](IMG_20231005_160050081_HDR.jpg "Nice vista")
 
 ![Alt text](IMG_20231005_083322127_HDR.jpg "again, view from distance")
 
@@ -28,7 +28,7 @@ eleventyNavigation:
 
 ![Alt text](IMG_20231005_110151499_HDR.jpg "Nicely framed")
 
-![Alt text](IMG_20231005_111630512_HDR.jpg "The snow-topped parts glowed in sparkling rainbow hues")
+![Alt text](IMG_20231005_111630512_HDR.jpg "The snow-topped parts glowed and sparkled in the sun. Snow up there actd like a prism, super cool")
 
 ![Alt text](IMG_20231005_113515101_HDR.jpg "well hello there sir")
 
@@ -49,16 +49,30 @@ eleventyNavigation:
 
 <iframe class="alltrails" src="https://www.alltrails.com/widget/trail/us/wyoming/cascade-canyon-trail?u=i&sh=lc1gzx" width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="AllTrails: Trail Guides and Maps for Hiking, Camping, and Running"></iframe>
 
+---
+
 **Part 2 - Yellowstone**
 
 ![Alt text](IMG_20231006_092818173.jpg "First morning in Yellowstone! Cold but beautiful")
 
 ![Alt text](IMG_20231006_083043667_HDR.jpg "It's really hard to photograph these steam vents in the morning, this is the only one that came out well haha")
 
+![Alt text](image-7.png "This dude was tryna hide in the fog over here")
 
-
-
+![Alt text](image-2.png "Icy and misty over the inlet")
 
 ![Alt text](IMG_20231007_074045101_HDR.jpg "Stunning sunrise, photos (at least not mine lol) don't do it justice")
 
+![Alt text](image.png "Lovely view of the whole park from Mt. Washburn")
+
+![Alt text](image-3.png "This geyser went on for soo long, created a huge steam column!")
+
 ![Alt text](IMG_20231007_102109516_HDR.jpg "This thing went off like a cannon!!!")
+
+![Alt text](image-1.png "Smoke rises from steam vents at the edge of Lake Yellowstone at sunset")
+
+![Alt text](image-4.png "This is where one of those fancy cameras with a long lense would've been real nice")
+
+![Alt text](image-5.png "Other direction, capturing the last moments before sunset")
+
+![Alt text](image-6.png "Sunset gave these mountains a very interesting shade")
