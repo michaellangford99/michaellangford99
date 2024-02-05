@@ -9,6 +9,8 @@ title: My Rad Blog
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <meta name="google-site-verification" content="jWYz4n1G8T7OHT4uWrEfZc6Qx-KFsPUYCC6oLXvfJHs" />
+
     <!-- Bootstrap CSS -->
    <title>{{ title }}</title> 
    
@@ -82,7 +84,11 @@ title: My Rad Blog
     
 <div
   class="bg-image p-5 text-center shadow-1-strong mb-2 text-white"
+  {% if background_img %}
+  style="background-image: url('{{ background_img }}'); background-position: center; background-size:cover;"
+  {% else %}
   style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;"
+{% endif %}
 >
 <div style="padding: 100px 0 130px ">
   <h1 class="mb-2 h1" >{{ title }}</h1>
