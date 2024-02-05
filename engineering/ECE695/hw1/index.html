@@ -1,0 +1,108 @@
+
+<html><head></head><body><p>huh?</p>
+<pre class="language-latex"><code class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword">standalone</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword">document</span><span class="token punctuation">}</span>
+  Hello world!
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword">document</span><span class="token punctuation">}</span></code></pre>
+<pre class="language-latex"><code class="language-latex"><span class="token function selector">\documentclass</span><span class="token punctuation">{</span><span class="token keyword">standalone</span><span class="token punctuation">}</span>
+<span class="token function selector">\usepackage</span><span class="token punctuation">{</span><span class="token keyword">tikz</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword">document</span><span class="token punctuation">}</span>
+<span class="token function selector">\begin</span><span class="token punctuation">{</span><span class="token keyword">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\draw</span><span class="token punctuation">[</span>rounded corners<span class="token punctuation">]</span> (1,3)--(2,2)--(4,5);
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword">tikzpicture</span><span class="token punctuation">}</span>
+<span class="token function selector">\end</span><span class="token punctuation">{</span><span class="token keyword">document</span><span class="token punctuation">}</span></code></pre>
+<pre class="language-latex{cmd=true}"><code class="language-latex{cmd=true}">
+\documentclass[12pt]{amsart}
+
+\addtolength{\hoffset}{-2.25cm}
+\addtolength{\textwidth}{4.5cm}
+\addtolength{\voffset}{-2.5cm}
+\addtolength{\textheight}{5cm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{15pt}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[colorlinks = true, linkcolor = black, citecolor = black, final]{hyperref}
+
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{ marvosym }
+\usepackage{wasysym}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+\newcommand{\ds}{\displaystyle}
+
+\setlength{\parindent}{0in}
+
+\pagestyle{empty}
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{\scshape ECE 69500} \hfill {\scshape \large Stochastic Processes in Information Systems} \hfill {\scshape HW1}
+
+\smallskip
+
+\hrule
+
+\bigskip
+
+Name: Michael Langford
+
+\bigskip
+
+Problem 11
+
+a)
+
+
+
+$$Y^*(s) = G^*(s) \cdot X^*(s)$$
+
+Proof:
+$$y(t) = \int_{0}^{t}g(t-\tau) \cdot x^*(\tau)d\tau$$
+
+$$ = \int_{0}^{t}g(t-\tau) \cdot \sum_{k=0}^{\infty}x(\tau)\delta(\tau - kT)d\tau
+= \sum_{k=0}^{\infty}\int_{0}^{t}g(t-\tau)x(\tau) \cdot \delta(\tau - kT)d\tau$$
+
+$$= \sum_{k=0}^{\infty}g(t-kT)\cdot x(kT)$$
+
+Take Z transform of y(t)
+
+$$Y(z) = \mathcal{Z} [y(t)] = \sum_{n=0}^{\infty} \left[ \sum_{k=0}^{\infty}g(t-kT)\cdot x(kT) \right] \cdot z^{-n}$$
+
+Because signals are causal, we can trim the range of integration
+
+$$Y(z) = \mathcal{Z} [y(t)] = \sum_{n=0}^{\infty} \left[ \sum_{k=0}^{n}g(t-kT)\cdot x(kT) \right] \cdot z^{-n}$$
+
+Swap integration order (select limits based on argument of g(.))
+
+$$= \sum_{k=0}^{\infty} \sum_{n=k}^{\infty} g(nT - kT) \cdot x(kT) \cdot z^{-n}$$
+
+Change of variable
+
+$$m = n-k$$
+
+$$= \sum_{k=0}^{\infty} \sum_{m=0}^{\infty} g(mT) \cdot x(kT) \cdot z^{-(m+k)}$$
+
+Summations are now separable
+
+$$= \left[ \sum_{m=0}^{\infty} g(mT)\cdot z^{-m} \right] \cdot \left[\sum_{k=0}^{\infty} x(kT) \cdot z^{-k} \right] = G(z) \cdot X(z)$$
+
+Equivalent to
+
+$$ Y^*(s) = G^*(s) \cdot X^*(s)$$
+
+
+
+
+\end{document}
+
+</code></pre>
+<p>what about the latex?</p>
+</body></html>
