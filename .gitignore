@@ -1,3 +1,6 @@
 node_modules/*
 !node_modules/@andatoshiki
 !node_modules/eleventy-plugin-mathjax
+node_modules
+node_modules
+**/venv/

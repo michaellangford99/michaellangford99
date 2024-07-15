@@ -21,11 +21,19 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("hiking/wetterhorn_loop/*.jpg");
   eleventyConfig.addPassthroughCopy("hiking/**/*.png");
   eleventyConfig.addPassthroughCopy("hiking/**/*.jpg");
+  eleventyConfig.addPassthroughCopy("ramblings/**/*.jpg");
+  eleventyConfig.addPassthroughCopy("ramblings/**/*.png");
   eleventyConfig.addPassthroughCopy("engineering/drone/*.png");
   eleventyConfig.addPassthroughCopy("engineering/drone/**/*.png");
   eleventyConfig.addPassthroughCopy("engineering/drone/*/*.png");
   eleventyConfig.addPassthroughCopy("engineering/drone/wk7/*.png");
   eleventyConfig.addPassthroughCopy("engineering/drone/wk11/*.png");
+  eleventyConfig.addPassthroughCopy("engineering/resume/*.png");
+
+  
+  eleventyConfig.addPassthroughCopy("engineering/computer_graphics/ray_tracer/*.png");
+  eleventyConfig.addPassthroughCopy("engineering/computer_graphics/ray_tracer/*.jpg");
+
   eleventyConfig.addLayoutAlias('default', 'default.njk');
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItImageCaption));
   
