@@ -95,10 +95,8 @@
 
      <div class="container-md">
         <div class="row justify-content-center">
-            <div class="col-2 ">
-              
-            </div>
-            <div class="col-md-8 ">
+            
+            <div class="col-md-9 mr-auto ml-auto">
                  <h1>Week 4</h1>
 <p>Rx Tx Swapped trace - After success with soldering the FT230XQ onto the PCB, I tested the functionality of both receive and transmit. I could tell that sending data from the computer over PuTTY lit the RX LED when data was sent, but when the STM32 sent data, none was received in PuTTY. After some investigation using my oscilloscope, and looking at my circuit diagram, I realized I had wired Rx to Rx and Tx to Tx for the connection between the FT230XQ and the STM32. This resulted in both devices attempting to transmit on the same line and listen on a different one. As one can see in Fig. 4.1, the traces are both wired improperly.</p>
 <p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 4.1. USART_RX Trace"><figcaption class="figure-caption text-center" align="center">Fig. 4.1. USART_RX Trace</figcaption></figure></div></p>
@@ -876,9 +874,7 @@ Table 4.1. Power Budget Results
 <p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 4.7b. Flight Controller Block Diagram"><figcaption class="figure-caption text-center" align="center">Fig. 4.7b. Flight Controller Block Diagram</figcaption></figure></div></p>
 
             </div>
-            <div class="col-2 ">
-              
-            </div>
+            
         </div>
     </div>
 

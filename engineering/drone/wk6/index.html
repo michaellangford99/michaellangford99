@@ -95,10 +95,8 @@
 
      <div class="container-md">
         <div class="row justify-content-center">
-            <div class="col-2 ">
-              
-            </div>
-            <div class="col-md-8 ">
+            
+            <div class="col-md-9 mr-auto ml-auto">
                  <h1>Week 6</h1>
 <p>The first improvements done on the receiver code were proper interpretations of the channel bit data. They were actually 11 bit values rather than the 10 bits stated online. I assume this is just due to the sign bit and that is why it was not included. After creating a packed struct, the bits are easily extracted and the ensuing data could be extracted properly mapped to the correct channel.</p>
 <p>To improve the existing radio receiver code, I had to put bounds on the input data streaming in. There were periodic packets coming in with valid frame starts, but with different content than channel data. This resulted in every 50 or so packets being invalid data, creating a useless and choppy input signal. To begin, I put a bound on the length of a packet before it gets parsed. If it fell within the valid range, it can then be processed.</p>
@@ -169,9 +167,7 @@ Table 6.1. Table to calculate the registers.
 <p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 6.6. PCB (currently), still getting the footprints in the right spots."><figcaption class="figure-caption text-center" align="center">Fig. 6.6. PCB (currently), still getting the footprints in the right spots.</figcaption></figure></div></p>
 
             </div>
-            <div class="col-2 ">
-              
-            </div>
+            
         </div>
     </div>
 
