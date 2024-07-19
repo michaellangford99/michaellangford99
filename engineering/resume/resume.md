@@ -45,13 +45,13 @@ eleventyNavigation:
 <div class="col-2 border-end border-primary"><h6 class="text-primary text-uppercase text-end">Summary</h6></div>
 <div class="col-10">
 
+Electrical Engineer with a focus in DSP and stochastic signal processing, estimation theory, and applied math; interested in radar, EW, and comms. Familiar with embedded hardware as well, particularly FPGA/ASIC design, embedded software and microcontrollers, and PCB hardware design. 
+
 **DSP Electrical Engineer 2** at **Rincon Research Corporation**, Centennial, CO
 
-**Masters student** in Electrical Engineering with **4.0 GPA** at **Purdue University (May 2025),**
+**Masters student** in Electrical Engineering with **3.88 GPA** at **Purdue University (May 2025)**
 
 **BS** in Electrical Engineering with **3.97 GPA/Summa cum Laude** from **Purdue University (2022)**
-
-Passionate about aerospace and defense technologies and applications. Interests include radar, EW, RF comms,via DSP
 
 **Active TS/SCI** (IC), **TS**(DoD) **Security Clearances**
 
@@ -123,21 +123,27 @@ Strong mathematical, hardware, interpersonal, communication and leadership skill
 <br>
 <div class="text-muted">May 2023 – present, Centennial, co</div></div>
 
+-	Radar Waveform Analysis
+    -	Wrote large document in Jupyter / Latek detailing performance characteristics and closed-form derivations of various radar waveforms and their CAFs, as well as general radar performance tradeoffs.
+    -	Document details closed-form CAF derivation for LFM and WGN, and CAF plots via inline Python and closed form signal definition for LFM, VLFM, NLFM, and WGN.
+    -	For WGN waveform this required a stochastic approach and gave a very interesting probability distribution proved out via simulation. For various waveform types derived performance metrics such as range resolution, doppler tolerance, range doppler coupling, etc.
+    -	Worked towards derivation of MLE estimator for delay and doppler, covariance of CAF between transmitted and noise corrupted signal. Wrote additional Python programs to simulate waveform performance and verify calculations, compute hessian of CAFs, and noise corrupted cross-ambiguity function computation.
 
-- Hired very recently, pursuing study on radar waveform performance and adaptation.
-- Analyzing performance tradeoffs of various radar waveform types along with their implementation within an ad hoc radar system.
-- Working with Python/MATLAB for analysis & simulation and utilizing SDR and RF equipment for prototyping.
+- TODO: insert info that you need to expand upon and vet.
 
-Insert your blue resume sections here
+-	OpenGL 3D Tracking Visualizer
+    -	Built 3D OpenGL program from scratch to visualize live radar tracking data, designed with an extendible framework to allow easy usage for other projects.
+    -	Implemented complex graphical elements via GLSL shaders to draw translucent 3D cones, ellipsoids, cubes, etc. to display relevant scene information such as target estimate uncertainty, radar beamwidth and orientation, and tracks of known or estimated targets.
+    -	All elements can be animated, and all scene properties easily edited via programmatically generated GUI. Program is being interfaced with a live database from which it will pull current radar and tracking data and display in real time.
 
-</div>
+<!--</div>
 </div>
 
 ---
 
 <div class="row">
 <div class="col-2 border-end border-primary"><h6 class="text-primary text-uppercase text-end">Internships</h6></div>
-<div class="col-10">
+<div class="col-10">-->
 
 <div class="text-uppercase"><b>RF / MSIC Engineering Intern</b> - BAE Systems [FASTLabs MSIC Team]
 <br>
@@ -145,17 +151,17 @@ Insert your blue resume sections here
 
 -	MSIC design group creates RF ASICS for BAE FASTLabs, DARPA, DoD, etc. Used for radar / EW / Comms.
 -	MATRICs LO PLL digital calibration module fault investigation / modeling
-   -	Investigated issues with in-production PLL calibration system. On-chip LO generated using 4 LC VCOs covering 10-22GHz range, using digital control and calibration module.
-   -	Developed testbenches and simulation environment for autocalibration module in SystemVerilog.
-   -	Testbenches emulated the SPI interface to the module and imitated real world use cases.
-   -	Created physically accurate time domain Verilog model for analog PLL to interface to testbenches.
-   -	Tested operation of algorithm on hardware, using spectrum analyzer and SPI bus interface to chip. 
+    -	Investigated issues with in-production PLL calibration system. On-chip LO generated using 4 LC VCOs covering 10-22GHz range, using digital control and calibration module.
+    -	Developed testbenches and simulation environment for autocalibration module in SystemVerilog.
+    -	Testbenches emulated the SPI interface to the module and imitated real world use cases.
+    -	Created physically accurate time domain Verilog model for analog PLL to interface to testbenches.
+    -	Tested operation of algorithm on hardware, using spectrum analyzer and SPI bus interface to chip. 
 -	Cadence IC layout and schematic training and experience, learning MSIC process/design flow. Helped create example Verilog, synthesis, place & route scripts, etc. to demonstrate digital design flow.
 -	RF amplifier analysis via Cadence simulations and Matlab + hand calculations
 -	Hand calculation of transfer functions, implemented in Matlab and compared to simulations.
 -	Analyzed pole movement over parameter sweeps to determine stability and dominant parasitics.
 -	RF ASIC Ka band transceiver conversion gain measurements and debugging / de-embedding
-   -	Measured conversion gain across power to identify nonlinearity in transmit path. Custom VNA setup to account for trace+cable loss, and processed results from VNA across 5 boards to remove output loss. 
+    -	Measured conversion gain across power to identify nonlinearity in transmit path. Custom VNA setup to account for trace+cable loss, and processed results from VNA across 5 boards to remove output loss. 
 
 <div class="text-uppercase"><b>Undergraduate Research</b> - Superresolution Imaging, Webb Group, Purdue University
 <br>
@@ -168,7 +174,6 @@ Insert your blue resume sections here
 <div class="text-uppercase"><b>Electrical Engineering Intern</b> - Raytheon Missiles & Defense
 <br>
 <div class="text-muted">May 2021 - April 2022, Tucson, AZ</div></div>
-(UGHHH FIXME)
 
 - Continued to support active projects during entirety of school year while remote, ~15+ hr/wk. 
 -	Air-to-air, active radar guided anti-drone missile IRAD team
@@ -178,31 +183,41 @@ Insert your blue resume sections here
     - System fills an important gap in testing capability from old by-hand methods allowing software team to immediately verify their software design objectives and write simple Python scripts to interface to missile.
     - Provided a critical component of the integration system for the project.
 
-TEACHER’S ASSISTANT   PURDUE UNIVERSITY
+<div class="text-uppercase"><b>Teacher's Assistant</b> - ECE Dept, Purdue University</div>
+
 - Teacher’s Assistant – ECE438 Digital Signal Processing - Fall 2022
 - Teacher’s Assistant – ECE270 Digital Logic Design - Spring 2021
 
+<div class="text-uppercase"><b>Electrical Engineering Intern</b> - UTEC (United Technologies Electronic Controls)
+<br>
+<div class="text-muted">June 2020 - May 2021, Fort Wayne, IN</div></div>
 
-ELECTRICAL ENGINEERING INTERN, CO-OP UTEC (UNITED TECHNOLOGIES ELECTRONIC CONTROLS)
-JUNE 2020 – MAY 2021
 -	OTIS Elevator counterweight motion DSP safety system 
--	System senses motion in elevator counterweight using accelerometer, sounds alarm whenever device is in motion. Purpose is preventing crush injuries at sites where elevator shaft is not yet enclosed.
--	Created initial prototype with available processors and MEMS accelerometer for testing.
--	Developed embedded C/C++ software and signal processing algorithms to integrate and filter acceleration data to determine estimate of elevator velocity without drift. Testing at sites demonstrates that software correctly distinguishes constant acceleration from a stopped counterweight.
--	Created simulation environment in MATLAB to test filters/algorithm on recorded acceleration data
--	Primary designer of schematic for production device using MEMS device and faster PIC32. 
--	Patent pending, was awarded by company for role in device creation.
-ELECTRICAL ENGINEERING INTERN UTEC (UNITED TECHNOLOGIES ELECTRONIC CONTROLS)
-JUNE 2019 – AUGUST 2019
--	Rehired after freshmen year of college, focusing on hardware engineering and circuit / PCB design
-ELECTRICAL ENGINEERING INTERN UTEC (UNITED TECHNOLOGIES ELECTRONIC CONTROLS)
-FEBRUARY 2018 – AUGUST 2018
+    -	System senses motion in elevator counterweight using accelerometer, sounds alarm whenever device is in motion. Purpose is preventing crush injuries at sites where elevator shaft is not yet enclosed.
+    -	Created initial prototype with available processors and MEMS accelerometer for testing.
+    -	Developed embedded C/C++ software and signal processing algorithms to integrate and filter acceleration data to determine estimate of elevator velocity without drift. Testing at sites demonstrates that software correctly distinguishes constant acceleration from a stopped counterweight.
+    -	Created simulation environment in MATLAB to test filters/algorithm on recorded acceleration data
+    -	Primary designer of schematic for production device using MEMS device and faster PIC32. 
+    -	Patent pending, was awarded by company for role in device creation.
+
+<div class="text-uppercase"><b>Electrical Engineering Intern</b> - UTEC (United Technologies Electronic Controls)
+<br>
+<div class="text-muted">June 2019 - August 2019, Huntington, IN</div></div>
+
+-	Rehired after freshmen year of college, focusing on continued hardware engineering and circuit / PCB design
+
+<div class="text-uppercase"><b>Electrical Engineering Intern</b> - UTEC (United Technologies Electronic Controls)
+<br>
+<div class="text-muted">February 2018 - August 2018, Huntington, IN</div></div>
+
 -	Hired upon early graduation from high school. Focused on Embedded SW with C & PIC32 micros.
-PERSONAL EXPERIENCE
+
+<div class="text-uppercase"><b>Personal Projects</b></div>
+
 -	Autonomous Quadcopter:  Designed and built mechanical and electrical parts and wrote all software.
 Embedded C/C++ SW processes sensors and radio control commands via DSP and PID control loops, and outputs to motors via PWM. Flies and self-levels.
 -	Intel x86 Kernel: Wrote a basic kernel in C and x86 assembly with working process management, memory allocation and paging, memory protection, graphics, written from scratch.
-
+- ADD OPENGL PROJECTS
 
 </div>
 </div>
