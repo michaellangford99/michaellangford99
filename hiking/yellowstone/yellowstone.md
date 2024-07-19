@@ -36,6 +36,8 @@ eleventyNavigation:
 
 ![Alt text](IMG_20231005_120820963_HDR.jpg "Found a nice setup for this shot. Kinda bland lighting but whatever")
 
+![alt text](IMG_20231005_120816896_HDR-EDIT-EDIT.jpg "This better?")
+
 ![Alt text](IMG_20231005_130819082_HDR.jpg "My brother about to offer Mass")
 
 ![Alt text](IMG_20231005_130831384_HDR.jpg "I found him a spot with a killer view!")

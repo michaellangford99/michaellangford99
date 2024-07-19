@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PivotTable.js</title>
+
+        <!-- external libs from cdnjs -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/pivot.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/pivot.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/d3_renderers.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/c3_renderers.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/export_renderers.min.js"></script>
+
+        <style>
+            body {font-family: Verdana;}
+            .node {
+              border: solid 1px white;
+              font: 10px sans-serif;
+              line-height: 12px;
+              overflow: hidden;
+              position: absolute;
+              text-indent: 2px;
+            }
+            .c3-line, .c3-focused {stroke-width: 3px !important;}
+            .c3-bar {stroke: white !important; stroke-width: 1;}
+            .c3 text { font-size: 12px; color: grey;}
+            .tick line {stroke: white;}
+            .c3-axis path {stroke: grey;}
+            .c3-circle { opacity: 1 !important; }
+            .c3-xgrid-focus {visibility: hidden !important;}
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            $(function(){
+                if(window.location != window.parent.location)
+                    $("<a>", {target:"_blank", href:""})
+                        .text("[pop out]").prependTo($("body"));
+
+                $("#output").pivotUI(
+                    $.csv.toArrays($("#output").text()),
+                    $.extend({
+                        renderers: $.extend(
+                            $.pivotUtilities.renderers,
+                            $.pivotUtilities.c3_renderers,
+                            $.pivotUtilities.d3_renderers,
+                            $.pivotUtilities.export_renderers
+                            ),
+                        hiddenAttributes: [""]
+                    }, {})
+                ).show();
+             });
+        </script>
+        <div id="output" style="display: none;">date,amount,account,merchant,category
+2024-05-26,2906.51,3Rivers Savings,RRC,income
+2024-06-01,-130.0,3Rivers Savings,King Soopers,food
+2024-06-01,-45.0,3Rivers Savings,Gas,gas
+2024-06-08,-130.0,3Rivers Savings,King Soopers,food
+2024-06-08,-45.0,3Rivers Savings,Gas,gas
+2024-06-09,2906.51,3Rivers Savings,RRC,income
+2024-06-15,-130.0,3Rivers Savings,King Soopers,food
+2024-06-15,-45.0,3Rivers Savings,Gas,gas
+2024-06-22,-130.0,3Rivers Savings,King Soopers,food
+2024-06-22,-45.0,3Rivers Savings,Gas,gas
+2024-06-23,2906.51,3Rivers Savings,RRC,income
+2024-06-29,-130.0,3Rivers Savings,King Soopers,food
+2024-06-29,-45.0,3Rivers Savings,Gas,gas
+2024-06-30,-1100.0,3Rivers Savings,Venmo,rent
+2024-06-30,-629.74,3Rivers Savings,church,tithe
+2024-06-30,-100.0,3Rivers Savings,Electric,utilities
+2024-07-06,-45.0,3Rivers Savings,Gas,gas
+2024-07-06,-130.0,3Rivers Savings,King Soopers,food
+2024-07-07,2906.51,3Rivers Savings,RRC,income
+2024-07-13,-45.0,3Rivers Savings,Gas,gas
+2024-07-13,-130.0,3Rivers Savings,King Soopers,food
+2024-07-20,-45.0,3Rivers Savings,Gas,gas
+2024-07-20,-130.0,3Rivers Savings,King Soopers,food
+2024-07-21,2906.51,3Rivers Savings,RRC,income
+2024-07-27,-130.0,3Rivers Savings,King Soopers,food
+2024-07-27,-45.0,3Rivers Savings,Gas,gas
+2024-07-31,-629.74,3Rivers Savings,church,tithe
+2024-07-31,-950.0,3Rivers Savings,Geico,car insurance
+2024-07-31,-1100.0,3Rivers Savings,Venmo,rent
+2024-07-31,-100.0,3Rivers Savings,Electric,utilities
+2024-08-03,-45.0,3Rivers Savings,Gas,gas
+2024-08-03,-130.0,3Rivers Savings,King Soopers,food
+2024-08-04,2906.51,3Rivers Savings,RRC,income
+2024-08-10,-130.0,3Rivers Savings,King Soopers,food
+2024-08-10,-45.0,3Rivers Savings,Gas,gas
+2024-08-17,-130.0,3Rivers Savings,King Soopers,food
+2024-08-17,-45.0,3Rivers Savings,Gas,gas
+2024-08-18,2906.51,3Rivers Savings,RRC,income
+2024-08-24,-45.0,3Rivers Savings,Gas,gas
+2024-08-24,-130.0,3Rivers Savings,King Soopers,food
+2024-08-31,-1100.0,3Rivers Savings,Venmo,rent
+2024-08-31,-130.0,3Rivers Savings,King Soopers,food
+2024-08-31,-100.0,3Rivers Savings,Electric,utilities
+2024-08-31,-45.0,3Rivers Savings,Gas,gas
+2024-08-31,-629.74,3Rivers Savings,church,tithe
+2024-09-01,2906.51,3Rivers Savings,RRC,income
+2024-09-07,-45.0,3Rivers Savings,Gas,gas
+2024-09-07,-130.0,3Rivers Savings,King Soopers,food
+2024-09-14,-130.0,3Rivers Savings,King Soopers,food
+2024-09-14,-45.0,3Rivers Savings,Gas,gas
+2024-09-15,2906.51,3Rivers Savings,RRC,income
+2024-09-21,-45.0,3Rivers Savings,Gas,gas
+2024-09-21,-130.0,3Rivers Savings,King Soopers,food
+2024-09-28,-45.0,3Rivers Savings,Gas,gas
+2024-09-28,-130.0,3Rivers Savings,King Soopers,food
+2024-09-29,2906.51,3Rivers Savings,RRC,income
+2024-09-30,-629.74,3Rivers Savings,church,tithe
+2024-09-30,-100.0,3Rivers Savings,Electric,utilities
+2024-09-30,-1100.0,3Rivers Savings,Venmo,rent
+2024-10-05,-130.0,3Rivers Savings,King Soopers,food
+2024-10-05,-45.0,3Rivers Savings,Gas,gas
+2024-10-12,-130.0,3Rivers Savings,King Soopers,food
+2024-10-12,-45.0,3Rivers Savings,Gas,gas
+2024-10-13,2906.51,3Rivers Savings,RRC,income
+2024-10-19,-45.0,3Rivers Savings,Gas,gas
+2024-10-19,-130.0,3Rivers Savings,King Soopers,food
+2024-10-26,-45.0,3Rivers Savings,Gas,gas
+2024-10-26,-130.0,3Rivers Savings,King Soopers,food
+2024-10-27,2906.51,3Rivers Savings,RRC,income
+2024-10-31,-629.74,3Rivers Savings,church,tithe
+2024-10-31,-100.0,3Rivers Savings,Electric,utilities
+2024-10-31,-1100.0,3Rivers Savings,Venmo,rent
+2024-11-02,-45.0,3Rivers Savings,Gas,gas
+2024-11-02,-130.0,3Rivers Savings,King Soopers,food
+2024-11-09,-130.0,3Rivers Savings,King Soopers,food
+2024-11-09,-45.0,3Rivers Savings,Gas,gas
+2024-11-10,2906.51,3Rivers Savings,RRC,income
+2024-11-16,-45.0,3Rivers Savings,Gas,gas
+2024-11-16,-130.0,3Rivers Savings,King Soopers,food
+2024-11-23,-45.0,3Rivers Savings,Gas,gas
+2024-11-23,-130.0,3Rivers Savings,King Soopers,food
+2024-11-24,2906.51,3Rivers Savings,RRC,income
+2024-11-30,-45.0,3Rivers Savings,Gas,gas
+2024-11-30,-100.0,3Rivers Savings,Electric,utilities
+2024-11-30,-130.0,3Rivers Savings,King Soopers,food
+2024-11-30,-629.74,3Rivers Savings,church,tithe
+2024-11-30,-1100.0,3Rivers Savings,Venmo,rent
+2024-12-07,-45.0,3Rivers Savings,Gas,gas
+2024-12-07,-130.0,3Rivers Savings,King Soopers,food
+2024-12-08,2906.51,3Rivers Savings,RRC,income
+2024-12-14,-130.0,3Rivers Savings,King Soopers,food
+2024-12-14,-45.0,3Rivers Savings,Gas,gas
+2024-12-21,-130.0,3Rivers Savings,King Soopers,food
+2024-12-21,-45.0,3Rivers Savings,Gas,gas
+2024-12-22,2906.51,3Rivers Savings,RRC,income
+2024-12-28,-45.0,3Rivers Savings,Gas,gas
+2024-12-28,-130.0,3Rivers Savings,King Soopers,food
+2024-12-31,-629.74,3Rivers Savings,church,tithe
+2024-12-31,-100.0,3Rivers Savings,Electric,utilities
+2024-12-31,-1100.0,3Rivers Savings,Venmo,rent
+2025-01-04,-45.0,3Rivers Savings,Gas,gas
+2025-01-04,-130.0,3Rivers Savings,King Soopers,food
+2025-01-05,2906.51,3Rivers Savings,RRC,income
+2025-01-11,-45.0,3Rivers Savings,Gas,gas
+2025-01-11,-130.0,3Rivers Savings,King Soopers,food
+2025-01-18,-130.0,3Rivers Savings,King Soopers,food
+2025-01-18,-45.0,3Rivers Savings,Gas,gas
+2025-01-19,2906.51,3Rivers Savings,RRC,income
+2025-01-25,-45.0,3Rivers Savings,Gas,gas
+2025-01-25,-130.0,3Rivers Savings,King Soopers,food
+2025-01-31,-629.74,3Rivers Savings,church,tithe
+2025-01-31,-1100.0,3Rivers Savings,Venmo,rent
+2025-01-31,-950.0,3Rivers Savings,Geico,car insurance
+2025-01-31,-100.0,3Rivers Savings,Electric,utilities
+2025-02-01,-130.0,3Rivers Savings,King Soopers,food
+2025-02-01,-45.0,3Rivers Savings,Gas,gas
+2025-02-02,2906.51,3Rivers Savings,RRC,income
+2025-02-08,-130.0,3Rivers Savings,King Soopers,food
+2025-02-08,-45.0,3Rivers Savings,Gas,gas
+2025-02-15,-130.0,3Rivers Savings,King Soopers,food
+2025-02-15,-45.0,3Rivers Savings,Gas,gas
+2025-02-16,2906.51,3Rivers Savings,RRC,income
+2025-02-22,-45.0,3Rivers Savings,Gas,gas
+2025-02-22,-130.0,3Rivers Savings,King Soopers,food
+2025-02-28,-629.74,3Rivers Savings,church,tithe
+2025-02-28,-100.0,3Rivers Savings,Electric,utilities
+2025-02-28,-1100.0,3Rivers Savings,Venmo,rent
+2025-03-01,-130.0,3Rivers Savings,King Soopers,food
+2025-03-01,-45.0,3Rivers Savings,Gas,gas
+2025-03-02,2906.51,3Rivers Savings,RRC,income
+2025-03-08,-130.0,3Rivers Savings,King Soopers,food
+2025-03-08,-45.0,3Rivers Savings,Gas,gas
+2025-03-15,-45.0,3Rivers Savings,Gas,gas
+2025-03-15,-130.0,3Rivers Savings,King Soopers,food
+2025-03-16,2906.51,3Rivers Savings,RRC,income
+2025-03-22,-45.0,3Rivers Savings,Gas,gas
+2025-03-22,-130.0,3Rivers Savings,King Soopers,food
+2025-03-29,-130.0,3Rivers Savings,King Soopers,food
+2025-03-29,-45.0,3Rivers Savings,Gas,gas
+2025-03-30,2906.51,3Rivers Savings,RRC,income
+2025-03-31,-1100.0,3Rivers Savings,Venmo,rent
+2025-03-31,-100.0,3Rivers Savings,Electric,utilities
+2025-03-31,-629.74,3Rivers Savings,church,tithe
+2025-04-05,-45.0,3Rivers Savings,Gas,gas
+2025-04-05,-130.0,3Rivers Savings,King Soopers,food
+2025-04-12,-130.0,3Rivers Savings,King Soopers,food
+2025-04-12,-45.0,3Rivers Savings,Gas,gas
+2025-04-13,2906.51,3Rivers Savings,RRC,income
+2025-04-19,-130.0,3Rivers Savings,King Soopers,food
+2025-04-19,-45.0,3Rivers Savings,Gas,gas
+2025-04-26,-45.0,3Rivers Savings,Gas,gas
+2025-04-26,-130.0,3Rivers Savings,King Soopers,food
+2025-04-27,2906.51,3Rivers Savings,RRC,income
+2025-04-30,-100.0,3Rivers Savings,Electric,utilities
+2025-04-30,-1100.0,3Rivers Savings,Venmo,rent
+2025-04-30,-629.74,3Rivers Savings,church,tithe
+2025-05-03,-45.0,3Rivers Savings,Gas,gas
+2025-05-03,-130.0,3Rivers Savings,King Soopers,food
+2025-05-10,-45.0,3Rivers Savings,Gas,gas
+2025-05-10,-130.0,3Rivers Savings,King Soopers,food
+2025-05-11,2906.51,3Rivers Savings,RRC,income
+2025-05-17,-130.0,3Rivers Savings,King Soopers,food
+2025-05-17,-45.0,3Rivers Savings,Gas,gas
+2025-05-24,-45.0,3Rivers Savings,Gas,gas
+2025-05-24,-130.0,3Rivers Savings,King Soopers,food
+2025-05-31,-100.0,3Rivers Savings,Electric,utilities
+2025-05-31,-629.74,3Rivers Savings,church,tithe
+2025-05-31,-1100.0,3Rivers Savings,Venmo,rent
+</div>
+    </body>
+</html>

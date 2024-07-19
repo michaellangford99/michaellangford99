@@ -95,10 +95,8 @@
 
      <div class="container-md">
         <div class="row justify-content-center">
-            <div class="col-2 ">
-              
-            </div>
-            <div class="col-md-8 ">
+            
+            <div class="col-md-9 mr-auto ml-auto">
                  <p>OK. So plan is eventually to make a particle filter-esque ray tracer.</p>
 <p>first get a really simple tracer going to demo generating a CPU space image</p>
 <p>then maybe work on some correct oop organization</p>
@@ -119,8 +117,19 @@
 <li>keep track of their transforms for recursive drawing</li>
 </ul>
 </li>
-<li>triangles</li>
-<li>lines</li>
+<li>triangles
+<ul>
+<li>cone</li>
+<li>box</li>
+<li>sphere</li>
+</ul>
+</li>
+<li>lines
+<ul>
+<li>circle</li>
+<li>cone</li>
+</ul>
+</li>
 <li>image</li>
 <li>shader
 <ul>
@@ -205,13 +214,31 @@ I can orbit aroung the scene and not re-render the light paths</p>
 <li>element</li>
 <li>ray sampler</li>
 <li>material</li>
-<li></li>
 </ul>
+<p>So some more thoughts:</p>
+<ul>
+<li>
+<p>needs to be on linux</p>
+</li>
+<li>
+<p>each program needs to be very small and run on its own so I don't have to wreck a demo to write another</p>
+</li>
+<li>
+<p>so keep repeated code in a library</p>
+</li>
+<li>
+<p>get a makefile going again</p>
+</li>
+<li>
+<p>ffmpeg stuff into video</p>
+</li>
+</ul>
+<p>It is incredibly slow to generate a full frame image on the CPU, so look into splatting photons via the vertex shader??? idk if that will work but it'd be neat
+split screen between developing render and view of where the photons have been going</p>
+<p>I think I might need to buy a linux laptop lol</p>
 
             </div>
-            <div class="col-2 ">
-              
-            </div>
+            
         </div>
     </div>
 
