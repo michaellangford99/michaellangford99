@@ -8,7 +8,16 @@ eleventyNavigation:
   parent: engineering
   title: resume
 
+templateEngineOverride: njk,md
+
 ---
+
+{% macro category(name) %}
+<div class="col-lg-2 border-end border-primary">
+<div class="d-none d-lg-block text-end"><h6 class="text-primary text-uppercase">{{ name }}</h6></div>
+<div class="d-lg-none"><h6 class="text-primary text-uppercase">{{ name }}</h6></div>
+</div>
+{% endmacro %}
 
 <div class="container">
 <div class="row">
@@ -42,7 +51,7 @@ eleventyNavigation:
 <div class="container">
 
 <div class="row">
-<div class="col-2 border-end border-primary"><h6 class="text-primary text-uppercase text-end">Summary</h6></div>
+{{ category('Summary') }}
 <div class="col-10">
 
 Electrical Engineer with a focus in DSP and stochastic signal processing, estimation theory, and applied math; interested in radar, EW, and comms. Familiar with embedded hardware as well, particularly FPGA/ASIC design, embedded software and microcontrollers, and PCB hardware design. 
@@ -61,7 +70,7 @@ Electrical Engineer with a focus in DSP and stochastic signal processing, estima
 ---
 
 <div class="row">
-<div class="col-2 border-end border-primary"><h6 class="text-primary text-uppercase text-end">Skills & Abilities</h6></div>
+{{ category('Skills & Abilities') }}
 <div class="col-10">
 
 **Work Experience Areas**|**Languages**|**Hardware/Software Tools**
@@ -77,13 +86,19 @@ Split into skills that I’m really good at, and those I’m familiar with
 Quick learner and hard worker. 
 Strong mathematical, hardware, interpersonal, communication and leadership skills.
 
+{% macro field(name) %}
+<b>Purdue university student {{ name }} </b>
+{% endmacro %}
+
+{{ field('Michael Langford') }}
+
 </div>
 </div>
 
 ---
 
 <div class="row">
-<div class="col-2 border-end border-primary"><h6 class="text-primary text-uppercase text-end">Education</h6></div>
+{{ category('Education') }}
 <div class="col-10">
 
 <div class="text-uppercase"><b>Purdue university</b> - West Lafayette, IN</div>
@@ -116,7 +131,7 @@ Strong mathematical, hardware, interpersonal, communication and leadership skill
 ---
 
 <div class="row">
-<div class="col-2 border-end border-primary"><h6 class="text-primary text-uppercase text-end">Work Experience</h6></div>
+{{ category('Work Experience') }}
 <div class="col-10">
 
 <div class="text-uppercase"><b>DSP Electrical Engineer 2</b> - Rincon Research Corporation

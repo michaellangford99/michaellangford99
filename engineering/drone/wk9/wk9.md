@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ECE477 Drone
+title: ECE477 Drone - Week 9
 description:
 
 eleventyNavigation:
