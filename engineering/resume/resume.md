@@ -90,13 +90,35 @@ Electrical Engineer with a focus in stochastic and radar signal processing, esti
 
 {{ summary_listing('Rincon Research Corporation', 'image.png', 'May 2023 - Present - Centennial, CO - Full Time', 'DSP Electrical Engineer 2') }}
 
-{{ summary_listing('Purdue University', 'image-1.png', 'Aug 2019 - May 2025 - West Lafayette, IN', '
+<br>
 
-MS in Electrical Engineering (May 2025, in progress) - **3.88 GPA**
-', '
+<div class="card">
+<div class="card-body p-1">
 
-BS in Electrical Engineering (2022) - **3.97 GPA, *With Highest Distinction***
-') }}
+<div class="container">
+<div class="row">
+
+<div class="col-2">
+<div style="background: url('image-1.png');background-size: contain;background-repeat: no-repeat; height:100%; background-position: left;">
+</div>
+</div>
+
+<div class="col-10">
+<h5 class="card-title">Purdue University</h5>
+<h6 class="card-subtitle mb-1">MS in Electrical Engineering (May 2025, in progress) - <b>3.88 GPA</b></h6>
+<h6 class="card-subtitle ">BS in Electrical Engineering (2022) - <b>3.97 GPA, <i>With Highest Distinction</i></b></h6>
+<p class="card-text text-muted m-0">Aug 2019 - May 2025 - West Lafayette, IN</p>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
 
 <br>
 
@@ -124,12 +146,6 @@ Split into skills that I’m really good at, and those I’m familiar with
 Quick learner and hard worker. 
 Strong mathematical, hardware, interpersonal, communication and leadership skills.
 
-{% macro field(name) %}
-<b>Purdue university student {{ name }} </b>
-{% endmacro %}
-
-{{ field('Michael Langford') }}
-
 </div>
 </div>
 
@@ -141,7 +157,7 @@ Strong mathematical, hardware, interpersonal, communication and leadership skill
 
 <div class="text-uppercase"><b>Purdue university</b> - West Lafayette, IN</div>
 
-- Master’s student in Electrical Engineering, 4.0 GPA, focus in Comms., Network, Signal & Image processing
+- Master’s student in Electrical Engineering, 3.88 GPA, focus in Comms., Network, Signal & Image processing
 - Expected graduation: 2024
 - (Fall 2022) BS in Electrical Engineering, with 3.97 GPA (with Highest Distinction)
 - Dean’s List every semester.
