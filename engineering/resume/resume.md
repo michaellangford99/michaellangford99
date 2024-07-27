@@ -13,22 +13,52 @@ templateEngineOverride: njk,md
 ---
 
 {% macro category(name) %}
-<div class="col-lg-2 border-end border-primary">
+<div class="col-12 col-lg-2 border-end border-primary">
 <div class="d-none d-lg-block text-end"><h6 class="text-primary text-uppercase">{{ name }}</h6></div>
-<div class="d-lg-none"><h6 class="text-primary text-uppercase">{{ name }}</h6></div>
+<div class="d-lg-none"><h4 class="text-primary text-uppercase">{{ name }}</h4></div>
+</div>
+{% endmacro %}
+
+{% macro summary_listing(place, image, dates, title1, title2='') %}
+<div class="card">
+<div class="card-body p-1">
+
+<div class="container">
+<div class="row">
+
+<div class="col-2">
+<div style="background: url({{ image }});background-size: contain;background-repeat: no-repeat; height:100%; background-position: left;">
+</div>
+</div>
+
+<div class="col-10">
+<h5 class="card-title">{{ place }}</h5>
+<h6 class="card-subtitle ">{{ title1 }}</h6>
+<h6 class="card-subtitle ">{{ title2 }}</h6>
+<p class="card-text text-muted m-0">{{ dates }}</p>
+</div>
+
+</div>
+</div>
+
+</div>
 </div>
 {% endmacro %}
 
 <div class="container">
 <div class="row">
+
 <div class="col-2">
+
 <div class="container">
 <img src="IMG_9201_cropped3.png" class="figure-img img-fluid rounded-circle">
 </div>
-</div>
-<div class="col-10">
-<h1 class="display-1 text-capitalize text-primary">Michael Langford</h1>
 
+</div>
+
+<div class="col-10">
+
+<h1 class="display-1 text-capitalize text-primary">Michael Langford</h1>
 <div class="container">
 <div class="row">
 <div class="col-lg-4 text-muted border-end border-primary">
@@ -44,6 +74,8 @@ templateEngineOverride: njk,md
 </div>
 
 </div>
+
+</div>
 </div>
 
 ---
@@ -52,15 +84,21 @@ templateEngineOverride: njk,md
 
 <div class="row">
 {{ category('Summary') }}
-<div class="col-10">
+<div class="col-12 col-lg-10">
 
-Electrical Engineer with a focus in DSP and stochastic signal processing, estimation theory, and applied math; interested in radar, EW, and comms. Familiar with embedded hardware as well, particularly FPGA/ASIC design, embedded software and microcontrollers, and PCB hardware design. 
+Electrical Engineer with a focus in stochastic and radar signal processing, estimation theory, and applied math. Interested in radar, EW, and comms signal processing research. Also experienced with embedded hardware, FPGA/ASIC design, embedded software and microcontrollers, and PCB hardware design.
 
-**DSP Electrical Engineer 2** at **Rincon Research Corporation**, Centennial, CO
+{{ summary_listing('Rincon Research Corporation', 'image.png', 'May 2023 - Present - Centennial, CO - Full Time', 'DSP Electrical Engineer 2') }}
 
-**Masters student** in Electrical Engineering with **3.88 GPA** at **Purdue University (May 2025)**
+{{ summary_listing('Purdue University', 'image-1.png', 'Aug 2019 - May 2025 - West Lafayette, IN', '
 
-**BS** in Electrical Engineering with **3.97 GPA/Summa cum Laude** from **Purdue University (2022)**
+MS in Electrical Engineering (May 2025, in progress) - **3.88 GPA**
+', '
+
+BS in Electrical Engineering (2022) - **3.97 GPA, *With Highest Distinction***
+') }}
+
+<br>
 
 **Active TS/SCI** (IC), **TS**(DoD) **Security Clearances**
 
@@ -71,7 +109,7 @@ Electrical Engineer with a focus in DSP and stochastic signal processing, estima
 
 <div class="row">
 {{ category('Skills & Abilities') }}
-<div class="col-10">
+<div class="col-12 col-lg-10">
 
 **Work Experience Areas**|**Languages**|**Hardware/Software Tools**
 :-----:|:-----:|:-----:
@@ -99,7 +137,7 @@ Strong mathematical, hardware, interpersonal, communication and leadership skill
 
 <div class="row">
 {{ category('Education') }}
-<div class="col-10">
+<div class="col-12 col-lg-10">
 
 <div class="text-uppercase"><b>Purdue university</b> - West Lafayette, IN</div>
 
@@ -132,7 +170,7 @@ Strong mathematical, hardware, interpersonal, communication and leadership skill
 
 <div class="row">
 {{ category('Work Experience') }}
-<div class="col-10">
+<div class="col-12 col-lg-10">
 
 <div class="text-uppercase"><b>DSP Electrical Engineer 2</b> - Rincon Research Corporation
 <br>
@@ -143,9 +181,7 @@ Strong mathematical, hardware, interpersonal, communication and leadership skill
     -	Document details closed-form CAF derivation for LFM and WGN, and CAF plots via inline Python and closed form signal definition for LFM, VLFM, NLFM, and WGN.
     -	For WGN waveform this required a stochastic approach and gave a very interesting probability distribution proved out via simulation. For various waveform types derived performance metrics such as range resolution, doppler tolerance, range doppler coupling, etc.
     -	Worked towards derivation of MLE estimator for delay and doppler, covariance of CAF between transmitted and noise corrupted signal. Wrote additional Python programs to simulate waveform performance and verify calculations, compute hessian of CAFs, and noise corrupted cross-ambiguity function computation.
-
 - TODO: insert info that you need to expand upon and vet.
-
 -	OpenGL 3D Tracking Visualizer
     -	Built 3D OpenGL program from scratch to visualize live radar tracking data, designed with an extendible framework to allow easy usage for other projects.
     -	Implemented complex graphical elements via GLSL shaders to draw translucent 3D cones, ellipsoids, cubes, etc. to display relevant scene information such as target estimate uncertainty, radar beamwidth and orientation, and tracks of known or estimated targets.
