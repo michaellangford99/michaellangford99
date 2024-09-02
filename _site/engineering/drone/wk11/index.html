@@ -20,7 +20,7 @@
   <body>
 
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark d-print-none" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Michaelangelo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +78,7 @@
   </div>
 </nav>
     
-<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white d-print-none" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
 <div style="padding: 100px 0 130px ">
   <h1 class="mb-2 h1">ECE477 Drone - Week 11</h1>
   <p>
@@ -93,7 +93,7 @@
   </div>
 </div>-->
 
-     <div class="container-md">
+    <div class="container-md d-print-none">
         <div class="row justify-content-center">
             
             <div class="col-md-9 mr-auto ml-auto">
@@ -138,9 +138,54 @@
         </div>
     </div>
 
+    <div class="container-md d-none d-print-block">
+        <div class="row justify-content-center">
+            
+            <div class="col mr-auto ml-auto">
+                 <h1>Week 11</h1>
+<p><strong>Motors / ESC</strong></p>
+<p>As the flight controller development continues, I decided to complete the wiring of the motors and ESC, along with the battery, as that has arrived as well. Soldering anything to the ESC is a bit of a challenge, as the heat dissipation and thermal mass of the board is so high. I have to set the temperature of the iron past 900 deg.F, and that seems to work alright. I started out by wrapping the motor cables around the arms of the frame to take up the slack in the cables, but allow for rewiring and flexing of the cable. I taped them in their positions, and then worked on mounting the ESC to the frame.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 1. Motor cables arranged before soldering."><figcaption class="figure-caption text-center" align="center">Figure 11- 1. Motor cables arranged before soldering.</figcaption></figure></div></p>
+<p>The ESC wasn’t hard to mount, it simply needed ¾” M3 screws and nuts to hold it in place. This may change later when the mounting solution for the flight controller is complete, but is very satisfactory for now.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-1.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 2. ESC being mounted to frame."><figcaption class="figure-caption text-center" align="center">Figure 11- 2. ESC being mounted to frame.</figcaption></figure></div></p>
+<p>Once the ESC was mounted, I soldered the power cable, and then the motors. Once complete, I powered it up and verified that each motor vibrated as it generated the startup sound.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="a"><figcaption class="figure-caption text-center" align="center">a</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title="b"><figcaption class="figure-caption text-center" align="center">b</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 3. ESC fully soldered."><figcaption class="figure-caption text-center" align="center">Figure 11- 3. ESC fully soldered.</figcaption></figure></div></p>
+<p><strong>PCB</strong></p>
+<p>Our PCBs arrived this week from JLCPCB, allowing us to start the hardware build process. The boards look good, however not tenting the vias is going to make certain aspects of the board much harder to solder, on an already very dense and small pitch build. We’ll see how this goes. Figure 11- 1 shows one of the boards upon arrival.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-5.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 4. Newly arrived boards."><figcaption class="figure-caption text-center" align="center">Figure 11- 4. Newly arrived boards.</figcaption></figure></div></p>
+<p>First, I wanted to perform some electrical tests on the board, which it passed. I tested continuity for many different nets, particularly those with very tight trace tolerances. Next I tested the physical layout of the board by comparing it to the Pi Zero, onto which it needs to mount. I was happy to see the boards fit perfectly with the Pi Zero form factor and screw positions, as well as the communication connector lining right up with the Pi Zero header.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 5. Blank board with Pi Zero"><figcaption class="figure-caption text-center" align="center">Figure 11- 5. Blank board with Pi Zero</figcaption></figure></div></p>
+<p>Once satisfied that the boards weren’t total trash, I began soldering, starting with the power supply, to verify that first. This board uses mostly 0603 SMT passive components, with a couple 0402s and 1206 &amp; 1210s for power capacitors. This means the lab doesn’t have the majority of the components we need. Thankfully, I have a personal stockpile of a variety of different 0603 SMT passives, and a few assorted 1206 &amp; 1210s from previous flight controller board projects.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 6. Stockpile of various 0603 passives, and a few hard to find chips. (FT230XQ and MPU9250)"><figcaption class="figure-caption text-center" align="center">Figure 11- 6. Stockpile of various 0603 passives, and a few hard to find chips. (FT230XQ and MPU9250)</figcaption></figure></div></p>
+<p>I first laid out the components on the board without soldering, to get a sense of how everything was fitting, and if there were any mistakes with footprints. I then went into KiCAD and generated a plot of the reference designator and value of every component on the board, at much larger scale. This helps a lot when trying to figure out which miniscule SMT part goes where</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-8.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 7. Plot of value, ref. designator pairs to help with soldering."><figcaption class="figure-caption text-center" align="center">Figure 11- 7. Plot of value, ref. designator pairs to help with soldering.</figcaption></figure></div></p>
+<p>First I soldered the power capacitors, 5V switching regulator, and then the ESC connector. I then tested the regulator by wiring the connector to the ESC and powering on, and measuring the voltage and ripple.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-9.png" class="figure-img img-fluid rounded" alt="Alt text" title="a"><figcaption class="figure-caption text-center" align="center">a</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-10.png" class="figure-img img-fluid rounded" alt="Alt text" title="b"><figcaption class="figure-caption text-center" align="center">b</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-11.png" class="figure-img img-fluid rounded" alt="Alt text" title="c"><figcaption class="figure-caption text-center" align="center">c</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-12.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 8. Progression of soldering 5V supply"><figcaption class="figure-caption text-center" align="center">Figure 11- 8. Progression of soldering 5V supply</figcaption></figure></div></p>
+<p>Next I added the 3.3V regulator, and 5V and 3.3V supply indicator LEDs.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-13.png" class="figure-img img-fluid rounded" alt="Alt text" title="a"><figcaption class="figure-caption text-center" align="center">a</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-14.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 9. Testing 3.3V and 5V supply with ESC"><figcaption class="figure-caption text-center" align="center">Figure 11- 9. Testing 3.3V and 5V supply with ESC</figcaption></figure></div></p>
+<p>After this, I added all the 3.3V microcontroller caps, and then the microcontroller. This is one of the most difficult parts to solder, and definitely took a while. First I covered the board in flux, and brushed solder across the pads. Then I tacked a pin from each corner down, and then dragged the tinned iron across the pins. Next I added the programming header. At first this appeared to work, but after attempting to program with no success, I realized that some of the solder joints on the micro had very little solder, so I reheated multiple joints individually, and then the device was able to program.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-15.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 10. Closeup of board after micro soldered."><figcaption class="figure-caption text-center" align="center">Figure 11- 10. Closeup of board after micro soldered.</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-16.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 11. Board running 'blink LED' test while powered by ESC."><figcaption class="figure-caption text-center" align="center">Figure 11- 11. Board running 'blink LED' test while powered by ESC.</figcaption></figure></div></p>
+<p><strong>Full System Setup</strong></p>
+<p>In parallel to building up the hardware, I wanted to perform a full system test of all the different pieces of software, on the chip that we are using. Multiple test programs had been developed for the F411, and then ported over to the main F446 project, as well as having been developed using convenient ports and pins, rather than the ones chosen on the PCB. Much effort was then spent in changing the ports and pin numbers, and debugging issues arising from those changes. This meant I also had to transfer all the individual breadboard setups for the PWM, radio receiver, IMU, etc. all to the same breadboard to ensure all can function correctly simultaneously.</p>
+<p>After banging my head against the wall during this process (and realizing that the ST documentation for pin numbers on the Nucleo boards is inconsistent), I got the 4 channel PWM and radio working simultaneously, as well as integrating the IMU into the full final project.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-17.png" class="figure-img img-fluid rounded" alt="Alt text" title="a"><figcaption class="figure-caption text-center" align="center">a</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-18.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 12. System test with radio controlling all 4 PWM channels"><figcaption class="figure-caption text-center" align="center">Figure 11- 12. System test with radio controlling all 4 PWM channels</figcaption></figure></div></p>
+
+            </div>
+            
+        </div>
+    </div>
+
 <!--<div class="b-example-divider"></div>-->
 
-<div class="container">
+<div class="container d-print-none">
   <footer class="flex-wrap border-top">
       <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
   </footer>

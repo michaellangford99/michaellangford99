@@ -20,7 +20,7 @@
   <body>
 
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark d-print-none" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Michaelangelo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +78,7 @@
   </div>
 </nav>
     
-<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white d-print-none" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
 <div style="padding: 100px 0 130px ">
   <h1 class="mb-2 h1">ECE477 Drone - New stuff</h1>
   <p>
@@ -93,7 +93,7 @@
   </div>
 </div>-->
 
-     <div class="container-md">
+    <div class="container-md d-print-none">
         <div class="row justify-content-center">
             
             <div class="col-md-9 mr-auto ml-auto">
@@ -131,9 +131,47 @@
         </div>
     </div>
 
+    <div class="container-md d-none d-print-block">
+        <div class="row justify-content-center">
+            
+            <div class="col mr-auto ml-auto">
+                 <h1>Pi setup and new goals</h1>
+<p>Outline:</p>
+<ul>
+<li>finding old pi password</li>
+<li>configuring internet passthrough</li>
+<li>digging up old teammates opencv code</li>
+</ul>
+<p>Sooo on ICS - just wait a while, and if you get a 192.169.137... ip, you're good</p>
+<p>Setup of Pi zero development env:</p>
+<ul>
+<li>git</li>
+<li>vscode</li>
+<li>opencv</li>
+<li>etc</li>
+</ul>
+<p>vscode:</p>
+<ul>
+<li>so ssh install insn't supported</li>
+<li>looking into ssh fs (ssh file server)
+(Use a vscode extension??)</li>
+</ul>
+<p>VSCode setup:</p>
+<p><img src="image.png" alt="Alt text"></p>
+<p><img src="image-1.png" alt="Alt text"></p>
+<p><img src="image-2.png" alt="Alt text"></p>
+<p><img src="image-3.png" alt="Alt text"></p>
+<p>VNC also works:</p>
+<p><img src="image-4.png" alt="Alt text"></p>
+
+            </div>
+            
+        </div>
+    </div>
+
 <!--<div class="b-example-divider"></div>-->
 
-<div class="container">
+<div class="container d-print-none">
   <footer class="flex-wrap border-top">
       <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
   </footer>

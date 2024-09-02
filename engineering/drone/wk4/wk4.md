@@ -8,6 +8,8 @@ eleventyNavigation:
   parent: drone
   title: wk_4
 
+date: 2022-09-16
+
 ---
 
 # Week 4

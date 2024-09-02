@@ -1,0 +1,360 @@
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="google-site-verification" content="jWYz4n1G8T7OHT4uWrEfZc6Qx-KFsPUYCC6oLXvfJHs">
+
+    <!-- Bootstrap CSS -->
+   <title>ECE477 Drone - Week 15</title> 
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!---<link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css"/>  -->
+    <!---<link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/assets/css/prism-vs.css">
+    <link rel="stylesheet" href="/assets/css/clean-blog.css">
+    
+  </head>
+  <body>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark d-print-none" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Michaelangelo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/hiking/">Hiking &amp; Photography</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/engineering/">Engineering</a>
+      </li>
+    </ul>
+
+<!--
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="#">Hiking & Photograpy</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Engineering</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Computer Graphics</a></li>       
+        <li class="nav-item"><a class="nav-link" href="#">Thoughts</a></li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+
+
+      </ul>
+-->
+
+      <!--<form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>-->
+    </div>
+  </div>
+</nav>
+    
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white d-print-none" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div style="padding: 100px 0 130px ">
+  <h1 class="mb-2 h1">ECE477 Drone - Week 15</h1>
+  <p>
+    
+  </p>
+</div>
+</div>
+
+<!--<div class="container-md">
+  <div class="alert alert-primary" role="alert">
+    
+  </div>
+</div>-->
+
+    <div class="container-md d-print-none">
+        <div class="row justify-content-center">
+            
+            <div class="col-md-9 mr-auto ml-auto">
+                 <h1>Week 15</h1>
+<p>This was mostly last week, but I created an algorithm to modify in real time the parameter controlling the relative trust the complementary filter has in the gyro vs. the accelerometer. It works by sensing when the length of the vector comprising the total acceleration felt by the accelerometer is greater in magnitude than 1G, indicating that noise or movement is taking place. The differential is the used to generate a correction factor to apply to the parameter ‘Alpha’ which estimates which measurement is more accurate.</p>
+<pre class="language-cpp"><code class="language-cpp">accel_pitch <span class="token operator">=</span> <span class="token function">atan2</span><span class="token punctuation">(</span>accel_x<span class="token punctuation">,</span> <span class="token function">sqrt</span><span class="token punctuation">(</span>accel_z<span class="token operator">*</span>accel_z <span class="token operator">+</span> accel_y<span class="token operator">*</span>accel_y<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">180.0f</span><span class="token operator">/</span><span class="token number">3.1415963f</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.01f</span> <span class="token operator">+</span> <span class="token number">0.99f</span><span class="token operator">*</span>accel_pitch<span class="token punctuation">;</span>
+accel_roll <span class="token operator">=</span> <span class="token function">atan2</span><span class="token punctuation">(</span>accel_y<span class="token punctuation">,</span> <span class="token function">sqrt</span><span class="token punctuation">(</span>accel_z<span class="token operator">*</span>accel_z <span class="token operator">+</span> accel_x<span class="token operator">*</span>accel_x<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">180.0f</span><span class="token operator">/</span><span class="token number">3.1415963f</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.01f</span> <span class="token operator">+</span> <span class="token number">0.99f</span><span class="token operator">*</span>accel_roll<span class="token punctuation">;</span>
+
+total_acceleration_filtered <span class="token operator">=</span> <span class="token function">update_filter</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>total_acceleration_filter<span class="token punctuation">,</span> <span class="token function">sqrt</span><span class="token punctuation">(</span>accel_x<span class="token operator">*</span>accel_x <span class="token operator">+</span> accel_y<span class="token operator">*</span>accel_y <span class="token operator">+</span> accel_z<span class="token operator">*</span>accel_z<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+total_acceleration_filtered <span class="token operator">*=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>total_acceleration_filter<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2.0f</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">6.0f</span><span class="token punctuation">;</span>
+
+<span class="token comment">//trust of the accel</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ALPHA_0</span> <span class="token expression"><span class="token number">0.002f</span></span><span class="token comment">//0.61f</span></span>
+
+<span class="token keyword">float</span> alpha_correction <span class="token operator">=</span> <span class="token function">pow</span><span class="token punctuation">(</span>total_acceleration_filtered<span class="token operator">-</span><span class="token number">1.0f</span><span class="token punctuation">,</span> <span class="token number">2.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//bigger this is, less it should trust accel</span>
+alpha_correction<span class="token operator">=</span><span class="token operator">-</span>alpha_correction<span class="token operator">*</span><span class="token number">2.0f</span><span class="token punctuation">;</span>
+alpha_correction <span class="token operator">=</span> <span class="token punctuation">(</span>alpha_correction <span class="token operator">&lt;</span> <span class="token operator">-</span>ALPHA_0<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token operator">-</span>ALPHA_0 <span class="token operator">:</span> alpha_correction<span class="token punctuation">;</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ALPHA</span> <span class="token expression"><span class="token punctuation">(</span>ALPHA_0 <span class="token operator">+</span> alpha_correction<span class="token punctuation">)</span></span></span>
+
+compl_pitch <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token number">1.0f</span><span class="token operator">-</span>ALPHA<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token operator">-</span>gyro_rate_y<span class="token operator">*</span><span class="token number">2.0f</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>current_time <span class="token operator">-</span> last_time<span class="token punctuation">)</span> <span class="token operator">+</span> ALPHA <span class="token operator">*</span> <span class="token punctuation">(</span>accel_pitch<span class="token operator">-</span>compl_pitch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+compl_roll <span class="token operator">+=</span>  <span class="token punctuation">(</span><span class="token number">1.0f</span><span class="token operator">-</span>ALPHA<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>gyro_rate_x<span class="token operator">*</span><span class="token number">2.0f</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>current_time <span class="token operator">-</span> last_time<span class="token punctuation">)</span> <span class="token operator">+</span> ALPHA <span class="token operator">*</span> <span class="token punctuation">(</span>accel_roll<span class="token operator">-</span>compl_roll<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<div class="text-center text-muted">Fig. 15- 1. Source code of filter correction algorithm</div>
+<p>In addition to the LSM6DSO, there is also an MPU6500 on the PCB, which has not as yet been used. I also wrote driver code for that this week, which wasn’t hard seeing as I already had code for it from an old project. This meant the bulk of the effort was just switching from the previous project’s SPI implementation to the current one. I then cloned the LSM6DSO driver’s calibration and sensor fusion code, and got things nearly working, and then 4</p>
+<p>Due to my original code structure, there was no way to change or specify the CS pin, meaning that the SPI bus would blindly use the CS pin it chose on startup, rather than using different ones per device. So I created a structure that holds the IMU data that can be accessed by any other C file, as well as adding functionality and pin setup code to select which CS pin is active at that point in time, and the SPI driver will switch to using that one.</p>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">select_SPI</span><span class="token punctuation">(</span>spi_bus_selection_e spi_bus<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>spi_bus <span class="token operator">==</span> SELECT_LSM_SPI<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    selected_SPI <span class="token operator">=</span>  LSM_SPI<span class="token punctuation">;</span>
+    selected_GPIO <span class="token operator">=</span> LSM_SPI_GPIO<span class="token punctuation">;</span>
+    selected_NSS <span class="token operator">=</span>  LSM_SPI_NSS_PIN<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>spi_bus <span class="token operator">==</span> SELECT_MPU_SPI<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    selected_SPI <span class="token operator">=</span>  MPU_SPI<span class="token punctuation">;</span>
+    selected_GPIO <span class="token operator">=</span> MPU_SPI_GPIO<span class="token punctuation">;</span>
+    selected_NSS <span class="token operator">=</span>  MPU_SPI_NSS_PIN<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<div class="text-center text-muted">Fig. 15- 2. SPI bus selection</div>
+<p>With this new structure working, I tried running the full PID loop + motor + radio code to test the response of the drone. Unfortunately, I noticed immediately that there was a huge issue with the noise induced in the data by the vibration from the motors running.
+I found an application that can perform a real time FFT on incoming serial data, to take a look at the noise spectrum while the motors are running. I was hoping all the noise was high frequency and could be filtered, however it was broadband, and the gyro was hitting it’s max dynamic range as well.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 3. Serial Spectrogram"><figcaption class="figure-caption text-center" align="center">Fig. 15- 3. Serial Spectrogram</figcaption></figure></div></p>
+<p>With the motors running and the drone still, the pitch and roll quickly diverged from an accurate measurement of the heading.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 4. Very messed up gyro readings"><figcaption class="figure-caption text-center" align="center">Fig. 15- 4. Very messed up gyro readings</figcaption></figure></div></p>
+<p><strong>Mechanical</strong></p>
+<p>In order to fix the vibration issues, I had to use an alternate mount to the original rigid mounting setup. I found a piece of soft anti-static foam, and glued the 3D printed mount onto the foam, and then onto the motor controller.</p>
+<p>I initially just tried using O-rings at the mount points, however this wasn’t sufficient.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 5. Trying to use O-rings to damped vibration"><figcaption class="figure-caption text-center" align="center">Fig. 15- 5. Trying to use O-rings to damped vibration</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-5.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 6. Trying out foam"><figcaption class="figure-caption text-center" align="center">Fig. 15- 6. Trying out foam</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 7. Foam sized properly"><figcaption class="figure-caption text-center" align="center">Fig. 15- 7. Foam sized properly</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 8. Trying foam and rubber mounts"><figcaption class="figure-caption text-center" align="center">Fig. 15- 8. Trying foam and rubber mounts</figcaption></figure></div></p>
+<p>I also mounted the battery to the bottom of the drone using some very strong Velcro-ish stuff.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-8.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 9. Battery mounted"><figcaption class="figure-caption text-center" align="center">Fig. 15- 9. Battery mounted</figcaption></figure></div></p>
+<p>As an aside, the usage of the batteries during testing finally necessitated charging, so we used a typical multi-cell LiPo charger to charge them.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-9.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 10. Just your average neighborhood battery charger"><figcaption class="figure-caption text-center" align="center">Fig. 15- 10. Just your average neighborhood battery charger</figcaption></figure></div></p>
+<p><strong>Radio</strong></p>
+<p>The radio also had to be permanently mounted, as it had been connected with a temporary connector initially. I detached the original connector and soldered the radio directly to the original wires. I then hot-glued the radio onto a nylon standoff, and glued that onto an unused part of the PCB.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-10.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 11. Radio before"><figcaption class="figure-caption text-center" align="center">Fig. 15- 11. Radio before</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-11.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 12. Radio after"><figcaption class="figure-caption text-center" align="center">Fig. 15- 12. Radio after</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="wavedrom.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 13. Pi to flight controller frame format (credit: used https://wavedrom.com/ to draw)"><figcaption class="figure-caption text-center" align="center">Fig. 15- 13. Pi to flight controller frame format (credit: used https://wavedrom.com/ to draw)</figcaption></figure></div></p>
+<p>The code to accomplish this was very similar to the radio receiver parsing code, where it looks for valid conditions within a circular buffer. The code automatically adapts to any new definition or change to the internal packet layout, making editing and extension easy.</p>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	<span class="token keyword">uint8_t</span> 		header<span class="token punctuation">;</span>
+	<span class="token keyword">uint8_t</span> 		camera_status<span class="token punctuation">;</span>
+	<span class="token keyword">uint16_t</span> 		lidar_reading<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token comment">//uint8_t		zero_pad[2];</span>
+	<span class="token keyword">float</span>			command_yaw<span class="token punctuation">;</span>
+	<span class="token keyword">float</span>			command_pitch<span class="token punctuation">;</span>
+	<span class="token keyword">float</span>			command_roll<span class="token punctuation">;</span>
+	<span class="token keyword">uint8_t</span> 		ending<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token comment">/*__attribute__ ((packed))*/</span> pi_packet_t<span class="token punctuation">;</span>
+
+<span class="token keyword">extern</span> pi_packet_t saved_pi_packet<span class="token punctuation">;</span></code></pre>
+<p>To test this setup, Owen and I wired a cable between his Pi and the flight controller, sharing ground in addition to the UART RX and TX lines. I used the actual pins that will be used for the Pi once it mounts directly, to avoid any issues with changing pins.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-12.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 15. Testing Pi communication initially with FTDI"><figcaption class="figure-caption text-center" align="center">Fig. 15- 15. Testing Pi communication initially with FTDI</figcaption></figure></div></p>
+<p>For the information transmitted from the flight controller to the Pi, we decided upon a printf string of comma separated values for yaw, pitch, roll, and any other values that become necessary. This text is very easy to for the Pi to parse, especially as it has the necessary computing power needed to parse it quickly.</p>
+<p>Before testing with the Pi, I used an FDTI to inspect the outbound data from the Pi, and could inject commands to the flight controller and see if those commands were reflected in the output from the USB UART port.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="IMU_frames.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 16. IMU frames from flight controller to Pi, recorded via FTDI"><figcaption class="figure-caption text-center" align="center">Fig. 15- 16. IMU frames from flight controller to Pi, recorded via FTDI</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-13.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 17. Testing IMU frame transmission to Pi. Both USB UART log (plot on right) and PI UART are active simultaneously."><figcaption class="figure-caption text-center" align="center">Fig. 15- 17. Testing IMU frame transmission to Pi. Both USB UART log (plot on right) and PI UART are active simultaneously.</figcaption></figure></div></p>
+<p>Once my side was working, we integrated our hardware with a long cable to carry the serial data from board to board. I kept the FTDI listening in on the communications however to verify functionality.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-14.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 18. UARTs side by side. Pi UART (left) shows binary stream from Pi."><figcaption class="figure-caption text-center" align="center">Fig. 15- 18. UARTs side by side. Pi UART (left) shows binary stream from Pi.</figcaption></figure></div></p>
+<p>After a few kinks were worked out, the LiDAR data streamed over via the serial cable, was interpreted by the Pi UART driver, and recorded. Then this data was printed out via the main log.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-15.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 19. LiDAR data finally streaming through from PI"><figcaption class="figure-caption text-center" align="center">Fig. 15- 19. LiDAR data finally streaming through from PI</figcaption></figure></div></p>
+<p><strong>Motors</strong></p>
+<p>This week I also switched to using OneShot125 correctly and running it at maximum data rate, around 3.8kHz, rather than the previous 400Hz.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="wavedrom_oneshot.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 20. Oneshot125 Timing diagram."><figcaption class="figure-caption text-center" align="center">Fig. 15- 20. Oneshot125 Timing diagram.</figcaption></figure></div></p>
+<p>After testing the PID loops with the motors running, and readying the drone for test flights, I needed to ensure that the propellers on the drone were spinning the correct direction. The torque induced from the motors rotating is very significant, and if the motors spin the wrong direction this torque will not be counteracted and will spin the drone out of control.</p>
+<p>For this reason, half the motors have to spin counterclockwise and half clockwise. However, if just any two are chosen, then when the drone attempts to counteract an imbalance in pitch or roll, it may change the speeds of the motor pair that spins in the same direction, resulting in a torque differential, and then spin. Thus, it must have the motors on a diagonal with each other spin in the same direction. Thus when any pair of motors on a side changes speeds, both the CCW spinning motor and the CW spinning motor will change speeds equally, resulting in net zero torque.</p>
+<p>Switching motor spin direction can be as simple as swapping two wires in the motor hookup, however I wanted to avoid this as I had already had enough of a painful experience soldering the motors the first time.</p>
+<p>Instead of soldering again, it is possible to reprogram the ESC settings to change its pulse order so that the motor spins in reverse of its original direction. This is usually a really simple process for people with commercially available flight controllers with popular software onboard, less so for me with a custom flight controller. Most flight controllers have a feature that allows the flight controller to act as a pass-through reprogrammer for the ESC.</p>
+<p>As my poor little flight controller can’t do that, I had to dig around online for other solutions. Apparently, it is possible to use an Arduino nano and some prebaked hex files to get it to act as a programmer. This was very poorly documented, so it took a lot of trial and error and hair-pulling.</p>
+<p>I want to include the details of this process in this progress report to serve as a more permanent record of how I got this to work.</p>
+<p>First, I acquired an Arduino Nano that was in storage. I then installed the necessary CH340 UART to USB drivers, and connected the Nano.</p>
+<p>Next, I created a cable to go between the JST ESC connector and the breadboard with the Nano. This was a huge pain with the pitch of the pins, but I got it to work eventually.</p>
+<p>I then flashed the Nano via the BLHeli_32 configurator software:</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="config1.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 21. BLHeli_32 Configurator"><figcaption class="figure-caption text-center" align="center">Fig. 15- 21. BLHeli_32 Configurator</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="config2.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 22. Flashing the Nano. Select 'Arduino 4-way-interface' and the correct board."><figcaption class="figure-caption text-center" align="center">Fig. 15- 22. Flashing the Nano. Select 'Arduino 4-way-interface' and the correct board.</figcaption></figure></div></p>
+<p>Next, I had to determine the correct pins on the Nano to hook up the ESC PWM pins to. After (a lot of) hunting around, I found a document identifying for which Arduino board the pins I aught to use, especially for a 4 channel ESC. Seeing as I was using a Nano, this indicated I should use D3,4,5, &amp; 6.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-16.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 23. BLHeli32 Pin options for Arduino"><figcaption class="figure-caption text-center" align="center">Fig. 15- 23. BLHeli32 Pin options for Arduino</figcaption></figure></div></p>
+<p>After wiring everything up, my setup was as shown.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-17.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 24. Connection from ESC to Nano"><figcaption class="figure-caption text-center" align="center">Fig. 15- 24. Connection from ESC to Nano</figcaption></figure></div></p>
+<p>Once the wiring was set up properly, I was able to connect to the Nano and then to the ESCs.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="config4.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 25. BLHeli_32 identifying each of the ESCs on the 4 channel ESC."><figcaption class="figure-caption text-center" align="center">Fig. 15- 25. BLHeli_32 identifying each of the ESCs on the 4 channel ESC.</figcaption></figure></div></p>
+<p>With all the ESCs communicating with the configuration software, I was able to identify which motor was connected to which channel, and swap the direction on the needed motor channels.</p>
+<p>I then recorded the spin directions on tape to help me keep track of each channel and it’s direction and therefore it’s torque.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-18.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 26. Recording spin direction"><figcaption class="figure-caption text-center" align="center">Fig. 15- 26. Recording spin direction</figcaption></figure></div></p>
+<p>Not mentioned this week due to length:</p>
+<ul>
+<li>Safety and arming code</li>
+<li>Startup log</li>
+<li>PID loop improvements</li>
+<li>Motor LPF with hanning window</li>
+<li>MATLAB</li>
+<li>LIDAR wiring</li>
+</ul>
+
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="container-md d-none d-print-block">
+        <div class="row justify-content-center">
+            
+            <div class="col mr-auto ml-auto">
+                 <h1>Week 15</h1>
+<p>This was mostly last week, but I created an algorithm to modify in real time the parameter controlling the relative trust the complementary filter has in the gyro vs. the accelerometer. It works by sensing when the length of the vector comprising the total acceleration felt by the accelerometer is greater in magnitude than 1G, indicating that noise or movement is taking place. The differential is the used to generate a correction factor to apply to the parameter ‘Alpha’ which estimates which measurement is more accurate.</p>
+<pre class="language-cpp"><code class="language-cpp">accel_pitch <span class="token operator">=</span> <span class="token function">atan2</span><span class="token punctuation">(</span>accel_x<span class="token punctuation">,</span> <span class="token function">sqrt</span><span class="token punctuation">(</span>accel_z<span class="token operator">*</span>accel_z <span class="token operator">+</span> accel_y<span class="token operator">*</span>accel_y<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">180.0f</span><span class="token operator">/</span><span class="token number">3.1415963f</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.01f</span> <span class="token operator">+</span> <span class="token number">0.99f</span><span class="token operator">*</span>accel_pitch<span class="token punctuation">;</span>
+accel_roll <span class="token operator">=</span> <span class="token function">atan2</span><span class="token punctuation">(</span>accel_y<span class="token punctuation">,</span> <span class="token function">sqrt</span><span class="token punctuation">(</span>accel_z<span class="token operator">*</span>accel_z <span class="token operator">+</span> accel_x<span class="token operator">*</span>accel_x<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">180.0f</span><span class="token operator">/</span><span class="token number">3.1415963f</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.01f</span> <span class="token operator">+</span> <span class="token number">0.99f</span><span class="token operator">*</span>accel_roll<span class="token punctuation">;</span>
+
+total_acceleration_filtered <span class="token operator">=</span> <span class="token function">update_filter</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>total_acceleration_filter<span class="token punctuation">,</span> <span class="token function">sqrt</span><span class="token punctuation">(</span>accel_x<span class="token operator">*</span>accel_x <span class="token operator">+</span> accel_y<span class="token operator">*</span>accel_y <span class="token operator">+</span> accel_z<span class="token operator">*</span>accel_z<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+total_acceleration_filtered <span class="token operator">*=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>total_acceleration_filter<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2.0f</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">6.0f</span><span class="token punctuation">;</span>
+
+<span class="token comment">//trust of the accel</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ALPHA_0</span> <span class="token expression"><span class="token number">0.002f</span></span><span class="token comment">//0.61f</span></span>
+
+<span class="token keyword">float</span> alpha_correction <span class="token operator">=</span> <span class="token function">pow</span><span class="token punctuation">(</span>total_acceleration_filtered<span class="token operator">-</span><span class="token number">1.0f</span><span class="token punctuation">,</span> <span class="token number">2.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//bigger this is, less it should trust accel</span>
+alpha_correction<span class="token operator">=</span><span class="token operator">-</span>alpha_correction<span class="token operator">*</span><span class="token number">2.0f</span><span class="token punctuation">;</span>
+alpha_correction <span class="token operator">=</span> <span class="token punctuation">(</span>alpha_correction <span class="token operator">&lt;</span> <span class="token operator">-</span>ALPHA_0<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token operator">-</span>ALPHA_0 <span class="token operator">:</span> alpha_correction<span class="token punctuation">;</span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ALPHA</span> <span class="token expression"><span class="token punctuation">(</span>ALPHA_0 <span class="token operator">+</span> alpha_correction<span class="token punctuation">)</span></span></span>
+
+compl_pitch <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token number">1.0f</span><span class="token operator">-</span>ALPHA<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token operator">-</span>gyro_rate_y<span class="token operator">*</span><span class="token number">2.0f</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>current_time <span class="token operator">-</span> last_time<span class="token punctuation">)</span> <span class="token operator">+</span> ALPHA <span class="token operator">*</span> <span class="token punctuation">(</span>accel_pitch<span class="token operator">-</span>compl_pitch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+compl_roll <span class="token operator">+=</span>  <span class="token punctuation">(</span><span class="token number">1.0f</span><span class="token operator">-</span>ALPHA<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>gyro_rate_x<span class="token operator">*</span><span class="token number">2.0f</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>current_time <span class="token operator">-</span> last_time<span class="token punctuation">)</span> <span class="token operator">+</span> ALPHA <span class="token operator">*</span> <span class="token punctuation">(</span>accel_roll<span class="token operator">-</span>compl_roll<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<div class="text-center text-muted">Fig. 15- 1. Source code of filter correction algorithm</div>
+<p>In addition to the LSM6DSO, there is also an MPU6500 on the PCB, which has not as yet been used. I also wrote driver code for that this week, which wasn’t hard seeing as I already had code for it from an old project. This meant the bulk of the effort was just switching from the previous project’s SPI implementation to the current one. I then cloned the LSM6DSO driver’s calibration and sensor fusion code, and got things nearly working, and then 4</p>
+<p>Due to my original code structure, there was no way to change or specify the CS pin, meaning that the SPI bus would blindly use the CS pin it chose on startup, rather than using different ones per device. So I created a structure that holds the IMU data that can be accessed by any other C file, as well as adding functionality and pin setup code to select which CS pin is active at that point in time, and the SPI driver will switch to using that one.</p>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">select_SPI</span><span class="token punctuation">(</span>spi_bus_selection_e spi_bus<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>spi_bus <span class="token operator">==</span> SELECT_LSM_SPI<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    selected_SPI <span class="token operator">=</span>  LSM_SPI<span class="token punctuation">;</span>
+    selected_GPIO <span class="token operator">=</span> LSM_SPI_GPIO<span class="token punctuation">;</span>
+    selected_NSS <span class="token operator">=</span>  LSM_SPI_NSS_PIN<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>spi_bus <span class="token operator">==</span> SELECT_MPU_SPI<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    selected_SPI <span class="token operator">=</span>  MPU_SPI<span class="token punctuation">;</span>
+    selected_GPIO <span class="token operator">=</span> MPU_SPI_GPIO<span class="token punctuation">;</span>
+    selected_NSS <span class="token operator">=</span>  MPU_SPI_NSS_PIN<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<div class="text-center text-muted">Fig. 15- 2. SPI bus selection</div>
+<p>With this new structure working, I tried running the full PID loop + motor + radio code to test the response of the drone. Unfortunately, I noticed immediately that there was a huge issue with the noise induced in the data by the vibration from the motors running.
+I found an application that can perform a real time FFT on incoming serial data, to take a look at the noise spectrum while the motors are running. I was hoping all the noise was high frequency and could be filtered, however it was broadband, and the gyro was hitting it’s max dynamic range as well.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 3. Serial Spectrogram"><figcaption class="figure-caption text-center" align="center">Fig. 15- 3. Serial Spectrogram</figcaption></figure></div></p>
+<p>With the motors running and the drone still, the pitch and roll quickly diverged from an accurate measurement of the heading.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 4. Very messed up gyro readings"><figcaption class="figure-caption text-center" align="center">Fig. 15- 4. Very messed up gyro readings</figcaption></figure></div></p>
+<p><strong>Mechanical</strong></p>
+<p>In order to fix the vibration issues, I had to use an alternate mount to the original rigid mounting setup. I found a piece of soft anti-static foam, and glued the 3D printed mount onto the foam, and then onto the motor controller.</p>
+<p>I initially just tried using O-rings at the mount points, however this wasn’t sufficient.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 5. Trying to use O-rings to damped vibration"><figcaption class="figure-caption text-center" align="center">Fig. 15- 5. Trying to use O-rings to damped vibration</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-5.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 6. Trying out foam"><figcaption class="figure-caption text-center" align="center">Fig. 15- 6. Trying out foam</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 7. Foam sized properly"><figcaption class="figure-caption text-center" align="center">Fig. 15- 7. Foam sized properly</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 8. Trying foam and rubber mounts"><figcaption class="figure-caption text-center" align="center">Fig. 15- 8. Trying foam and rubber mounts</figcaption></figure></div></p>
+<p>I also mounted the battery to the bottom of the drone using some very strong Velcro-ish stuff.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-8.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 15- 9. Battery mounted"><figcaption class="figure-caption text-center" align="center">Fig. 15- 9. Battery mounted</figcaption></figure></div></p>
+<p>As an aside, the usage of the batteries during testing finally necessitated charging, so we used a typical multi-cell LiPo charger to charge them.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-9.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 10. Just your average neighborhood battery charger"><figcaption class="figure-caption text-center" align="center">Fig. 15- 10. Just your average neighborhood battery charger</figcaption></figure></div></p>
+<p><strong>Radio</strong></p>
+<p>The radio also had to be permanently mounted, as it had been connected with a temporary connector initially. I detached the original connector and soldered the radio directly to the original wires. I then hot-glued the radio onto a nylon standoff, and glued that onto an unused part of the PCB.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-10.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 11. Radio before"><figcaption class="figure-caption text-center" align="center">Fig. 15- 11. Radio before</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-11.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 12. Radio after"><figcaption class="figure-caption text-center" align="center">Fig. 15- 12. Radio after</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="wavedrom.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 13. Pi to flight controller frame format (credit: used https://wavedrom.com/ to draw)"><figcaption class="figure-caption text-center" align="center">Fig. 15- 13. Pi to flight controller frame format (credit: used https://wavedrom.com/ to draw)</figcaption></figure></div></p>
+<p>The code to accomplish this was very similar to the radio receiver parsing code, where it looks for valid conditions within a circular buffer. The code automatically adapts to any new definition or change to the internal packet layout, making editing and extension easy.</p>
+<pre class="language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	<span class="token keyword">uint8_t</span> 		header<span class="token punctuation">;</span>
+	<span class="token keyword">uint8_t</span> 		camera_status<span class="token punctuation">;</span>
+	<span class="token keyword">uint16_t</span> 		lidar_reading<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token comment">//uint8_t		zero_pad[2];</span>
+	<span class="token keyword">float</span>			command_yaw<span class="token punctuation">;</span>
+	<span class="token keyword">float</span>			command_pitch<span class="token punctuation">;</span>
+	<span class="token keyword">float</span>			command_roll<span class="token punctuation">;</span>
+	<span class="token keyword">uint8_t</span> 		ending<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token comment">/*__attribute__ ((packed))*/</span> pi_packet_t<span class="token punctuation">;</span>
+
+<span class="token keyword">extern</span> pi_packet_t saved_pi_packet<span class="token punctuation">;</span></code></pre>
+<p>To test this setup, Owen and I wired a cable between his Pi and the flight controller, sharing ground in addition to the UART RX and TX lines. I used the actual pins that will be used for the Pi once it mounts directly, to avoid any issues with changing pins.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-12.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 15. Testing Pi communication initially with FTDI"><figcaption class="figure-caption text-center" align="center">Fig. 15- 15. Testing Pi communication initially with FTDI</figcaption></figure></div></p>
+<p>For the information transmitted from the flight controller to the Pi, we decided upon a printf string of comma separated values for yaw, pitch, roll, and any other values that become necessary. This text is very easy to for the Pi to parse, especially as it has the necessary computing power needed to parse it quickly.</p>
+<p>Before testing with the Pi, I used an FDTI to inspect the outbound data from the Pi, and could inject commands to the flight controller and see if those commands were reflected in the output from the USB UART port.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="IMU_frames.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 16. IMU frames from flight controller to Pi, recorded via FTDI"><figcaption class="figure-caption text-center" align="center">Fig. 15- 16. IMU frames from flight controller to Pi, recorded via FTDI</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-13.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 17. Testing IMU frame transmission to Pi. Both USB UART log (plot on right) and PI UART are active simultaneously."><figcaption class="figure-caption text-center" align="center">Fig. 15- 17. Testing IMU frame transmission to Pi. Both USB UART log (plot on right) and PI UART are active simultaneously.</figcaption></figure></div></p>
+<p>Once my side was working, we integrated our hardware with a long cable to carry the serial data from board to board. I kept the FTDI listening in on the communications however to verify functionality.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-14.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 18. UARTs side by side. Pi UART (left) shows binary stream from Pi."><figcaption class="figure-caption text-center" align="center">Fig. 15- 18. UARTs side by side. Pi UART (left) shows binary stream from Pi.</figcaption></figure></div></p>
+<p>After a few kinks were worked out, the LiDAR data streamed over via the serial cable, was interpreted by the Pi UART driver, and recorded. Then this data was printed out via the main log.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-15.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 19. LiDAR data finally streaming through from PI"><figcaption class="figure-caption text-center" align="center">Fig. 15- 19. LiDAR data finally streaming through from PI</figcaption></figure></div></p>
+<p><strong>Motors</strong></p>
+<p>This week I also switched to using OneShot125 correctly and running it at maximum data rate, around 3.8kHz, rather than the previous 400Hz.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="wavedrom_oneshot.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 20. Oneshot125 Timing diagram."><figcaption class="figure-caption text-center" align="center">Fig. 15- 20. Oneshot125 Timing diagram.</figcaption></figure></div></p>
+<p>After testing the PID loops with the motors running, and readying the drone for test flights, I needed to ensure that the propellers on the drone were spinning the correct direction. The torque induced from the motors rotating is very significant, and if the motors spin the wrong direction this torque will not be counteracted and will spin the drone out of control.</p>
+<p>For this reason, half the motors have to spin counterclockwise and half clockwise. However, if just any two are chosen, then when the drone attempts to counteract an imbalance in pitch or roll, it may change the speeds of the motor pair that spins in the same direction, resulting in a torque differential, and then spin. Thus, it must have the motors on a diagonal with each other spin in the same direction. Thus when any pair of motors on a side changes speeds, both the CCW spinning motor and the CW spinning motor will change speeds equally, resulting in net zero torque.</p>
+<p>Switching motor spin direction can be as simple as swapping two wires in the motor hookup, however I wanted to avoid this as I had already had enough of a painful experience soldering the motors the first time.</p>
+<p>Instead of soldering again, it is possible to reprogram the ESC settings to change its pulse order so that the motor spins in reverse of its original direction. This is usually a really simple process for people with commercially available flight controllers with popular software onboard, less so for me with a custom flight controller. Most flight controllers have a feature that allows the flight controller to act as a pass-through reprogrammer for the ESC.</p>
+<p>As my poor little flight controller can’t do that, I had to dig around online for other solutions. Apparently, it is possible to use an Arduino nano and some prebaked hex files to get it to act as a programmer. This was very poorly documented, so it took a lot of trial and error and hair-pulling.</p>
+<p>I want to include the details of this process in this progress report to serve as a more permanent record of how I got this to work.</p>
+<p>First, I acquired an Arduino Nano that was in storage. I then installed the necessary CH340 UART to USB drivers, and connected the Nano.</p>
+<p>Next, I created a cable to go between the JST ESC connector and the breadboard with the Nano. This was a huge pain with the pitch of the pins, but I got it to work eventually.</p>
+<p>I then flashed the Nano via the BLHeli_32 configurator software:</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="config1.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 21. BLHeli_32 Configurator"><figcaption class="figure-caption text-center" align="center">Fig. 15- 21. BLHeli_32 Configurator</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="config2.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 22. Flashing the Nano. Select 'Arduino 4-way-interface' and the correct board."><figcaption class="figure-caption text-center" align="center">Fig. 15- 22. Flashing the Nano. Select 'Arduino 4-way-interface' and the correct board.</figcaption></figure></div></p>
+<p>Next, I had to determine the correct pins on the Nano to hook up the ESC PWM pins to. After (a lot of) hunting around, I found a document identifying for which Arduino board the pins I aught to use, especially for a 4 channel ESC. Seeing as I was using a Nano, this indicated I should use D3,4,5, &amp; 6.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-16.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 23. BLHeli32 Pin options for Arduino"><figcaption class="figure-caption text-center" align="center">Fig. 15- 23. BLHeli32 Pin options for Arduino</figcaption></figure></div></p>
+<p>After wiring everything up, my setup was as shown.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-17.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 24. Connection from ESC to Nano"><figcaption class="figure-caption text-center" align="center">Fig. 15- 24. Connection from ESC to Nano</figcaption></figure></div></p>
+<p>Once the wiring was set up properly, I was able to connect to the Nano and then to the ESCs.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="config4.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 25. BLHeli_32 identifying each of the ESCs on the 4 channel ESC."><figcaption class="figure-caption text-center" align="center">Fig. 15- 25. BLHeli_32 identifying each of the ESCs on the 4 channel ESC.</figcaption></figure></div></p>
+<p>With all the ESCs communicating with the configuration software, I was able to identify which motor was connected to which channel, and swap the direction on the needed motor channels.</p>
+<p>I then recorded the spin directions on tape to help me keep track of each channel and it’s direction and therefore it’s torque.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-18.png" class="figure-img img-fluid rounded" alt="alt text" title="Fig. 15- 26. Recording spin direction"><figcaption class="figure-caption text-center" align="center">Fig. 15- 26. Recording spin direction</figcaption></figure></div></p>
+<p>Not mentioned this week due to length:</p>
+<ul>
+<li>Safety and arming code</li>
+<li>Startup log</li>
+<li>PID loop improvements</li>
+<li>Motor LPF with hanning window</li>
+<li>MATLAB</li>
+<li>LIDAR wiring</li>
+</ul>
+
+            </div>
+            
+        </div>
+    </div>
+
+<!--<div class="b-example-divider"></div>-->
+
+<div class="container d-print-none">
+  <footer class="flex-wrap border-top">
+      <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
+  </footer>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="/assets/js/index.js"></script>
+  <script data-goatcounter="https://michaellangford99.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>

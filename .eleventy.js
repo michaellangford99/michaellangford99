@@ -26,6 +26,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("engineering/drone/*.png");
   eleventyConfig.addPassthroughCopy("engineering/drone/**/*.png");
   eleventyConfig.addPassthroughCopy("engineering/drone/*/*.png");
+  eleventyConfig.addPassthroughCopy("engineering/drone/*.jpg");
+  eleventyConfig.addPassthroughCopy("engineering/drone/**/*.jpg");
+  eleventyConfig.addPassthroughCopy("engineering/drone/*/*.jpg");
   eleventyConfig.addPassthroughCopy("engineering/resume/*.png");
 
   

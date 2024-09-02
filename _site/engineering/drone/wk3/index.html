@@ -20,7 +20,7 @@
   <body>
 
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark d-print-none" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Michaelangelo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +78,7 @@
   </div>
 </nav>
     
-<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white d-print-none" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
 <div style="padding: 100px 0 130px ">
   <h1 class="mb-2 h1">ECE477 Drone - Week 3</h1>
   <p>
@@ -93,7 +93,7 @@
   </div>
 </div>-->
 
-     <div class="container-md">
+    <div class="container-md d-print-none">
         <div class="row justify-content-center">
             
             <div class="col-md-9 mr-auto ml-auto">
@@ -295,9 +295,211 @@ $\left[\frac{A}{g}\right]=\frac{current @ 75% throttle [A]}{ thrust @ 75% thrott
         </div>
     </div>
 
+    <div class="container-md d-none d-print-block">
+        <div class="row justify-content-center">
+            
+            <div class="col mr-auto ml-auto">
+                 <h1>Week 3</h1>
+<p><strong>Parts selection &amp; Weight / Current / Thrust calculations</strong></p>
+<p>In order to determine the proper parts to order for the drone itself, i.e. the frame, motors, battery, propellers, and motors controller, I had to do extensive research.</p>
+<p>This week I worked on, and have nearly completed, determining the correct parts. I started with the physical frame, choosing the size that would allow the electronics necessary for completing the project.</p>
+<p>This necessitated a 5” size drone frame (5” propellers).</p>
+<p>Next, I created a complex spreadsheet to calculate the necessary battery capacity for a minimum flight time, given inputs concerning the motor thrust, current, and drone parts’ weights.</p>
+<p>The spreadsheet first calculates the total weight of the drone, taking into account each part. Prospective parts can be entered so as to see if, for example, a motor controller provides enough current but is too heavy.</p>
+<p>With the full weight calculated, the thrust is the next necessary calculation. Using propeller-motor pair data available online for ubiquitous motor-propeller combinations, along with seller data, the current at 75% throttle and the thrust at that throttle could be entered.</p>
+<p>From the thrust-current measurement, a crude linearization gives the amps of current per gram of thrust - amps per unit thrust
+$\left[\frac{A}{g}\right]=\frac{current @ 75% throttle [A]}{ thrust @ 75% throttle [g] }$.</p>
+<p>The total thrust necessary to maintain during flight is calculated via the total weight of the drone times 3 – this gives  a significant safety factor for the time of flight where the drone will be changing direction, vibrating, changes speeds rapidly, etc., and is generally considered a good heuristic.</p>
+<p>From this necessary maintained thrust value, the constant current is determined by the necessary thrust times the ‘amps per unit thrust’ measurement, divided by 4. This gives the current drawn by one motor at steady state, while the entire drone gives out 3x its weight in thrust.</p>
+<p>This current x 4 gives the total current of the drone, plus a large approximation of the flight controller and guidance electronics current draw. This current, multiplied by the necessary flight time, is the minimum energy capacity of the battery to be used, in mAh.</p>
+<div class="d-flex justify-content-center">
+<table>
+<thead>
+<tr>
+<th>Minimum Flight Time</th>
+<th>120</th>
+<th>seconds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>frame weight</td>
+<td>100</td>
+<td>grams</td>
+</tr>
+<tr>
+<td>motor weight</td>
+<td>126.4</td>
+<td>grams</td>
+</tr>
+<tr>
+<td>propellers</td>
+<td>4</td>
+<td>grams</td>
+</tr>
+<tr>
+<td>4in1 ESC weight</td>
+<td>21</td>
+<td>grams</td>
+</tr>
+<tr>
+<td>radio reciever</td>
+<td>2</td>
+<td>grams</td>
+</tr>
+<tr>
+<td>single-board computer</td>
+<td>10</td>
+<td>grams</td>
+</tr>
+<tr>
+<td>flight controller</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr>
+<td>camera</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>Typical 4S 1200mAh battery</td>
+<td>100</td>
+<td>grams</td>
+</tr>
+<tr>
+<td>additional wiring</td>
+<td>20</td>
+<td>grams</td>
+</tr>
+<tr>
+<td>total weight</td>
+<td>407.4</td>
+<td>grams</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>thrust from chosen 2306 brushless</td>
+<td>1526</td>
+<td>grams</td>
+</tr>
+<tr>
+<td>amps at above thrust</td>
+<td>51.3</td>
+<td>A</td>
+</tr>
+<tr>
+<td>amp/g thrust</td>
+<td>0.0336173</td>
+<td>A/grams</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>total thrust necessary</td>
+<td>1222.2</td>
+<td>grams (3x drone weight)</td>
+</tr>
+<tr>
+<td>thrust per motor</td>
+<td>305.55</td>
+<td>grams</td>
+</tr>
+<tr>
+<td>current at given thrust</td>
+<td>3.423922018</td>
+<td>A</td>
+</tr>
+<tr>
+<td>processor and nav current</td>
+<td>3</td>
+<td>A</td>
+</tr>
+<tr>
+<td>total current</td>
+<td>16.69568807</td>
+<td>(4x motor current, +FC current)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>hours of flight time</td>
+<td>0.033333333</td>
+<td>h</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mAh necessary</td>
+<td>556.5229358</td>
+<td>mAh</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>To create this sheet required significant research into individual parts, and which motors would work well with which propellers, and what frame size could accommodate what motor controller, and if the motor controller had enough current to be able to properly power the motors.</p>
+<p>This resulted in the preliminary selection of the following parts:</p>
+<div class="d-flex justify-content-center">
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Selection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Motor controller / ESC</td>
+<td><a href="https://www.racedayquads.com/products/t-motor-velox-45a-32bit-3-6s-30x30-4in1-esc-1?variant=32293091115121">T-Motor Velox 45A 30x30mm 4in1 ESC</a></td>
+</tr>
+<tr>
+<td>Motors</td>
+<td><a href="https://www.racedayquads.com/products/iflight-xing2-2306-2555kv-motor?variant=32320681279601">iFlight Xing2 2305 2555Kv Motor</a></td>
+</tr>
+<tr>
+<td>Frame</td>
+<td><a href="https://www.racedayquads.com/products/rdq-source-one-v3-5-freestyle-frame?variant=29592522293361">RDQ Source One 5” Freestyle Frame</a></td>
+</tr>
+<tr>
+<td>Propellers</td>
+<td><a href="https://www.racedayquads.com/products/t-motor-t5147-popo-compatible-tri-blade-5-prop-4-pack-choose-your-color?variant=31263896502385">T-Motor T5147 Tri-blade 5”, 4-pack</a></td>
+</tr>
+<tr>
+<td>Battery</td>
+<td><a href="https://www.racedayquads.com/products/rdq-series-15-2v-4s-550mah-100c-lihv-battery-xt30">4S 100C 550mAh LiPo</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In addition to derivation of required part specs and finding parts to meet them, I continued work on the development board I made a while back.</p>
+<p>This week I added an FT230XQ Serial to USB bridge chip onto the board, as well as the USB connector to connect with it.</p>
+<p>After a few issues with having to reflash the programmer with the latest ST-LinkV2 firmware, the program worked fine, and it could be seen to work correctly with the TX and RX LEDs flashing upon interaction from a Serial Console connection in PUTTY.</p>
+<p>The FT230XQ was a challenge to solder, and required using the hot plate after I kept failing to bridge the pads to a few of the leads on the chip. In addition, the ground plane wouldn’t melt from the surrounding heat, so the hot plate was chosen to fix that issue as well.</p>
+<p>After the hot plate, I hand soldered on the USB connector, tested it dry, and then plugged it in and ran some electrical tests. Success! Nothing broke, and now the USB works!</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Before"><figcaption class="figure-caption text-center" align="center">Before</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-1.png" class="figure-img img-fluid rounded" alt="Alt text" title="After"><figcaption class="figure-caption text-center" align="center">After</figcaption></figure></div></p>
+
+            </div>
+            
+        </div>
+    </div>
+
 <!--<div class="b-example-divider"></div>-->
 
-<div class="container">
+<div class="container d-print-none">
   <footer class="flex-wrap border-top">
       <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
   </footer>
