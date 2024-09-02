@@ -20,7 +20,7 @@
   <body>
 
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark d-print-none" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Michaelangelo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +78,7 @@
   </div>
 </nav>
     
-<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white d-print-none" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
 <div style="padding: 100px 0 130px ">
   <h1 class="mb-2 h1">ECE477 Drone - Week 9</h1>
   <p>
@@ -93,7 +93,7 @@
   </div>
 </div>-->
 
-     <div class="container-md">
+    <div class="container-md d-print-none">
         <div class="row justify-content-center">
             
             <div class="col-md-9 mr-auto ml-auto">
@@ -119,9 +119,35 @@
         </div>
     </div>
 
+    <div class="container-md d-none d-print-block">
+        <div class="row justify-content-center">
+            
+            <div class="col mr-auto ml-auto">
+                 <h1>Week 9</h1>
+<p><strong>PCB Design</strong></p>
+<p>This week was mostly spent finishing the schematic and PCB layout for the flight controller. I took the input and corrections gathered from the midterm design review and implemented that guidance on the board design.</p>
+<p>The critical points noted during the design review were:
+•	Extend pads on QFN for IMUs and FTDI
+•	Fix voltage divider inversion
+•	Add capacitor on VSense
+•	Remove ground plane around and beneath oscillator
+•	Change footprint of voltage regulator to the actual footprint, rather than a footprint of equal size and pads with improper silkscreen and boundary.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 8.1. Resizing pads on LSM6DS3 to allow for easier hand soldering."><figcaption class="figure-caption text-center" align="center">Fig. 8.1. Resizing pads on LSM6DS3 to allow for easier hand soldering.</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-1.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 8.2. Fixed voltage divider setup for VSense."><figcaption class="figure-caption text-center" align="center">Fig. 8.2. Fixed voltage divider setup for VSense.</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 8.3. Added keepouts below and surrounding oscillator."><figcaption class="figure-caption text-center" align="center">Fig. 8.3. Added keepouts below and surrounding oscillator.</figcaption></figure></div></p>
+<p>The fix for the voltage regulator was significantly more involved. I first had to find a 3D model for the part itself, which luckily Pololu provides as a .STEP file, a common Autodesk part file. I then struggled with multiple export utilities, trying to find one that would export to .WRL (KiCAD’s supported 3D model filetype), but retain it’s material / color information.</p>
+<p>After a few tries, I then imported the model file and set its position, scale and the boundary for the footprint.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 8.4. Correct 3D model of footprint."><figcaption class="figure-caption text-center" align="center">Fig. 8.4. Correct 3D model of footprint.</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 8.5. Regulator correctly imported into rest of PCB 3D model."><figcaption class="figure-caption text-center" align="center">Fig. 8.5. Regulator correctly imported into rest of PCB 3D model.</figcaption></figure></div></p>
+
+            </div>
+            
+        </div>
+    </div>
+
 <!--<div class="b-example-divider"></div>-->
 
-<div class="container">
+<div class="container d-print-none">
   <footer class="flex-wrap border-top">
       <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
   </footer>
