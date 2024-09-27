@@ -35,6 +35,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("engineering/computer_graphics/ray_tracer/*.png");
   eleventyConfig.addPassthroughCopy("engineering/computer_graphics/ray_tracer/*.jpg");
 
+  eleventyConfig.addPassthroughCopy("engineering/**/*.png");
+  eleventyConfig.addPassthroughCopy("engineering/**/*.jpg");
+
+  eleventyConfig.addPassthroughCopy("engineering/computer_graphics/**/*.png");
+  eleventyConfig.addPassthroughCopy("engineering/computer_graphics/**/*.jpg");
+
   eleventyConfig.addLayoutAlias('default', 'default.njk');
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItImageCaption));
   
