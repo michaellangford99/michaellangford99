@@ -13,7 +13,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!---<link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css"/>  -->
     <!---<link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="/assets/css/prism-vs.css">
+   <!--- <link rel="stylesheet" href="/assets/css/prism-vs.css"/>    -->
+   <link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css">
     <link rel="stylesheet" href="/assets/css/clean-blog.css">
     
   </head>
@@ -98,6 +99,9 @@
             
             <div class="col-md-9 mr-auto ml-auto">
                  <h1>Week 16</h1>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="IMG_6637.jpg" class="figure-img img-fluid rounded" alt="alt text" title="Flight!"><figcaption class="figure-caption text-center" align="center">Flight!</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="IMG_6642.jpg" class="figure-img img-fluid rounded" alt="alt text" title="From below"><figcaption class="figure-caption text-center" align="center">From below</figcaption></figure></div></p>
+<div id="wpnE13KWtOQ" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/wpnE13KWtOQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p><strong>Key Points</strong></p>
 <p>Last week was the drone’s first flight, and subsequent tuning of the IMU signal processing chain and the PID loops.</p>
 <p>Most of this involved setting the correct gains on the accelerometer noise estimation, changing the decimation factor and low pass filter bandwidth for the motor output, and drastically increasing derivative feedback in the PID loops.</p>
@@ -105,6 +109,65 @@
 <p>In terms of autonomous functionality, I mounted the PI Zero onto the drone, created the connector solution from the Pi to the flight controller, and assisted my team members who were responsible for the autonomous functionality in building the LiDAR wire harness, soldering the harness to the Pi, testing it, and configuring the Pi for use. I also implemented an automatic landing system to land the Pi once the target object is found, however this we are unable to test with the propellers on at the moment.</p>
 <p>In totality, I am very happy with the performance of the flight controller on the drone, although I would really like to spend more time tuning the signal chain and utilize the second IMU to really dial in the stability and accuracy of the attitude estimation algorithm.</p>
 <p>I am not so happy with the navigation system, as it was implemented too late to be properly tested, integrated, and debugged, although more progress was made on it than I feared. Altogether, it demonstrates that the system foundation works very well as a whole, and is a great starting point for more interesting development using the STM32 flight controller + Pi nav computer system. I am excited to try implementing the system on a smaller drone platform, as well as trying to put a GPS and additional electronics on the larger drone, as it has so much thrust to spare. I also want to analyze the flight data from the drone and see if any additional kinematic information can be estimated using the IMU to assist with flight, such as tracking velocity, enhancing hovering ability, etc.</p>
+<div id="g4PSVRbhDk8" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/g4PSVRbhDk8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Boot log:</p>
+<pre class="language-c"><code class="language-c"><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+ECE477 STM32F446RET6 Flight Controller V0
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+
+USB_USART<span class="token operator">:</span>
+	USB_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">115200</span>
+	CLOCK_RATE<span class="token operator">:</span>              <span class="token number">90000000</span>
+	USB_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">90000000</span>
+	USB_USART_DIV<span class="token operator">:</span>           <span class="token number">48</span>
+	USB_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">13</span>
+	USB_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">48</span>
+SYSTICK<span class="token operator">:</span>
+	SYSTICK_LOAD<span class="token operator">:</span>		<span class="token number">22499</span>
+	AHB_CLOCK<span class="token operator">:</span>		<span class="token number">180000000</span>
+	AHB_CLOCK_DIV_8<span class="token operator">:</span>	<span class="token number">22500000</span>
+RX_USART<span class="token operator">:</span>
+	RX_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">420000</span>
+	CLOCK_RATE<span class="token operator">:</span>             <span class="token number">90000000</span>
+	RX_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">90000000</span>
+	RX_USART_DIV<span class="token operator">:</span>           <span class="token number">13</span>
+	RX_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">6</span>
+	RX_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">13</span>
+	CRSF_RX_BAUDRATE<span class="token operator">:</span>       <span class="token number">420000</span>
+	CRSF_NUM_CHANNELS<span class="token operator">:</span>      <span class="token number">16</span>
+	CRSF_CHANNEL_VALUE_MIN<span class="token operator">:</span> <span class="token number">172</span>
+	CRSF_CHANNEL_VALUE_MID<span class="token operator">:</span> <span class="token number">992</span>
+	CRSF_CHANNEL_VALUE_MAX<span class="token operator">:</span> <span class="token number">1811</span>
+	CRSF_MAX_PACKET_LEN<span class="token operator">:</span>    <span class="token number">64</span>
+PI_USART<span class="token operator">:</span>
+	PI_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">115200</span>
+	CLOCK_RATE<span class="token operator">:</span>             <span class="token number">45000000</span>
+	PI_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">45000000</span>
+	PI_USART_DIV<span class="token operator">:</span>           <span class="token number">24</span>
+	PI_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">6</span>
+	PI_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">24</span>
+	PI_FRAME_START_CODE<span class="token operator">:</span>    <span class="token number">65</span>
+	PI_FRAME_END_CODE<span class="token operator">:</span>      <span class="token number">66</span>
+PWM<span class="token operator">:</span>
+	PWM_FREQ<span class="token operator">:</span>        <span class="token number">3800</span>
+	PWM_PERIOD <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">263.157898</span>
+	MIN_PULSE  <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">125</span>
+	MAX_PULSE  <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">250</span>
+	PWM_ARR<span class="token operator">:</span>         <span class="token number">5262</span>
+	UPPERBOUNDCRRX<span class="token operator">:</span>  <span class="token number">5000</span>
+	LOWERBOUNDCRRX<span class="token operator">:</span>  <span class="token number">2500</span>
+	RANGE<span class="token operator">:</span>           <span class="token number">2500</span>
+SPI1<span class="token operator">:</span>
+	SPI_CR1_BR_PCLOCK_DIV_32<span class="token operator">:</span> <span class="token number">0x20</span>
+	SPI_PCLOCK_DIV_32<span class="token operator">:</span>        <span class="token number">2812500</span>
+LSM6DSO Calibration<span class="token operator">:</span>
+	gyro_cal_x<span class="token operator">:</span> <span class="token number">4</span>
+	gyro_cal_y<span class="token operator">:</span> <span class="token number">14</span>
+	gyro_cal_z<span class="token operator">:</span> <span class="token number">0</span>
+MPU6500 Calibration<span class="token operator">:</span>
+	gyro_cal_x<span class="token operator">:</span> <span class="token number">6419</span>
+	gyro_cal_y<span class="token operator">:</span> <span class="token number">5340</span>
+	gyro_cal_z<span class="token operator">:</span> <span class="token number">0</span></code></pre>
 <p><strong>Auto-throttle</strong></p>
 <p>In order to implement auto-throttle, or the ability to maintain a dictated height off the ground autonomously, I needed to integrate Santiago’s I2C Lidar code, mount the LiDAR, write the control loop, and debug any issues I came across.</p>
 <p>First, I and Santiago integrated the LiDAR code that he’d written and merged with my flight controller code, and verified that the system still booted and ran properly with the I2C enabled, but without making any calls to the LiDAR driver.</p>
@@ -231,6 +294,9 @@
             
             <div class="col mr-auto ml-auto">
                  <h1>Week 16</h1>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="IMG_6637.jpg" class="figure-img img-fluid rounded" alt="alt text" title="Flight!"><figcaption class="figure-caption text-center" align="center">Flight!</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="IMG_6642.jpg" class="figure-img img-fluid rounded" alt="alt text" title="From below"><figcaption class="figure-caption text-center" align="center">From below</figcaption></figure></div></p>
+<div id="wpnE13KWtOQ" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/wpnE13KWtOQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p><strong>Key Points</strong></p>
 <p>Last week was the drone’s first flight, and subsequent tuning of the IMU signal processing chain and the PID loops.</p>
 <p>Most of this involved setting the correct gains on the accelerometer noise estimation, changing the decimation factor and low pass filter bandwidth for the motor output, and drastically increasing derivative feedback in the PID loops.</p>
@@ -238,6 +304,65 @@
 <p>In terms of autonomous functionality, I mounted the PI Zero onto the drone, created the connector solution from the Pi to the flight controller, and assisted my team members who were responsible for the autonomous functionality in building the LiDAR wire harness, soldering the harness to the Pi, testing it, and configuring the Pi for use. I also implemented an automatic landing system to land the Pi once the target object is found, however this we are unable to test with the propellers on at the moment.</p>
 <p>In totality, I am very happy with the performance of the flight controller on the drone, although I would really like to spend more time tuning the signal chain and utilize the second IMU to really dial in the stability and accuracy of the attitude estimation algorithm.</p>
 <p>I am not so happy with the navigation system, as it was implemented too late to be properly tested, integrated, and debugged, although more progress was made on it than I feared. Altogether, it demonstrates that the system foundation works very well as a whole, and is a great starting point for more interesting development using the STM32 flight controller + Pi nav computer system. I am excited to try implementing the system on a smaller drone platform, as well as trying to put a GPS and additional electronics on the larger drone, as it has so much thrust to spare. I also want to analyze the flight data from the drone and see if any additional kinematic information can be estimated using the IMU to assist with flight, such as tracking velocity, enhancing hovering ability, etc.</p>
+<div id="g4PSVRbhDk8" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/g4PSVRbhDk8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Boot log:</p>
+<pre class="language-c"><code class="language-c"><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+ECE477 STM32F446RET6 Flight Controller V0
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+
+USB_USART<span class="token operator">:</span>
+	USB_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">115200</span>
+	CLOCK_RATE<span class="token operator">:</span>              <span class="token number">90000000</span>
+	USB_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">90000000</span>
+	USB_USART_DIV<span class="token operator">:</span>           <span class="token number">48</span>
+	USB_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">13</span>
+	USB_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">48</span>
+SYSTICK<span class="token operator">:</span>
+	SYSTICK_LOAD<span class="token operator">:</span>		<span class="token number">22499</span>
+	AHB_CLOCK<span class="token operator">:</span>		<span class="token number">180000000</span>
+	AHB_CLOCK_DIV_8<span class="token operator">:</span>	<span class="token number">22500000</span>
+RX_USART<span class="token operator">:</span>
+	RX_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">420000</span>
+	CLOCK_RATE<span class="token operator">:</span>             <span class="token number">90000000</span>
+	RX_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">90000000</span>
+	RX_USART_DIV<span class="token operator">:</span>           <span class="token number">13</span>
+	RX_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">6</span>
+	RX_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">13</span>
+	CRSF_RX_BAUDRATE<span class="token operator">:</span>       <span class="token number">420000</span>
+	CRSF_NUM_CHANNELS<span class="token operator">:</span>      <span class="token number">16</span>
+	CRSF_CHANNEL_VALUE_MIN<span class="token operator">:</span> <span class="token number">172</span>
+	CRSF_CHANNEL_VALUE_MID<span class="token operator">:</span> <span class="token number">992</span>
+	CRSF_CHANNEL_VALUE_MAX<span class="token operator">:</span> <span class="token number">1811</span>
+	CRSF_MAX_PACKET_LEN<span class="token operator">:</span>    <span class="token number">64</span>
+PI_USART<span class="token operator">:</span>
+	PI_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">115200</span>
+	CLOCK_RATE<span class="token operator">:</span>             <span class="token number">45000000</span>
+	PI_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">45000000</span>
+	PI_USART_DIV<span class="token operator">:</span>           <span class="token number">24</span>
+	PI_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">6</span>
+	PI_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">24</span>
+	PI_FRAME_START_CODE<span class="token operator">:</span>    <span class="token number">65</span>
+	PI_FRAME_END_CODE<span class="token operator">:</span>      <span class="token number">66</span>
+PWM<span class="token operator">:</span>
+	PWM_FREQ<span class="token operator">:</span>        <span class="token number">3800</span>
+	PWM_PERIOD <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">263.157898</span>
+	MIN_PULSE  <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">125</span>
+	MAX_PULSE  <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">250</span>
+	PWM_ARR<span class="token operator">:</span>         <span class="token number">5262</span>
+	UPPERBOUNDCRRX<span class="token operator">:</span>  <span class="token number">5000</span>
+	LOWERBOUNDCRRX<span class="token operator">:</span>  <span class="token number">2500</span>
+	RANGE<span class="token operator">:</span>           <span class="token number">2500</span>
+SPI1<span class="token operator">:</span>
+	SPI_CR1_BR_PCLOCK_DIV_32<span class="token operator">:</span> <span class="token number">0x20</span>
+	SPI_PCLOCK_DIV_32<span class="token operator">:</span>        <span class="token number">2812500</span>
+LSM6DSO Calibration<span class="token operator">:</span>
+	gyro_cal_x<span class="token operator">:</span> <span class="token number">4</span>
+	gyro_cal_y<span class="token operator">:</span> <span class="token number">14</span>
+	gyro_cal_z<span class="token operator">:</span> <span class="token number">0</span>
+MPU6500 Calibration<span class="token operator">:</span>
+	gyro_cal_x<span class="token operator">:</span> <span class="token number">6419</span>
+	gyro_cal_y<span class="token operator">:</span> <span class="token number">5340</span>
+	gyro_cal_z<span class="token operator">:</span> <span class="token number">0</span></code></pre>
 <p><strong>Auto-throttle</strong></p>
 <p>In order to implement auto-throttle, or the ability to maintain a dictated height off the ground autonomously, I needed to integrate Santiago’s I2C Lidar code, mount the LiDAR, write the control loop, and debug any issues I came across.</p>
 <p>First, I and Santiago integrated the LiDAR code that he’d written and merged with my flight controller code, and verified that the system still booted and ran properly with the I2C enabled, but without making any calls to the LiDAR driver.</p>
