@@ -108,3 +108,77 @@ if ((crsf_addr_e)(*rx_buffer_start) == CRSF_ADDRESS_FLIGHT_CONTROLLER)
 ```
 
 ![Alt text](image-12.png "Data streaming in")
+
+```c
+typedef struct
+{
+    uint16_t ch0 : 11;
+    uint16_t ch1 : 11;
+    uint16_t ch2 : 11;
+    uint16_t ch3 : 11;
+    uint16_t ch4 : 11;
+    uint16_t ch5 : 11;
+    uint16_t ch6 : 11;
+    uint16_t ch7 : 11;
+    uint16_t ch8 : 11;
+    uint16_t ch9 : 11;
+    uint16_t ch10 : 11;
+    uint16_t ch11 : 11;
+    uint16_t ch12 : 11;
+    uint16_t ch13 : 11;
+    uint16_t ch14 : 11;
+    uint16_t ch15 : 11;
+} __attribute__ ((packed)) crsf_channels_t;
+
+typedef struct
+{
+    uint8_t device_addr; // from crsf_addr_e
+    uint8_t frame_size;  // counts size after this byte, so it must be the payload size + 2 (type and crc)
+    uint8_t type;        // from crsf_frame_type_e
+} __attribute__ ((packed)) crsf_header_t;
+
+typedef struct
+{
+	crsf_header_t header;
+	crsf_channels_t channels;
+	uint8_t crc;
+} __attribute__ ((packed)) crsf_packet_t;
+
+typedef enum
+{
+    CRSF_FRAMETYPE_GPS = 0x02,
+    CRSF_FRAMETYPE_BATTERY_SENSOR = 0x08,
+    CRSF_FRAMETYPE_LINK_STATISTICS = 0x14,
+    CRSF_FRAMETYPE_RC_CHANNELS_PACKED = 0x16,
+    CRSF_FRAMETYPE_ATTITUDE = 0x1E,
+    CRSF_FRAMETYPE_FLIGHT_MODE = 0x21,
+    // Extended Header Frames, range: 0x28 to 0x96
+    CRSF_FRAMETYPE_DEVICE_PING = 0x28,
+    CRSF_FRAMETYPE_DEVICE_INFO = 0x29,
+    CRSF_FRAMETYPE_PARAMETER_SETTINGS_ENTRY = 0x2B,
+    CRSF_FRAMETYPE_PARAMETER_READ = 0x2C,
+    CRSF_FRAMETYPE_PARAMETER_WRITE = 0x2D,
+    CRSF_FRAMETYPE_COMMAND = 0x32,
+    // MSP commands
+    CRSF_FRAMETYPE_MSP_REQ = 0x7A,   // response request using msp sequence as command
+    CRSF_FRAMETYPE_MSP_RESP = 0x7B,  // reply with 58 byte chunked binary
+    CRSF_FRAMETYPE_MSP_WRITE = 0x7C, // write with 8 byte chunked binary (OpenTX outbound telemetry buffer limit)
+} crsf_frame_type_e;
+
+typedef enum
+{
+    CRSF_ADDRESS_BROADCAST = 0x00,
+    CRSF_ADDRESS_USB = 0x10,
+    CRSF_ADDRESS_TBS_CORE_PNP_PRO = 0x80,
+    CRSF_ADDRESS_RESERVED1 = 0x8A,
+    CRSF_ADDRESS_CURRENT_SENSOR = 0xC0,
+    CRSF_ADDRESS_GPS = 0xC2,
+    CRSF_ADDRESS_TBS_BLACKBOX = 0xC4,
+    CRSF_ADDRESS_FLIGHT_CONTROLLER = 0xC8,
+    CRSF_ADDRESS_RESERVED2 = 0xCA,
+    CRSF_ADDRESS_RACE_TAG = 0xCC,
+    CRSF_ADDRESS_RADIO_TRANSMITTER = 0xEA,
+    CRSF_ADDRESS_CRSF_RECEIVER = 0xEC,
+    CRSF_ADDRESS_CRSF_TRANSMITTER = 0xEE,
+} crsf_addr_e;
+```

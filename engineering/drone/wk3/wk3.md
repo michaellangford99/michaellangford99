@@ -29,7 +29,8 @@ The spreadsheet first calculates the total weight of the drone, taking into acco
 With the full weight calculated, the thrust is the next necessary calculation. Using propeller-motor pair data available online for ubiquitous motor-propeller combinations, along with seller data, the current at 75% throttle and the thrust at that throttle could be entered.
 
 From the thrust-current measurement, a crude linearization gives the amps of current per gram of thrust - amps per unit thrust 
-$\left[\frac{A}{g}\right]=\frac{current @ 75\% throttle [A]}{ thrust @ 75\% throttle [g] }$.
+
+$$\left[\frac{A}{g}\right]=\frac{current @ 75pct throttle [A]}{ thrust @ 75pct throttle [g] }$$.
 
 The total thrust necessary to maintain during flight is calculated via the total weight of the drone times 3 – this gives  a significant safety factor for the time of flight where the drone will be changing direction, vibrating, changes speeds rapidly, etc., and is generally considered a good heuristic.
 
