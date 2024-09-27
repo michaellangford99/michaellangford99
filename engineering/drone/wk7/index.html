@@ -161,6 +161,77 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-12.png" class="figure-img img-fluid rounded" alt="Alt text" title="Data streaming in"><figcaption class="figure-caption text-center" align="center">Data streaming in</figcaption></figure></div></p>
+<pre class="language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name">uint16_t</span> ch0 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch1 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch2 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch3 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch4 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch5 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch6 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch7 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch8 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch9 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch10 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch11 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch12 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch13 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch14 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch15 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">__attribute__</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>packed<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token class-name">crsf_channels_t</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name">uint8_t</span> device_addr<span class="token punctuation">;</span> <span class="token comment">// from crsf_addr_e</span>
+    <span class="token class-name">uint8_t</span> frame_size<span class="token punctuation">;</span>  <span class="token comment">// counts size after this byte, so it must be the payload size + 2 (type and crc)</span>
+    <span class="token class-name">uint8_t</span> type<span class="token punctuation">;</span>        <span class="token comment">// from crsf_frame_type_e</span>
+<span class="token punctuation">}</span> <span class="token keyword">__attribute__</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>packed<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token class-name">crsf_header_t</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span>
+<span class="token punctuation">{</span>
+	<span class="token class-name">crsf_header_t</span> header<span class="token punctuation">;</span>
+	<span class="token class-name">crsf_channels_t</span> channels<span class="token punctuation">;</span>
+	<span class="token class-name">uint8_t</span> crc<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">__attribute__</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>packed<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token class-name">crsf_packet_t</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">enum</span>
+<span class="token punctuation">{</span>
+    CRSF_FRAMETYPE_GPS <span class="token operator">=</span> <span class="token number">0x02</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_BATTERY_SENSOR <span class="token operator">=</span> <span class="token number">0x08</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_LINK_STATISTICS <span class="token operator">=</span> <span class="token number">0x14</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_RC_CHANNELS_PACKED <span class="token operator">=</span> <span class="token number">0x16</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_ATTITUDE <span class="token operator">=</span> <span class="token number">0x1E</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_FLIGHT_MODE <span class="token operator">=</span> <span class="token number">0x21</span><span class="token punctuation">,</span>
+    <span class="token comment">// Extended Header Frames, range: 0x28 to 0x96</span>
+    CRSF_FRAMETYPE_DEVICE_PING <span class="token operator">=</span> <span class="token number">0x28</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_DEVICE_INFO <span class="token operator">=</span> <span class="token number">0x29</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_PARAMETER_SETTINGS_ENTRY <span class="token operator">=</span> <span class="token number">0x2B</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_PARAMETER_READ <span class="token operator">=</span> <span class="token number">0x2C</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_PARAMETER_WRITE <span class="token operator">=</span> <span class="token number">0x2D</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_COMMAND <span class="token operator">=</span> <span class="token number">0x32</span><span class="token punctuation">,</span>
+    <span class="token comment">// MSP commands</span>
+    CRSF_FRAMETYPE_MSP_REQ <span class="token operator">=</span> <span class="token number">0x7A</span><span class="token punctuation">,</span>   <span class="token comment">// response request using msp sequence as command</span>
+    CRSF_FRAMETYPE_MSP_RESP <span class="token operator">=</span> <span class="token number">0x7B</span><span class="token punctuation">,</span>  <span class="token comment">// reply with 58 byte chunked binary</span>
+    CRSF_FRAMETYPE_MSP_WRITE <span class="token operator">=</span> <span class="token number">0x7C</span><span class="token punctuation">,</span> <span class="token comment">// write with 8 byte chunked binary (OpenTX outbound telemetry buffer limit)</span>
+<span class="token punctuation">}</span> crsf_frame_type_e<span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">enum</span>
+<span class="token punctuation">{</span>
+    CRSF_ADDRESS_BROADCAST <span class="token operator">=</span> <span class="token number">0x00</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_USB <span class="token operator">=</span> <span class="token number">0x10</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_TBS_CORE_PNP_PRO <span class="token operator">=</span> <span class="token number">0x80</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_RESERVED1 <span class="token operator">=</span> <span class="token number">0x8A</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_CURRENT_SENSOR <span class="token operator">=</span> <span class="token number">0xC0</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_GPS <span class="token operator">=</span> <span class="token number">0xC2</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_TBS_BLACKBOX <span class="token operator">=</span> <span class="token number">0xC4</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_FLIGHT_CONTROLLER <span class="token operator">=</span> <span class="token number">0xC8</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_RESERVED2 <span class="token operator">=</span> <span class="token number">0xCA</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_RACE_TAG <span class="token operator">=</span> <span class="token number">0xCC</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_RADIO_TRANSMITTER <span class="token operator">=</span> <span class="token number">0xEA</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_CRSF_RECEIVER <span class="token operator">=</span> <span class="token number">0xEC</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_CRSF_TRANSMITTER <span class="token operator">=</span> <span class="token number">0xEE</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> crsf_addr_e<span class="token punctuation">;</span></code></pre>
 
             </div>
             
@@ -234,6 +305,77 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-12.png" class="figure-img img-fluid rounded" alt="Alt text" title="Data streaming in"><figcaption class="figure-caption text-center" align="center">Data streaming in</figcaption></figure></div></p>
+<pre class="language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name">uint16_t</span> ch0 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch1 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch2 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch3 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch4 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch5 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch6 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch7 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch8 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch9 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch10 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch11 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch12 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch13 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch14 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint16_t</span> ch15 <span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">__attribute__</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>packed<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token class-name">crsf_channels_t</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name">uint8_t</span> device_addr<span class="token punctuation">;</span> <span class="token comment">// from crsf_addr_e</span>
+    <span class="token class-name">uint8_t</span> frame_size<span class="token punctuation">;</span>  <span class="token comment">// counts size after this byte, so it must be the payload size + 2 (type and crc)</span>
+    <span class="token class-name">uint8_t</span> type<span class="token punctuation">;</span>        <span class="token comment">// from crsf_frame_type_e</span>
+<span class="token punctuation">}</span> <span class="token keyword">__attribute__</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>packed<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token class-name">crsf_header_t</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span>
+<span class="token punctuation">{</span>
+	<span class="token class-name">crsf_header_t</span> header<span class="token punctuation">;</span>
+	<span class="token class-name">crsf_channels_t</span> channels<span class="token punctuation">;</span>
+	<span class="token class-name">uint8_t</span> crc<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">__attribute__</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>packed<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token class-name">crsf_packet_t</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">enum</span>
+<span class="token punctuation">{</span>
+    CRSF_FRAMETYPE_GPS <span class="token operator">=</span> <span class="token number">0x02</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_BATTERY_SENSOR <span class="token operator">=</span> <span class="token number">0x08</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_LINK_STATISTICS <span class="token operator">=</span> <span class="token number">0x14</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_RC_CHANNELS_PACKED <span class="token operator">=</span> <span class="token number">0x16</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_ATTITUDE <span class="token operator">=</span> <span class="token number">0x1E</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_FLIGHT_MODE <span class="token operator">=</span> <span class="token number">0x21</span><span class="token punctuation">,</span>
+    <span class="token comment">// Extended Header Frames, range: 0x28 to 0x96</span>
+    CRSF_FRAMETYPE_DEVICE_PING <span class="token operator">=</span> <span class="token number">0x28</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_DEVICE_INFO <span class="token operator">=</span> <span class="token number">0x29</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_PARAMETER_SETTINGS_ENTRY <span class="token operator">=</span> <span class="token number">0x2B</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_PARAMETER_READ <span class="token operator">=</span> <span class="token number">0x2C</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_PARAMETER_WRITE <span class="token operator">=</span> <span class="token number">0x2D</span><span class="token punctuation">,</span>
+    CRSF_FRAMETYPE_COMMAND <span class="token operator">=</span> <span class="token number">0x32</span><span class="token punctuation">,</span>
+    <span class="token comment">// MSP commands</span>
+    CRSF_FRAMETYPE_MSP_REQ <span class="token operator">=</span> <span class="token number">0x7A</span><span class="token punctuation">,</span>   <span class="token comment">// response request using msp sequence as command</span>
+    CRSF_FRAMETYPE_MSP_RESP <span class="token operator">=</span> <span class="token number">0x7B</span><span class="token punctuation">,</span>  <span class="token comment">// reply with 58 byte chunked binary</span>
+    CRSF_FRAMETYPE_MSP_WRITE <span class="token operator">=</span> <span class="token number">0x7C</span><span class="token punctuation">,</span> <span class="token comment">// write with 8 byte chunked binary (OpenTX outbound telemetry buffer limit)</span>
+<span class="token punctuation">}</span> crsf_frame_type_e<span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">enum</span>
+<span class="token punctuation">{</span>
+    CRSF_ADDRESS_BROADCAST <span class="token operator">=</span> <span class="token number">0x00</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_USB <span class="token operator">=</span> <span class="token number">0x10</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_TBS_CORE_PNP_PRO <span class="token operator">=</span> <span class="token number">0x80</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_RESERVED1 <span class="token operator">=</span> <span class="token number">0x8A</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_CURRENT_SENSOR <span class="token operator">=</span> <span class="token number">0xC0</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_GPS <span class="token operator">=</span> <span class="token number">0xC2</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_TBS_BLACKBOX <span class="token operator">=</span> <span class="token number">0xC4</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_FLIGHT_CONTROLLER <span class="token operator">=</span> <span class="token number">0xC8</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_RESERVED2 <span class="token operator">=</span> <span class="token number">0xCA</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_RACE_TAG <span class="token operator">=</span> <span class="token number">0xCC</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_RADIO_TRANSMITTER <span class="token operator">=</span> <span class="token number">0xEA</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_CRSF_RECEIVER <span class="token operator">=</span> <span class="token number">0xEC</span><span class="token punctuation">,</span>
+    CRSF_ADDRESS_CRSF_TRANSMITTER <span class="token operator">=</span> <span class="token number">0xEE</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> crsf_addr_e<span class="token punctuation">;</span></code></pre>
 
             </div>
             
