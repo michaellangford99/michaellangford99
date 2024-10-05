@@ -41,6 +41,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("engineering/computer_graphics/**/*.png");
   eleventyConfig.addPassthroughCopy("engineering/computer_graphics/**/*.jpg");
 
+  eleventyConfig.addPassthroughCopy({ 
+    "node_modules/reveal.js/dist": "assets/reveal/",
+    "node_modules/reveal.js/plugin": "assets/reveal/plugin",
+});
+
   eleventyConfig.addLayoutAlias('default', 'default.njk');
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItImageCaption));
   

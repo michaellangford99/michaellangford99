@@ -20,6 +20,9 @@
   "dependencies": {
     "@11ty/eleventy-img": "^3.1.0",
     "eleventy-plugin-embed-everything": "^1.16.0",
-    "markdown-it-multimd-table": "^4.2.3"
+    "eleventy-plugin-youtube-embed": "^1.10.2",
+    "markdown-it-multimd-table": "^4.2.3",
+    "reveal": "^0.0.4",
+    "reveal.js": "^5.1.0"
   }
 }
