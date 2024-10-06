@@ -1,0 +1,27 @@
+---
+layout: slideshow
+title: ECE477 Drone
+description: Drone Presentation
+---
+
+<div class="carousel-item active">
+
+# ECE477 Drone
+
+</div>
+
+{% assign navPages = collections.all | eleventyNavigation: "drone_presentation" %}
+
+{%- for post in collections.all -%}
+{%- for navPage in navPages -%}
+{%- if navPage.url == post.url -%}
+
+<div class="carousel-item" style="height: 100%">
+{{ post.content  }}
+</div>
+
+<!--<img src={{post.url | append: post.data.background_img}} class="card-img-bottom" alt="..."> -->
+
+{%- endif -%}
+{%- endfor -%}
+{%- endfor -%}
