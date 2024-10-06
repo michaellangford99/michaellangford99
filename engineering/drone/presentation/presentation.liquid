@@ -6,7 +6,8 @@ description: Drone Presentation
 
 <div class="carousel-item active">
 
-# ECE477 Drone
+<h1 class="text-center">ECE477 Drone</h1>
+<h2 class="text-center">Michael Langford</h2>
 
 </div>
 
@@ -16,9 +17,8 @@ description: Drone Presentation
 {%- for navPage in navPages -%}
 {%- if navPage.url == post.url -%}
 
-<div class="carousel-item" style="height: 100%">
+
 {{ post.content  }}
-</div>
 
 <!--<img src={{post.url | append: post.data.background_img}} class="card-img-bottom" alt="..."> -->
 
