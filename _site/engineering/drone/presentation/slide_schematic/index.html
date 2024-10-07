@@ -101,12 +101,86 @@
                  <div class="carousel-item" style="height: 100%">
 <h1 class="text-center mt-3">Schematic</h1>
 <div class="container align-content-center" style="height: 100%; width: 120%">
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="ECE477_PCB.svg" class="figure-img img-fluid rounded" alt="alt text" title="TODO: slice this thing up into pieces"><figcaption class="figure-caption text-center" align="center">TODO: slice this thing up into pieces</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="ECE477_PCB.svg" class="figure-img img-fluid rounded" alt="alt text" title="Final schematic (IMU is on its own page)"><figcaption class="figure-caption text-center" align="center">Final schematic (IMU is on its own page)</figcaption></figure></div></p>
 </div>
 </div>
 <!--
 INSERT sections of schematic design
 -->
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Schematic</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-5 align-content-center">
+<p><strong>Power and status</strong></p>
+<ul>
+<li>Power is provided through ESC connector <code>J3</code></li>
+<li>10V power is regulated down to 5V and then 3.3V</li>
+<li>External power connector option available</li>
+<li>Status LEDs for each supply</li>
+</ul>
+</div>
+<div class="col-lg-7 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="svg/ECE477_PCB-cropped.svg" class="figure-img img-fluid rounded" alt="alt text" title="Power and status section"><figcaption class="figure-caption text-center" align="center">Power and status section</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Schematic</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-4 align-content-center">
+<p><strong>USB UART</strong></p>
+<ul>
+<li>USB micro-B allowed easy serial connection to the flightcontroller</li>
+<li>Small and configurable FT230XQ in QFP package supports power over USB and indicator LEDs</li>
+</ul>
+</div>
+<div class="col-lg-8 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="svg/ECE477_PCB-cropped%20(1).svg" class="figure-img img-fluid rounded" alt="alt text" title="FTDI UART"><figcaption class="figure-caption text-center" align="center">FTDI UART</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Schematic</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-4 align-content-center">
+<p><strong>STM32 and peripherals</strong></p>
+<ul>
+<li>STM32F446 220MHz CPU</li>
+<li>Radio, Pi, and auxiliary UARTs</li>
+<li>voltage sense</li>
+<li>PWM outputs</li>
+<li>reset, external crystal, cap banks</li>
+</ul>
+</div>
+<div class="col-lg-8 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="svg/ECE477_PCB-cropped%20(2).svg" class="figure-img img-fluid rounded" alt="alt text" title="STM32"><figcaption class="figure-caption text-center" align="center">STM32</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Schematic</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-4 align-content-center">
+<p><strong>LiDAR and backup motor drivers</strong></p>
+<ul>
+<li>I2C bus connections for LiDAR ToF sensors</li>
+<li>backup brushed motor drivers using simple FET drivers
+in case we had to abandon the brushless motors</li>
+</ul>
+</div>
+<div class="col-lg-8 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="svg/ECE477_PCB-cropped%20(4).svg" class="figure-img img-fluid rounded" alt="alt text" title="LiDAR and brushed motors"><figcaption class="figure-caption text-center" align="center">LiDAR and brushed motors</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
 <div class="carousel-item" style="height: 100%">
 <h1 class="text-center mt-3">Schematic</h1>
 <div class="container align-content-center" style="height: 100%">
@@ -119,39 +193,6 @@ INSERT sections of schematic design
 </div>
 <div class="col-lg-5 align-content-center">
 <p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk7/image.png" class="figure-img img-fluid rounded" alt="Alt text" title="STM32F446 pin mappings"><figcaption class="figure-caption text-center" align="center">STM32F446 pin mappings</figcaption></figure></div></p>
-</div>
-</div>
-</div>
-</div>
-<!--
-INSERT PCB design section
--->
-<div class="carousel-item" style="height: 100%">
-<h1 class="text-center mt-3">Schematic</h1>
-<div class="container align-content-center" style="height: 100%">
-<div class="row">
-<div class="col-lg-7 align-content-center">
-<p>I also added the PI Zero connector that I had put off for last, selecting a part of the Pi header to interface to that contains the UART, +5V, and ground. This is pins 1 through 10 at the far edge of the PI PCB. This ended up being a relatively convenient spot after I moved a couple things out of its way.</p>
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk7/image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Pi Zero pinout"><figcaption class="figure-caption text-center" align="center">Pi Zero pinout</figcaption></figure></div></p>
-</div>
-<div class="col-lg-5 align-content-center">
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk7/image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title="Pi Zero dimensions"><figcaption class="figure-caption text-center" align="center">Pi Zero dimensions</figcaption></figure></div></p>
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk7/image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="PCB drill and borders plot"><figcaption class="figure-caption text-center" align="center">PCB drill and borders plot</figcaption></figure></div></p>
-</div>
-</div>
-</div>
-</div>
-<div class="carousel-item" style="height: 100%">
-<h1 class="text-center mt-3">Schematic</h1>
-<div class="container align-content-center" style="height: 100%">
-<div class="row">
-<div class="col-lg-6 align-content-center">
-<p>Now that the part was in the ~mostly correct spot, I had to ensure that the connector would line up perfectly by looking up the exact dimensions of the board, and by verifying the setup by printing a to-scale version of the board and checking it against the Pi Zero I own.</p>
-<p>Using these measurements, I worked to place it in what I believed was the best position. Then I printed off the to-scale version and compared. I noticed that while all the corner holes were properly aligned, the connector was about a millimeter too far to the right. I then readjusted and printed again. Much better! A visual check shows the pins at the exact right spot.</p>
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk7/image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title="PCB size comparison"><figcaption class="figure-caption text-center" align="center">PCB size comparison</figcaption></figure></div></p>
-</div>
-<div class="col-lg-6 align-content-center">
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk7/image-5.png" class="figure-img img-fluid rounded" alt="Alt text" title="Pi zero with footprint printout"><figcaption class="figure-caption text-center" align="center">Pi zero with footprint printout</figcaption></figure></div></p>
 </div>
 </div>
 </div>
@@ -169,12 +210,86 @@ INSERT PCB design section
                  <div class="carousel-item" style="height: 100%">
 <h1 class="text-center mt-3">Schematic</h1>
 <div class="container align-content-center" style="height: 100%; width: 120%">
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="ECE477_PCB.svg" class="figure-img img-fluid rounded" alt="alt text" title="TODO: slice this thing up into pieces"><figcaption class="figure-caption text-center" align="center">TODO: slice this thing up into pieces</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="ECE477_PCB.svg" class="figure-img img-fluid rounded" alt="alt text" title="Final schematic (IMU is on its own page)"><figcaption class="figure-caption text-center" align="center">Final schematic (IMU is on its own page)</figcaption></figure></div></p>
 </div>
 </div>
 <!--
 INSERT sections of schematic design
 -->
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Schematic</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-5 align-content-center">
+<p><strong>Power and status</strong></p>
+<ul>
+<li>Power is provided through ESC connector <code>J3</code></li>
+<li>10V power is regulated down to 5V and then 3.3V</li>
+<li>External power connector option available</li>
+<li>Status LEDs for each supply</li>
+</ul>
+</div>
+<div class="col-lg-7 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="svg/ECE477_PCB-cropped.svg" class="figure-img img-fluid rounded" alt="alt text" title="Power and status section"><figcaption class="figure-caption text-center" align="center">Power and status section</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Schematic</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-4 align-content-center">
+<p><strong>USB UART</strong></p>
+<ul>
+<li>USB micro-B allowed easy serial connection to the flightcontroller</li>
+<li>Small and configurable FT230XQ in QFP package supports power over USB and indicator LEDs</li>
+</ul>
+</div>
+<div class="col-lg-8 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="svg/ECE477_PCB-cropped%20(1).svg" class="figure-img img-fluid rounded" alt="alt text" title="FTDI UART"><figcaption class="figure-caption text-center" align="center">FTDI UART</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Schematic</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-4 align-content-center">
+<p><strong>STM32 and peripherals</strong></p>
+<ul>
+<li>STM32F446 220MHz CPU</li>
+<li>Radio, Pi, and auxiliary UARTs</li>
+<li>voltage sense</li>
+<li>PWM outputs</li>
+<li>reset, external crystal, cap banks</li>
+</ul>
+</div>
+<div class="col-lg-8 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="svg/ECE477_PCB-cropped%20(2).svg" class="figure-img img-fluid rounded" alt="alt text" title="STM32"><figcaption class="figure-caption text-center" align="center">STM32</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Schematic</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-4 align-content-center">
+<p><strong>LiDAR and backup motor drivers</strong></p>
+<ul>
+<li>I2C bus connections for LiDAR ToF sensors</li>
+<li>backup brushed motor drivers using simple FET drivers
+in case we had to abandon the brushless motors</li>
+</ul>
+</div>
+<div class="col-lg-8 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="svg/ECE477_PCB-cropped%20(4).svg" class="figure-img img-fluid rounded" alt="alt text" title="LiDAR and brushed motors"><figcaption class="figure-caption text-center" align="center">LiDAR and brushed motors</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
 <div class="carousel-item" style="height: 100%">
 <h1 class="text-center mt-3">Schematic</h1>
 <div class="container align-content-center" style="height: 100%">
@@ -187,39 +302,6 @@ INSERT sections of schematic design
 </div>
 <div class="col-lg-5 align-content-center">
 <p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk7/image.png" class="figure-img img-fluid rounded" alt="Alt text" title="STM32F446 pin mappings"><figcaption class="figure-caption text-center" align="center">STM32F446 pin mappings</figcaption></figure></div></p>
-</div>
-</div>
-</div>
-</div>
-<!--
-INSERT PCB design section
--->
-<div class="carousel-item" style="height: 100%">
-<h1 class="text-center mt-3">Schematic</h1>
-<div class="container align-content-center" style="height: 100%">
-<div class="row">
-<div class="col-lg-7 align-content-center">
-<p>I also added the PI Zero connector that I had put off for last, selecting a part of the Pi header to interface to that contains the UART, +5V, and ground. This is pins 1 through 10 at the far edge of the PI PCB. This ended up being a relatively convenient spot after I moved a couple things out of its way.</p>
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk7/image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Pi Zero pinout"><figcaption class="figure-caption text-center" align="center">Pi Zero pinout</figcaption></figure></div></p>
-</div>
-<div class="col-lg-5 align-content-center">
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk7/image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title="Pi Zero dimensions"><figcaption class="figure-caption text-center" align="center">Pi Zero dimensions</figcaption></figure></div></p>
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk7/image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="PCB drill and borders plot"><figcaption class="figure-caption text-center" align="center">PCB drill and borders plot</figcaption></figure></div></p>
-</div>
-</div>
-</div>
-</div>
-<div class="carousel-item" style="height: 100%">
-<h1 class="text-center mt-3">Schematic</h1>
-<div class="container align-content-center" style="height: 100%">
-<div class="row">
-<div class="col-lg-6 align-content-center">
-<p>Now that the part was in the ~mostly correct spot, I had to ensure that the connector would line up perfectly by looking up the exact dimensions of the board, and by verifying the setup by printing a to-scale version of the board and checking it against the Pi Zero I own.</p>
-<p>Using these measurements, I worked to place it in what I believed was the best position. Then I printed off the to-scale version and compared. I noticed that while all the corner holes were properly aligned, the connector was about a millimeter too far to the right. I then readjusted and printed again. Much better! A visual check shows the pins at the exact right spot.</p>
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk7/image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title="PCB size comparison"><figcaption class="figure-caption text-center" align="center">PCB size comparison</figcaption></figure></div></p>
-</div>
-<div class="col-lg-6 align-content-center">
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk7/image-5.png" class="figure-img img-fluid rounded" alt="Alt text" title="Pi zero with footprint printout"><figcaption class="figure-caption text-center" align="center">Pi zero with footprint printout</figcaption></figure></div></p>
 </div>
 </div>
 </div>

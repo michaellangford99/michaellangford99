@@ -16,6 +16,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(embedEverything);
   eleventyConfig.addPlugin(mathjaxPlugin, {
   outputFormat: 'svg',tex: {tags: 'ams'}});
+  //eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPassthroughCopy('assets');
   eleventyConfig.addPassthroughCopy("hiking/grays_torreys_kelso/*.jpg");
   eleventyConfig.addPassthroughCopy("hiking/wetterhorn_loop/*.jpg");
@@ -30,6 +31,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("engineering/drone/**/*.jpg");
   eleventyConfig.addPassthroughCopy("engineering/drone/*/*.jpg");
   eleventyConfig.addPassthroughCopy("engineering/resume/*.png");
+  eleventyConfig.addPassthroughCopy("engineering/drone/*/*.html_");
+  eleventyConfig.addPassthroughCopy("engineering/drone/*/*.svg");
+  eleventyConfig.addPassthroughCopy("engineering/drone/**/*.svg");
 
   
   eleventyConfig.addPassthroughCopy("engineering/computer_graphics/ray_tracer/*.png");
@@ -48,7 +52,10 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addLayoutAlias('default', 'default.njk');
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItImageCaption));
-  
+  eleventyConfig.setChokidarConfig({
+		usePolling: true,
+		interval: 500,
+	});
   //eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItTable));
   //eleventyConfig.amendLibrary("md", mdLib => mdLib.use(mdownmjax, { tex: {tags: 'ams'} }));
   /*eleventyConfig.addShortcode("image", async function(src, alt) {
