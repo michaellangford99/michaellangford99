@@ -1,0 +1,269 @@
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="google-site-verification" content="jWYz4n1G8T7OHT4uWrEfZc6Qx-KFsPUYCC6oLXvfJHs">
+
+    <!-- Bootstrap CSS -->
+   <title>Radio Integration</title> 
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!---<link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css"/>  -->
+    <!---<link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet"> -->
+   <!--- <link rel="stylesheet" href="/assets/css/prism-vs.css"/>    -->
+   <link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css">
+    <link rel="stylesheet" href="/assets/css/clean-blog.css">
+    
+  </head>
+  <body>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark d-print-none" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Michaelangelo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/hiking/">Hiking &amp; Photography</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/engineering/">Engineering</a>
+      </li>
+    </ul>
+
+<!--
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="#">Hiking & Photograpy</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Engineering</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Computer Graphics</a></li>       
+        <li class="nav-item"><a class="nav-link" href="#">Thoughts</a></li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+
+
+      </ul>
+-->
+
+      <!--<form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>-->
+    </div>
+  </div>
+</nav>
+    
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white d-print-none" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div style="padding: 100px 0 130px ">
+  <h1 class="mb-2 h1">Radio Integration</h1>
+  <p>
+    
+  </p>
+</div>
+</div>
+
+<!--<div class="container-md">
+  <div class="alert alert-primary" role="alert">
+    
+  </div>
+</div>-->
+
+    <div class="container-md d-print-none">
+        <div class="row justify-content-center">
+            
+            <div class="col-md-9 mr-auto ml-auto">
+                 <div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Radio Integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg align-content-center">
+<p>The first hurdle this week was getting the newly arrived radio transmitter and receiver to talk to each other and bind. They both use a newer air protocol called ELRS, or ExpressLRS. The receiver chosen uses an ESP8266, and is able to provide its own wireless access point to wirelessly login and configure the receiver through WiFi. The Transmitter is significantly more finicky, requiring a USB connection after a very precise power up sequence to be able to connect and configure it through a configurator.</p>
+<p>To begin, I first soldered some wires to the receiver to be able to prototype with it. I used my favorite 30AWG wire, super thin and easy to work with.</p>
+</div>
+<div class="col-lg align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div>
+<div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-1.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.1a,b. Wiring to radio receiver complete"><figcaption class="figure-caption text-center" align="center">Fig. 5.1a,b. Wiring to radio receiver complete</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Radio Integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg align-content-center">
+<p>It soon became apparent that neither option worked, and after much debugging and hair pulling, I realized that the transmitter firmware is not being actively kept up to date with the version of software on the receiver – a big issue, as that means that the receiver is not trying to talk to the transmitter in an agreed upon format.</p>
+<p>I discovered I needed to reflash the receiver with an older firmware version such that the TX and RX versions would match. Once I did this, they magically bound to each other, even though the version I flashed claimed to be the original source version the receiver came with. It was very strange.
+In order to do all this, I powered the receiver from a USB to serial converter, and wired TX to RX so I could listen in on any debug output from the receiver in PuTTY. Once I finally got it to bind, I could look both in PuTTY and the oscilloscope and see packets arrive.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.6. Packet data streaming in from receiver in PuTTY after successful binding."><figcaption class="figure-caption text-center" align="center">Fig. 5.6. Packet data streaming in from receiver in PuTTY after successful binding.</figcaption></figure></div></p>
+</div>
+<div class="col-lg align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.5. Serial to USB converter wired to receiver."><figcaption class="figure-caption text-center" align="center">Fig. 5.5. Serial to USB converter wired to receiver.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Radio Integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-7 align-content-center">
+<p>Once binding was complete, the next goal was to attempt to parse the data and read the individual channels using an STM32. To get there, I first investigated the stream using PuTTY, an oscilloscope, logic analyzer, and recordings of serial data from PuTTY to find repeating sequences in the data.</p>
+<p>Oscilloscope data can be seen in Fig. 5.7, with the scope locking onto a repeating packet of high baudrate serial data.</p>
+<p>After determining the message format visually, I used the Waveforms program and the AD2 to decode the UART data from the receiver. Fig. 5.9 shows the AD2 decoding the 420KBaud UART data from the receiver, showing the 150Hz frame format.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-10.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.9. Decoded UART data from receiver in Waveforms."><figcaption class="figure-caption text-center" align="center">Fig. 5.9. Decoded UART data from receiver in Waveforms.</figcaption></figure></div></p>
+</div>
+<div class="col-lg-5 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-8.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.7. First look at serial data from receiver with oscilloscope."><figcaption class="figure-caption text-center" align="center">Fig. 5.7. First look at serial data from receiver with oscilloscope.</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-9.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.8. Determining packet rate (150Hz) and decoding uart data with oscilloscope."><figcaption class="figure-caption text-center" align="center">Fig. 5.8. Determining packet rate (150Hz) and decoding uart data with oscilloscope.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Radio Integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-8 align-content-center">
+<p>Unfortunately, this protocol's only documentation is the source code that also utilizes this protocol, and to look at the raw data. Every packet seems to begin with a byte <code>0xC8</code>, followed by a byte <code>0x1B</code>, which seems to correspond to 2 less than the total length of the sequence. As one moves the sticks on the transmitter to get the packet data to change, a particular pair or so of bytes vary, but so do the final 2 bytes of the sequence. This, and reading code online, leads me to believe this is a 16 bit CRC of the transmitted sequence.</p>
+<p>With this knowledge, I started writing code for the STM32 to interpret the incoming data. I modified my USB serial driver to be general, using <code>#define</code>s to determine the DMA channels, IO, GPIO banks, interrupts, etc. Then I used this code to set up a similar DMA driven system to pull in the bitstream from the receiver. I then wrote some simple channel interpretation code that watches for the initial byte <code>0xC8</code>, and then parses the indicated amount of data from the second byte. I then wired the ST Nucleo board up to the proper pins and powered the receiver from the Nucleo instead of the original setup with the USB to serial converter board.  Fig. 5.9 shows this new setup.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-14.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.11. Packets being received, and reported via UART to PC in PuTTY."><figcaption class="figure-caption text-center" align="center">Fig. 5.11. Packets being received, and reported via UART to PC in PuTTY.</figcaption></figure></div></p>
+</div>
+<div class="col-lg-4 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-12.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.9. ST Nucleo wired to receiver."><figcaption class="figure-caption text-center" align="center">Fig. 5.9. ST Nucleo wired to receiver.</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-13.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.10. Closeup of receiver wiring."><figcaption class="figure-caption text-center" align="center">Fig. 5.10. Closeup of receiver wiring.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Radio Integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<p>Finally, after some reading of forums online, I heard the bit length of each channel’s data was 10 bits. I attempted to pull in channel data after the header 10 bits at a time, which showed some success, however the data kept rolling over, not going negative correctly, etc., which makes me think the bit offsets aren’t quite right. Online code also shows it to actually be 11 bits, which makes sense if that last bit is just the sign bit. I’ll be modifying my parsing code and the data should be coming properly very soon.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-15.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.12. Live plot of incoming channel data from transmitter control sticks, visible rollover, errors, and scaling errors."><figcaption class="figure-caption text-center" align="center">Fig. 5.12. Live plot of incoming channel data from transmitter control sticks, visible rollover, errors, and scaling errors.</figcaption></figure></div></p>
+</div>
+</div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="container-md d-none d-print-block">
+        <div class="row justify-content-center">
+            
+            <div class="col mr-auto ml-auto">
+                 <div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Radio Integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg align-content-center">
+<p>The first hurdle this week was getting the newly arrived radio transmitter and receiver to talk to each other and bind. They both use a newer air protocol called ELRS, or ExpressLRS. The receiver chosen uses an ESP8266, and is able to provide its own wireless access point to wirelessly login and configure the receiver through WiFi. The Transmitter is significantly more finicky, requiring a USB connection after a very precise power up sequence to be able to connect and configure it through a configurator.</p>
+<p>To begin, I first soldered some wires to the receiver to be able to prototype with it. I used my favorite 30AWG wire, super thin and easy to work with.</p>
+</div>
+<div class="col-lg align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div>
+<div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-1.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.1a,b. Wiring to radio receiver complete"><figcaption class="figure-caption text-center" align="center">Fig. 5.1a,b. Wiring to radio receiver complete</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Radio Integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg align-content-center">
+<p>It soon became apparent that neither option worked, and after much debugging and hair pulling, I realized that the transmitter firmware is not being actively kept up to date with the version of software on the receiver – a big issue, as that means that the receiver is not trying to talk to the transmitter in an agreed upon format.</p>
+<p>I discovered I needed to reflash the receiver with an older firmware version such that the TX and RX versions would match. Once I did this, they magically bound to each other, even though the version I flashed claimed to be the original source version the receiver came with. It was very strange.
+In order to do all this, I powered the receiver from a USB to serial converter, and wired TX to RX so I could listen in on any debug output from the receiver in PuTTY. Once I finally got it to bind, I could look both in PuTTY and the oscilloscope and see packets arrive.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.6. Packet data streaming in from receiver in PuTTY after successful binding."><figcaption class="figure-caption text-center" align="center">Fig. 5.6. Packet data streaming in from receiver in PuTTY after successful binding.</figcaption></figure></div></p>
+</div>
+<div class="col-lg align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.5. Serial to USB converter wired to receiver."><figcaption class="figure-caption text-center" align="center">Fig. 5.5. Serial to USB converter wired to receiver.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Radio Integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-7 align-content-center">
+<p>Once binding was complete, the next goal was to attempt to parse the data and read the individual channels using an STM32. To get there, I first investigated the stream using PuTTY, an oscilloscope, logic analyzer, and recordings of serial data from PuTTY to find repeating sequences in the data.</p>
+<p>Oscilloscope data can be seen in Fig. 5.7, with the scope locking onto a repeating packet of high baudrate serial data.</p>
+<p>After determining the message format visually, I used the Waveforms program and the AD2 to decode the UART data from the receiver. Fig. 5.9 shows the AD2 decoding the 420KBaud UART data from the receiver, showing the 150Hz frame format.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-10.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.9. Decoded UART data from receiver in Waveforms."><figcaption class="figure-caption text-center" align="center">Fig. 5.9. Decoded UART data from receiver in Waveforms.</figcaption></figure></div></p>
+</div>
+<div class="col-lg-5 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-8.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.7. First look at serial data from receiver with oscilloscope."><figcaption class="figure-caption text-center" align="center">Fig. 5.7. First look at serial data from receiver with oscilloscope.</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-9.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.8. Determining packet rate (150Hz) and decoding uart data with oscilloscope."><figcaption class="figure-caption text-center" align="center">Fig. 5.8. Determining packet rate (150Hz) and decoding uart data with oscilloscope.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Radio Integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-8 align-content-center">
+<p>Unfortunately, this protocol's only documentation is the source code that also utilizes this protocol, and to look at the raw data. Every packet seems to begin with a byte <code>0xC8</code>, followed by a byte <code>0x1B</code>, which seems to correspond to 2 less than the total length of the sequence. As one moves the sticks on the transmitter to get the packet data to change, a particular pair or so of bytes vary, but so do the final 2 bytes of the sequence. This, and reading code online, leads me to believe this is a 16 bit CRC of the transmitted sequence.</p>
+<p>With this knowledge, I started writing code for the STM32 to interpret the incoming data. I modified my USB serial driver to be general, using <code>#define</code>s to determine the DMA channels, IO, GPIO banks, interrupts, etc. Then I used this code to set up a similar DMA driven system to pull in the bitstream from the receiver. I then wrote some simple channel interpretation code that watches for the initial byte <code>0xC8</code>, and then parses the indicated amount of data from the second byte. I then wired the ST Nucleo board up to the proper pins and powered the receiver from the Nucleo instead of the original setup with the USB to serial converter board.  Fig. 5.9 shows this new setup.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-14.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.11. Packets being received, and reported via UART to PC in PuTTY."><figcaption class="figure-caption text-center" align="center">Fig. 5.11. Packets being received, and reported via UART to PC in PuTTY.</figcaption></figure></div></p>
+</div>
+<div class="col-lg-4 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-12.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.9. ST Nucleo wired to receiver."><figcaption class="figure-caption text-center" align="center">Fig. 5.9. ST Nucleo wired to receiver.</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-13.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.10. Closeup of receiver wiring."><figcaption class="figure-caption text-center" align="center">Fig. 5.10. Closeup of receiver wiring.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Radio Integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<p>Finally, after some reading of forums online, I heard the bit length of each channel’s data was 10 bits. I attempted to pull in channel data after the header 10 bits at a time, which showed some success, however the data kept rolling over, not going negative correctly, etc., which makes me think the bit offsets aren’t quite right. Online code also shows it to actually be 11 bits, which makes sense if that last bit is just the sign bit. I’ll be modifying my parsing code and the data should be coming properly very soon.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-15.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.12. Live plot of incoming channel data from transmitter control sticks, visible rollover, errors, and scaling errors."><figcaption class="figure-caption text-center" align="center">Fig. 5.12. Live plot of incoming channel data from transmitter control sticks, visible rollover, errors, and scaling errors.</figcaption></figure></div></p>
+</div>
+</div>
+            </div>
+            
+        </div>
+    </div>
+
+<!--<div class="b-example-divider"></div>-->
+
+<div class="container d-print-none">
+  <footer class="flex-wrap border-top">
+      <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
+  </footer>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="/assets/js/index.js"></script>
+  <script data-goatcounter="https://michaellangford99.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
