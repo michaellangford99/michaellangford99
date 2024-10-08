@@ -77,3 +77,60 @@ After this, I added all the 3.3V microcontroller caps, and then the microcontrol
 </div>
 </div>
 
+
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">{{ title }}</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-4 align-content-center">
+
+After my less than excellent progress bricking a chip trying to get the IMU working, I decided to use the hot plate and reflow the entire top of the PCB in one shot. (Unfortunately, I didn’t get pictures of the stencil and reflow process, I was a little rushed) I started by organizing all the parts on a printout I developed last time to help place the parts with the right values in the right spots.
+
+The stencil we purchased with our board came as a very large thin sheet of metal, with the small cutouts for our board in the center. This was way too large as is, cut it down to size first with a sheet cutter. With the stencil ready, I set up the board to be stenciled by using a metal right-angle of equal thickness to the PCB to secure the PCB on the table, and then taped the stencil down onto the PCB like a hinge.
+
+Then I took the PCB with paste back to my station, and carefully placed each part onto it’s pads with tweezers, carefully aligning and double-checking them. Once I was confident the placement was correct and aligned, Joe helped me use the (very hot) hot plate to preheat my PCB, and then reflow the paste on the PCB. It was very cool to see the paste boil, the solder melt, and all the components float into place as the solder glistens. After the PCB cooled down, I washed it off and took a look at the results.
+
+</div>
+<div class="col-lg-8 align-content-center">
+
+![Alt text](../wk13/image.png "Fig. 13-1. Parts layout before placement")
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">{{ title }}</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-6 align-content-center">
+
+Nearly all the components were soldered correctly, but both IMUs, the micro, and the USB connector had shorts due to excess solder paste. The IMU joints were easy to clear, but the micro was surprisingly difficult. Joe had to help me clear them, but afterwards it looked quite nice. The USB was the most frustrating, as it had bridged ID and ground, and VUSB and ground. Anything shorted to ground on the USB connector is difficult to fix, as the USB connector sucks all the heat away as the iron tries to melt the joints. ID I left shorted, as the board doesn’t use it and the bus doesn’t care, but I was able to successfully clear the bridge with VUSB with lots of heat and flux.
+
+Once the top of the PCB was complete, I went back and hand-soldered each cap onto the back of the PCB. This was pretty easy after doing the first board thankfully. After adding the 3.3V regulator, the board was ready to test.
+
+![Alt text](../wk13/image-1.png "Fig. 13-2. PCB after reflow, note shorts on multiple parts")
+
+</div>
+<div class="col-lg-6 align-content-center">
+
+![Alt text](../wk13/image-2.png "Fig. 13-3. PCB after shorts fixed.")
+
+![Alt text](../wk13/image-3.png "Fig. 13-4. Back side of PCB after hand-soldering all caps and regulator.")
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">{{ title }}</h1>
+<div class="container align-content-center" style="height: 100%">
+
+Testing simply consisted of lots of continuity checks (and checks for shorts), and powering the board from the 3.3V supply on the programmer. With LEDs coming on properly, I programmed the board successfully with a ‘blink LED’ test program and then proceeded to test the USB-serial as well. Surprisingly, all hardware, even the IMU, worked first try. Good stuff.
+
+![Alt text](../wk13/image-5.png "Fig. 13-5. Power-up and testing of USB->Serial")
+
+</div>
+</div>
