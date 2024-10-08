@@ -22,10 +22,11 @@ The first hurdle this week was getting the newly arrived radio transmitter and r
 
 To begin, I first soldered some wires to the receiver to be able to prototype with it. I used my favorite 30AWG wire, super thin and easy to work with.
 
+![Alt text](../wk5/image.png " ")
+
 </div>
 <div class="col-lg align-content-center">
 
-![Alt text](../wk5/image.png " ")
 ![Alt text](../wk5/image-1.png "Fig. 5.1a,b. Wiring to radio receiver complete")
 
 </div>

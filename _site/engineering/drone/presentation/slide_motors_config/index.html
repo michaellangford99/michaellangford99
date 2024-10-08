@@ -180,6 +180,76 @@ I took a look at the noise spectrum while the motors were running, hoping all th
 </div>
 </div>
 </div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">ESCs &amp; motors</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p>Boot log:</p>
+<pre class="language-c"><code class="language-c"><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+ECE477 STM32F446RET6 Flight Controller V0
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+
+USB_USART<span class="token operator">:</span>
+	USB_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">115200</span>
+	CLOCK_RATE<span class="token operator">:</span>              <span class="token number">90000000</span>
+	USB_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">90000000</span>
+	USB_USART_DIV<span class="token operator">:</span>           <span class="token number">48</span>
+	USB_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">13</span>
+	USB_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">48</span>
+SYSTICK<span class="token operator">:</span>
+	SYSTICK_LOAD<span class="token operator">:</span>		<span class="token number">22499</span>
+	AHB_CLOCK<span class="token operator">:</span>		<span class="token number">180000000</span>
+	AHB_CLOCK_DIV_8<span class="token operator">:</span>	<span class="token number">22500000</span>
+RX_USART<span class="token operator">:</span>
+	RX_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">420000</span>
+	CLOCK_RATE<span class="token operator">:</span>             <span class="token number">90000000</span>
+	RX_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">90000000</span>
+	RX_USART_DIV<span class="token operator">:</span>           <span class="token number">13</span>
+	RX_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">6</span>
+	RX_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">13</span>
+	CRSF_RX_BAUDRATE<span class="token operator">:</span>       <span class="token number">420000</span>
+	CRSF_NUM_CHANNELS<span class="token operator">:</span>      <span class="token number">16</span>
+	CRSF_CHANNEL_VALUE_MIN<span class="token operator">:</span> <span class="token number">172</span>
+	CRSF_CHANNEL_VALUE_MID<span class="token operator">:</span> <span class="token number">992</span>
+	CRSF_CHANNEL_VALUE_MAX<span class="token operator">:</span> <span class="token number">1811</span>
+	CRSF_MAX_PACKET_LEN<span class="token operator">:</span>    <span class="token number">64</span></code></pre>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><em>(Continued...)</em></p>
+<pre class="language-c"><code class="language-c">PI_USART<span class="token operator">:</span>
+	PI_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">115200</span>
+	CLOCK_RATE<span class="token operator">:</span>             <span class="token number">45000000</span>
+	PI_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">45000000</span>
+	PI_USART_DIV<span class="token operator">:</span>           <span class="token number">24</span>
+	PI_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">6</span>
+	PI_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">24</span>
+	PI_FRAME_START_CODE<span class="token operator">:</span>    <span class="token number">65</span>
+	PI_FRAME_END_CODE<span class="token operator">:</span>      <span class="token number">66</span>
+PWM<span class="token operator">:</span>
+	PWM_FREQ<span class="token operator">:</span>        <span class="token number">3800</span>
+	PWM_PERIOD <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">263.157898</span>
+	MIN_PULSE  <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">125</span>
+	MAX_PULSE  <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">250</span>
+	PWM_ARR<span class="token operator">:</span>         <span class="token number">5262</span>
+	UPPERBOUNDCRRX<span class="token operator">:</span>  <span class="token number">5000</span>
+	LOWERBOUNDCRRX<span class="token operator">:</span>  <span class="token number">2500</span>
+	RANGE<span class="token operator">:</span>           <span class="token number">2500</span>
+SPI1<span class="token operator">:</span>
+	SPI_CR1_BR_PCLOCK_DIV_32<span class="token operator">:</span> <span class="token number">0x20</span>
+	SPI_PCLOCK_DIV_32<span class="token operator">:</span>        <span class="token number">2812500</span>
+LSM6DSO Calibration<span class="token operator">:</span>
+	gyro_cal_x<span class="token operator">:</span> <span class="token number">4</span>
+	gyro_cal_y<span class="token operator">:</span> <span class="token number">14</span>
+	gyro_cal_z<span class="token operator">:</span> <span class="token number">0</span>
+MPU6500 Calibration<span class="token operator">:</span>
+	gyro_cal_x<span class="token operator">:</span> <span class="token number">6419</span>
+	gyro_cal_y<span class="token operator">:</span> <span class="token number">5340</span>
+	gyro_cal_z<span class="token operator">:</span> <span class="token number">0</span></code></pre>
+</div>
+</div>
+</div>
+</div>
             </div>
             
         </div>
@@ -267,6 +337,76 @@ I took a look at the noise spectrum while the motors were running, hoping all th
 </div>
 <div class="col-lg-6 align-content-center">
 <div id="K2zn1jZydOI" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/K2zn1jZydOI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">ESCs &amp; motors</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p>Boot log:</p>
+<pre class="language-c"><code class="language-c"><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+ECE477 STM32F446RET6 Flight Controller V0
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+
+USB_USART<span class="token operator">:</span>
+	USB_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">115200</span>
+	CLOCK_RATE<span class="token operator">:</span>              <span class="token number">90000000</span>
+	USB_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">90000000</span>
+	USB_USART_DIV<span class="token operator">:</span>           <span class="token number">48</span>
+	USB_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">13</span>
+	USB_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">48</span>
+SYSTICK<span class="token operator">:</span>
+	SYSTICK_LOAD<span class="token operator">:</span>		<span class="token number">22499</span>
+	AHB_CLOCK<span class="token operator">:</span>		<span class="token number">180000000</span>
+	AHB_CLOCK_DIV_8<span class="token operator">:</span>	<span class="token number">22500000</span>
+RX_USART<span class="token operator">:</span>
+	RX_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">420000</span>
+	CLOCK_RATE<span class="token operator">:</span>             <span class="token number">90000000</span>
+	RX_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">90000000</span>
+	RX_USART_DIV<span class="token operator">:</span>           <span class="token number">13</span>
+	RX_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">6</span>
+	RX_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">13</span>
+	CRSF_RX_BAUDRATE<span class="token operator">:</span>       <span class="token number">420000</span>
+	CRSF_NUM_CHANNELS<span class="token operator">:</span>      <span class="token number">16</span>
+	CRSF_CHANNEL_VALUE_MIN<span class="token operator">:</span> <span class="token number">172</span>
+	CRSF_CHANNEL_VALUE_MID<span class="token operator">:</span> <span class="token number">992</span>
+	CRSF_CHANNEL_VALUE_MAX<span class="token operator">:</span> <span class="token number">1811</span>
+	CRSF_MAX_PACKET_LEN<span class="token operator">:</span>    <span class="token number">64</span></code></pre>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><em>(Continued...)</em></p>
+<pre class="language-c"><code class="language-c">PI_USART<span class="token operator">:</span>
+	PI_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">115200</span>
+	CLOCK_RATE<span class="token operator">:</span>             <span class="token number">45000000</span>
+	PI_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">45000000</span>
+	PI_USART_DIV<span class="token operator">:</span>           <span class="token number">24</span>
+	PI_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">6</span>
+	PI_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">24</span>
+	PI_FRAME_START_CODE<span class="token operator">:</span>    <span class="token number">65</span>
+	PI_FRAME_END_CODE<span class="token operator">:</span>      <span class="token number">66</span>
+PWM<span class="token operator">:</span>
+	PWM_FREQ<span class="token operator">:</span>        <span class="token number">3800</span>
+	PWM_PERIOD <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">263.157898</span>
+	MIN_PULSE  <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">125</span>
+	MAX_PULSE  <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">250</span>
+	PWM_ARR<span class="token operator">:</span>         <span class="token number">5262</span>
+	UPPERBOUNDCRRX<span class="token operator">:</span>  <span class="token number">5000</span>
+	LOWERBOUNDCRRX<span class="token operator">:</span>  <span class="token number">2500</span>
+	RANGE<span class="token operator">:</span>           <span class="token number">2500</span>
+SPI1<span class="token operator">:</span>
+	SPI_CR1_BR_PCLOCK_DIV_32<span class="token operator">:</span> <span class="token number">0x20</span>
+	SPI_PCLOCK_DIV_32<span class="token operator">:</span>        <span class="token number">2812500</span>
+LSM6DSO Calibration<span class="token operator">:</span>
+	gyro_cal_x<span class="token operator">:</span> <span class="token number">4</span>
+	gyro_cal_y<span class="token operator">:</span> <span class="token number">14</span>
+	gyro_cal_z<span class="token operator">:</span> <span class="token number">0</span>
+MPU6500 Calibration<span class="token operator">:</span>
+	gyro_cal_x<span class="token operator">:</span> <span class="token number">6419</span>
+	gyro_cal_y<span class="token operator">:</span> <span class="token number">5340</span>
+	gyro_cal_z<span class="token operator">:</span> <span class="token number">0</span></code></pre>
 </div>
 </div>
 </div>

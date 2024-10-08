@@ -117,3 +117,12 @@ compl_roll +=  (1.0f-ALPHA)*(gyro_rate_x*2.0f)*(current_time - last_time) + ALPH
 
 </div>
 </div>
+
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">{{ title }}</h1>
+<div class="container align-content-center" style="height: 100%">
+
+https://youtu.be/g4PSVRbhDk8
+
+</div>
+</div>

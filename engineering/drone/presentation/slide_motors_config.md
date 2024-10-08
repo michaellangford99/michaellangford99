@@ -128,3 +128,85 @@ https://youtu.be/K2zn1jZydOI
 </div>
 </div>
 </div>
+
+
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">{{ title }}</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-6 align-content-center">
+
+Boot log:
+
+```c
+-----------------------------------------
+ECE477 STM32F446RET6 Flight Controller V0
+-----------------------------------------
+
+USB_USART:
+	USB_USART_BAUDRATE:      115200
+	CLOCK_RATE:              90000000
+	USB_USART_CLOCK_RATE:    90000000
+	USB_USART_DIV:           48
+	USB_USART_DIV_FRACTION:  13
+	USB_USART_DIV_MANTISSA:  48
+SYSTICK:
+	SYSTICK_LOAD:		22499
+	AHB_CLOCK:		180000000
+	AHB_CLOCK_DIV_8:	22500000
+RX_USART:
+	RX_USART_BAUDRATE:      420000
+	CLOCK_RATE:             90000000
+	RX_USART_CLOCK_RATE:    90000000
+	RX_USART_DIV:           13
+	RX_USART_DIV_FRACTION:  6
+	RX_USART_DIV_MANTISSA:  13
+	CRSF_RX_BAUDRATE:       420000
+	CRSF_NUM_CHANNELS:      16
+	CRSF_CHANNEL_VALUE_MIN: 172
+	CRSF_CHANNEL_VALUE_MID: 992
+	CRSF_CHANNEL_VALUE_MAX: 1811
+	CRSF_MAX_PACKET_LEN:    64
+```
+
+</div>
+<div class="col-lg-6 align-content-center">
+
+*(Continued...)*
+
+```c
+PI_USART:
+	PI_USART_BAUDRATE:      115200
+	CLOCK_RATE:             45000000
+	PI_USART_CLOCK_RATE:    45000000
+	PI_USART_DIV:           24
+	PI_USART_DIV_FRACTION:  6
+	PI_USART_DIV_MANTISSA:  24
+	PI_FRAME_START_CODE:    65
+	PI_FRAME_END_CODE:      66
+PWM:
+	PWM_FREQ:        3800
+	PWM_PERIOD [uS]: 263.157898
+	MIN_PULSE  [uS]: 125
+	MAX_PULSE  [uS]: 250
+	PWM_ARR:         5262
+	UPPERBOUNDCRRX:  5000
+	LOWERBOUNDCRRX:  2500
+	RANGE:           2500
+SPI1:
+	SPI_CR1_BR_PCLOCK_DIV_32: 0x20
+	SPI_PCLOCK_DIV_32:        2812500
+LSM6DSO Calibration:
+	gyro_cal_x: 4
+	gyro_cal_y: 14
+	gyro_cal_z: 0
+MPU6500 Calibration:
+	gyro_cal_x: 6419
+	gyro_cal_y: 5340
+	gyro_cal_z: 0
+```
+
+</div>
+</div>
+</div>
+</div>
