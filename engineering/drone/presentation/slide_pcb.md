@@ -13,24 +13,28 @@ date: 2000-00-11
 
 
 
-<div class="carousel-item" style="height: 100%">
+<div class="carousel-item " style="height: 100%">
 <h1 class="text-center mt-3">{{ title }}</h1>
 
 <div class="container align-content-center" style="height: 100%">
 
-**PCB initial layout**
-
 <div class="row">
-<div class="col-lg-6 align-content-center">
+<div class="col-lg-6 ml-auto mr-auto align-content-center">
 
 ![alt text](../wk6/image015.png "Initial footprint positioning") 
-
-</div>
-<div class="col-lg-6 align-content-center">
 
 ![alt text](../wk6/image017.png "Rendered view")
 
 </div>
+
+<div class="col-lg-1 ml-auto mr-auto align-content-center"></div>
+<div class="col-lg-4 ml-auto mr-auto align-content-center">
+
+![alt text](image-3.png "Working on the FTDI section")
+
+</div>
+
+<div class="col-lg-1 ml-auto mr-auto align-content-center"></div>
 </div>
 </div>
 </div>
