@@ -174,16 +174,21 @@ mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 <div class="container align-content-center" style="height: 100%">
 <div class="row">
 <div class="col-lg align-content-center">
-<p>Project Overview:</p>
+<p><strong>Project Overview:</strong></p>
 <ul>
 <li>Designed, built, and flew custom drone</li>
 <li>Completely custom flight controller hardware and software</li>
 <li>Required mechanical, hardware, software, and algorithm/signal processing skills to succesfully complete the project</li>
 </ul>
-<p>Objectives:</p>
+<p><strong>Objectives:</strong></p>
 <ul>
-<li>Custom flight controller to maintain flight</li>
-<li></li>
+<li>Custom flight controller to maintain flight, responsible for stabilization and altitude hold</li>
+<li>Pi zero to act as guidance and navigation computer, responsible for camera and LiDAR based obstacle avoidance and heading commands</li>
+</ul>
+<p><strong>Results:</strong></p>
+<ul>
+<li>Succesfull flight controller design, stable and controlable flight with altitude hold</li>
+<li>Work remains for implementation of navigation capability, but effective system integration of the two modules</li>
 </ul>
 </div>
 <div class="col-lg align-content-center">
@@ -1207,10 +1212,10 @@ Table 4.1. Power Budget Results
 <div class="col-lg align-content-center">
 <p>The first hurdle this week was getting the newly arrived radio transmitter and receiver to talk to each other and bind. They both use a newer air protocol called ELRS, or ExpressLRS. The receiver chosen uses an ESP8266, and is able to provide its own wireless access point to wirelessly login and configure the receiver through WiFi. The Transmitter is significantly more finicky, requiring a USB connection after a very precise power up sequence to be able to connect and configure it through a configurator.</p>
 <p>To begin, I first soldered some wires to the receiver to be able to prototype with it. I used my favorite 30AWG wire, super thin and easy to work with.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div></p>
 </div>
 <div class="col-lg align-content-center">
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image.png" class="figure-img img-fluid rounded" alt="Alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div>
-<div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-1.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.1a,b. Wiring to radio receiver complete"><figcaption class="figure-caption text-center" align="center">Fig. 5.1a,b. Wiring to radio receiver complete</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk5/image-1.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 5.1a,b. Wiring to radio receiver complete"><figcaption class="figure-caption text-center" align="center">Fig. 5.1a,b. Wiring to radio receiver complete</figcaption></figure></div></p>
 </div>
 </div>
 </div>
@@ -1831,6 +1836,12 @@ compl_roll <span class="token operator">+=</span>  <span class="token punctuatio
 <p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-17.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-19. Angle estimation using complementary filter, demonstrates no drift, and good noise tolerance"><figcaption class="figure-caption text-center" align="center">Fig. 13-19. Angle estimation using complementary filter, demonstrates no drift, and good noise tolerance</figcaption></figure></div></p>
 </div>
 </div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">IMU design and integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<div id="g4PSVRbhDk8" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/g4PSVRbhDk8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div>
+</div>
 
 <!--<img src=/engineering/drone/presentation/slide_imu_0/ class="card-img-bottom" alt="..."> --><div class="carousel-item" style="height: 100%">
 <h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
@@ -2086,8 +2097,113 @@ I took a look at the noise spectrum while the motors were running, hoping all th
 </div>
 </div>
 </div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">ESCs &amp; motors</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p>Boot log:</p>
+<pre class="language-c"><code class="language-c"><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+ECE477 STM32F446RET6 Flight Controller V0
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
 
-<!--<img src=/engineering/drone/presentation/slide_motors_config/ class="card-img-bottom" alt="..."> -->
+USB_USART<span class="token operator">:</span>
+	USB_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">115200</span>
+	CLOCK_RATE<span class="token operator">:</span>              <span class="token number">90000000</span>
+	USB_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">90000000</span>
+	USB_USART_DIV<span class="token operator">:</span>           <span class="token number">48</span>
+	USB_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">13</span>
+	USB_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">48</span>
+SYSTICK<span class="token operator">:</span>
+	SYSTICK_LOAD<span class="token operator">:</span>		<span class="token number">22499</span>
+	AHB_CLOCK<span class="token operator">:</span>		<span class="token number">180000000</span>
+	AHB_CLOCK_DIV_8<span class="token operator">:</span>	<span class="token number">22500000</span>
+RX_USART<span class="token operator">:</span>
+	RX_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">420000</span>
+	CLOCK_RATE<span class="token operator">:</span>             <span class="token number">90000000</span>
+	RX_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">90000000</span>
+	RX_USART_DIV<span class="token operator">:</span>           <span class="token number">13</span>
+	RX_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">6</span>
+	RX_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">13</span>
+	CRSF_RX_BAUDRATE<span class="token operator">:</span>       <span class="token number">420000</span>
+	CRSF_NUM_CHANNELS<span class="token operator">:</span>      <span class="token number">16</span>
+	CRSF_CHANNEL_VALUE_MIN<span class="token operator">:</span> <span class="token number">172</span>
+	CRSF_CHANNEL_VALUE_MID<span class="token operator">:</span> <span class="token number">992</span>
+	CRSF_CHANNEL_VALUE_MAX<span class="token operator">:</span> <span class="token number">1811</span>
+	CRSF_MAX_PACKET_LEN<span class="token operator">:</span>    <span class="token number">64</span></code></pre>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><em>(Continued...)</em></p>
+<pre class="language-c"><code class="language-c">PI_USART<span class="token operator">:</span>
+	PI_USART_BAUDRATE<span class="token operator">:</span>      <span class="token number">115200</span>
+	CLOCK_RATE<span class="token operator">:</span>             <span class="token number">45000000</span>
+	PI_USART_CLOCK_RATE<span class="token operator">:</span>    <span class="token number">45000000</span>
+	PI_USART_DIV<span class="token operator">:</span>           <span class="token number">24</span>
+	PI_USART_DIV_FRACTION<span class="token operator">:</span>  <span class="token number">6</span>
+	PI_USART_DIV_MANTISSA<span class="token operator">:</span>  <span class="token number">24</span>
+	PI_FRAME_START_CODE<span class="token operator">:</span>    <span class="token number">65</span>
+	PI_FRAME_END_CODE<span class="token operator">:</span>      <span class="token number">66</span>
+PWM<span class="token operator">:</span>
+	PWM_FREQ<span class="token operator">:</span>        <span class="token number">3800</span>
+	PWM_PERIOD <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">263.157898</span>
+	MIN_PULSE  <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">125</span>
+	MAX_PULSE  <span class="token punctuation">[</span>uS<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">250</span>
+	PWM_ARR<span class="token operator">:</span>         <span class="token number">5262</span>
+	UPPERBOUNDCRRX<span class="token operator">:</span>  <span class="token number">5000</span>
+	LOWERBOUNDCRRX<span class="token operator">:</span>  <span class="token number">2500</span>
+	RANGE<span class="token operator">:</span>           <span class="token number">2500</span>
+SPI1<span class="token operator">:</span>
+	SPI_CR1_BR_PCLOCK_DIV_32<span class="token operator">:</span> <span class="token number">0x20</span>
+	SPI_PCLOCK_DIV_32<span class="token operator">:</span>        <span class="token number">2812500</span>
+LSM6DSO Calibration<span class="token operator">:</span>
+	gyro_cal_x<span class="token operator">:</span> <span class="token number">4</span>
+	gyro_cal_y<span class="token operator">:</span> <span class="token number">14</span>
+	gyro_cal_z<span class="token operator">:</span> <span class="token number">0</span>
+MPU6500 Calibration<span class="token operator">:</span>
+	gyro_cal_x<span class="token operator">:</span> <span class="token number">6419</span>
+	gyro_cal_y<span class="token operator">:</span> <span class="token number">5340</span>
+	gyro_cal_z<span class="token operator">:</span> <span class="token number">0</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+
+<!--<img src=/engineering/drone/presentation/slide_motors_config/ class="card-img-bottom" alt="..."> --><div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Wrap-up</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk16/IMG_6637.jpg" class="figure-img img-fluid rounded" alt="alt text" title="Flight!"><figcaption class="figure-caption text-center" align="center">Flight!</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk16/IMG_6642.jpg" class="figure-img img-fluid rounded" alt="alt text" title="From below"><figcaption class="figure-caption text-center" align="center">From below</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Wrap-up</h1>
+<div class="container align-content-center" style="height: 100%">
+<div id="wpnE13KWtOQ" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/wpnE13KWtOQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Wrap-up</h1>
+<div class="container align-content-center" style="height: 100%">
+<h1 class="text-center">Questions?</h1>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-5.png" class="figure-img img-fluid rounded" alt="alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-8.png" class="figure-img img-fluid rounded" alt="alt text" title=" "><figcaption class="figure-caption text-center" align="center"> </figcaption></figure></div></p>
+</div>
+</div>
+<h1 class="text-center">Thank you!</h1>
+</div>
+</div>
+
+<!--<img src=/engineering/drone/presentation/slide_wrap_up/ class="card-img-bottom" alt="..."> -->
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
