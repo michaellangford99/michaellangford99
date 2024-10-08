@@ -159,10 +159,8 @@ mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 </style></head>
   <body>
     <div id="carouselExampleControls" class="vertical carousel carousel-dark slide vertical" data-bs-interval="false">
-      <div class="container-lg align-content-center" style="height:100%">
-        <div class="row justify-content-center align-content-center" style="height:100%">
-          <div class="col-md-12 mr-auto ml-auto">
-            <div class="carousel-inner" data-bs-interval="false">
+      <div class="align-content-center" style="height:100%">
+        <div class="carousel-inner" data-bs-interval="false">
 
 <div class="carousel-item active">
 
@@ -1567,17 +1565,19 @@ in case we had to abandon the brushless motors</li>
 </div>
 
 
-<!--<img src=/engineering/drone/presentation/slide_schematic/ class="card-img-bottom" alt="..."> --><div class="carousel-item" style="height: 100%">
+<!--<img src=/engineering/drone/presentation/slide_schematic/ class="card-img-bottom" alt="..."> --><div class="carousel-item " style="height: 100%">
 <h1 class="text-center mt-3">PCB design</h1>
 <div class="container align-content-center" style="height: 100%">
-<p><strong>PCB initial layout</strong></p>
 <div class="row">
-<div class="col-lg-6 align-content-center">
+<div class="col-lg-6 ml-auto mr-auto align-content-center">
 <p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk6/image015.png" class="figure-img img-fluid rounded" alt="alt text" title="Initial footprint positioning"><figcaption class="figure-caption text-center" align="center">Initial footprint positioning</figcaption></figure></div></p>
-</div>
-<div class="col-lg-6 align-content-center">
 <p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk6/image017.png" class="figure-img img-fluid rounded" alt="alt text" title="Rendered view"><figcaption class="figure-caption text-center" align="center">Rendered view</figcaption></figure></div></p>
 </div>
+<div class="col-lg-1 ml-auto mr-auto align-content-center"></div>
+<div class="col-lg-4 ml-auto mr-auto align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-3.png" class="figure-img img-fluid rounded" alt="alt text" title="Working on the FTDI section"><figcaption class="figure-caption text-center" align="center">Working on the FTDI section</figcaption></figure></div></p>
+</div>
+<div class="col-lg-1 ml-auto mr-auto align-content-center"></div>
 </div>
 </div>
 </div>
@@ -1628,16 +1628,71 @@ INSERT PCB design section
 </div>
 
 
-<!--<img src=/engineering/drone/presentation/slide_pcb/ class="card-img-bottom" alt="..."> --><!-- 
+<!--<img src=/engineering/drone/presentation/slide_pcb/ class="card-img-bottom" alt="..."> --><div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">IMU design and integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<p><strong>IMU chips</strong></p>
+<ul>
+<li>I selected the LSM6SO for its cheapness and availability (this was during the chip shortage)</li>
+<li>The MPU9250 is a tried and true part that I've worked with in the past and so was used to lower risk.</li>
+<li>Both are SPI based MEMS IMU devices, interfaced via writing register table for configuration and polling for IMU data</li>
+</ul>
+<div class="row">
+<div class="col-lg-5 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-1.png" class="figure-img img-fluid rounded" alt="alt text" title="MPU9250 block diagram"><figcaption class="figure-caption text-center" align="center">MPU9250 block diagram</figcaption></figure></div></p>
+</div>
+<div class="col-lg-7 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-2.png" class="figure-img img-fluid rounded" alt="alt text" title="LSM6DSO block diagram"><figcaption class="figure-caption text-center" align="center">LSM6DSO block diagram</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">IMU design and integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<p><strong>Initial results</strong></p>
+<p>The first objective after verifying my SPI bus driver was to begin streaming data off the devices, and tuning their configurations. Starting out, the data was too slow, and had the wrong bit format, but after fixing the bit shifting etc., and setting a higher data rate, it was clear all 6 axes were being properly read.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk10/image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 10.1. 6 axes being read, accelerometer X,Y,Z, and gyro X, Y, Z."><figcaption class="figure-caption text-center" align="center">Fig. 10.1. 6 axes being read, accelerometer X,Y,Z, and gyro X, Y, Z.</figcaption></figure></div></p>
+</div>
+</div>
+<!-- 
 add in here some info about the SPI driver and initial dev?
 -->
 <div class="carousel-item" style="height: 100%">
 <h1 class="text-center mt-3">IMU design and integration</h1>
 <div class="container align-content-center" style="height: 100%">
-<p><strong>Accelerometer</strong></p>
-<p>Much effort was spent this week taking the working example code from Owen and getting the axis values to be read properly, calibrated, and integrated into gyro headings in correct units.</p>
-<p>Starting out, the data was too slow, and had the wrong bit format. After fixing the bit shifting etc., and setting a higher data rate, it was clear all 6 axes were being properly read.</p>
-<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk10/image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 10.1. 6 axes being read, accelerometer X,Y,Z, and gyro X, Y, Z."><figcaption class="figure-caption text-center" align="center">Fig. 10.1. 6 axes being read, accelerometer X,Y,Z, and gyro X, Y, Z.</figcaption></figure></div></p>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><strong>IMU Calibration</strong></p>
+<p>Next, all channels of the IMU must be calibrated so that the average value returned by the gyro for angular rate would be zero. Otherwise the integration of the angular rate to get heading would result in immediate drift and a useless measurement. Therefore, the system sums up for each axis a few thousand readings at reasonable time intervals, then divides that sum by the umber of samples to get the average reading. That is then subtracted from all future readings to get a zero mean angular rate reading.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk10/image-5.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 10.6. Integrated gyro heading data (before scaling applied)"><figcaption class="figure-caption text-center" align="center">Fig. 10.6. Integrated gyro heading data (before scaling applied)</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<pre class="language-c"><code class="language-c"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> CAL_LENGTH<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token comment">//set precise sampling interval</span>
+		<span class="token function">wait</span><span class="token punctuation">(</span><span class="token number">1.0f</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token number">6.67f</span><span class="token operator">*</span><span class="token number">1000.0f</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token function">read_axes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		gyro_cal_x <span class="token operator">+=</span> gyro_raw_x<span class="token punctuation">;</span>
+		gyro_cal_y <span class="token operator">+=</span> gyro_raw_y<span class="token punctuation">;</span>
+		gyro_cal_z <span class="token operator">+=</span> gyro_raw_z<span class="token punctuation">;</span>
+
+		accel_cal_x <span class="token operator">+=</span> accel_raw_x<span class="token punctuation">;</span>
+		accel_cal_y <span class="token operator">+=</span> accel_raw_y<span class="token punctuation">;</span>
+		accel_cal_z <span class="token operator">+=</span> accel_raw_z <span class="token operator">-</span> A_RAW_1G<span class="token punctuation">;</span> <span class="token comment">//Z axis experiences gravity, this cals it to 1G</span>
+	<span class="token punctuation">}</span>
+
+	gyro_cal_x <span class="token operator">=</span> gyro_cal_x <span class="token operator">/</span> CAL_LENGTH<span class="token punctuation">;</span>
+	gyro_cal_y <span class="token operator">=</span> gyro_cal_y <span class="token operator">/</span> CAL_LENGTH<span class="token punctuation">;</span>
+	gyro_cal_z <span class="token operator">=</span> gyro_cal_z <span class="token operator">/</span> CAL_LENGTH<span class="token punctuation">;</span>
+
+	accel_cal_x <span class="token operator">=</span> accel_cal_x <span class="token operator">/</span> CAL_LENGTH<span class="token punctuation">;</span>
+	accel_cal_y <span class="token operator">=</span> accel_cal_y <span class="token operator">/</span> CAL_LENGTH<span class="token punctuation">;</span>
+	accel_cal_z <span class="token operator">=</span> accel_cal_z <span class="token operator">/</span> CAL_LENGTH<span class="token punctuation">;</span></code></pre>
+<p><em>Fig. 10.5. Calibration code</em></p>
+</div>
+</div>
 </div>
 </div>
 <div class="carousel-item" style="height: 100%">
@@ -1707,88 +1762,203 @@ gyro_angle_x <span class="token operator">+=</span> gyro_rate_x <span class="tok
 </div>
 </div>
 </div>
-<!-- 
 
-```c
-xyz[0] += ((float)data[0]) * delta_t * 245.0f / 32768.0f;
-xyz[1] += ((float)data[1]) * delta_t * 245.0f / 32768.0f;
-xyz[2] += ((float)data[2]) * delta_t * 245.0f / 32768.0f;
-```
+<!--<img src=/engineering/drone/presentation/slide_imu/ class="card-img-bottom" alt="..."> --><div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">IMU design and integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-4 align-content-center">
+<p><strong>Sensor fusion block diagram</strong></p>
+<p>Once the basic function of streaming was complete, I put quite a bit of time into calibrating and adapting the IMU software to filter and combine the accelerometer and gyroscope.</p>
+<p>The sensor fusion algorithm I settled on is composed of some initial filtering steps followed by a simple alpha/beta filter that combines the angular rate of the gyro with the high-noise but reliable accelerometer pitch and roll values. The alpha/beta parameter is also driven by a motion and noise sensing step to tune it to the most reliable sensor.</p>
+</div>
+<div class="col-lg-8 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-18.png" class="figure-img img-fluid rounded" alt="Alt text" title="Signal processing chain block diagram"><figcaption class="figure-caption text-center" align="center">Signal processing chain block diagram</figcaption></figure></div></p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-19.png" class="figure-img img-fluid rounded" alt="Alt text" title="IMU to motor output data flow"><figcaption class="figure-caption text-center" align="center">IMU to motor output data flow</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">IMU design and integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-13.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-13. Normalized accelerometer data"><figcaption class="figure-caption text-center" align="center">Fig. 13-13. Normalized accelerometer data</figcaption></figure></div></p>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p>I created a very simple IIR filter for the accelerometer data, single pole:</p>
+<p><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="29.052ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 12840.9 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><defs><path id="MJX-2-TEX-I-1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-2-TEX-N-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path id="MJX-2-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-2-TEX-N-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path id="MJX-2-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-2-TEX-I-1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path><path id="MJX-2-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-2-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-2-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-2-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-2-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-2-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D466" xlink:href="#MJX-2-TEX-I-1D466"></use></g><g data-mml-node="mo" transform="translate(490,0)"><use data-c="5B" xlink:href="#MJX-2-TEX-N-5B"></use></g><g data-mml-node="mi" transform="translate(768,0)"><use data-c="1D45B" xlink:href="#MJX-2-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(1368,0)"><use data-c="5D" xlink:href="#MJX-2-TEX-N-5D"></use></g><g data-mml-node="mo" transform="translate(1923.8,0)"><use data-c="3D" xlink:href="#MJX-2-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(2979.6,0)"><use data-c="1D458" xlink:href="#MJX-2-TEX-I-1D458"></use></g><g data-mml-node="mi" transform="translate(3500.6,0)"><use data-c="1D466" xlink:href="#MJX-2-TEX-I-1D466"></use></g><g data-mml-node="mo" transform="translate(3990.6,0)"><use data-c="5B" xlink:href="#MJX-2-TEX-N-5B"></use></g><g data-mml-node="mi" transform="translate(4268.6,0)"><use data-c="1D45B" xlink:href="#MJX-2-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(5090.8,0)"><use data-c="2212" xlink:href="#MJX-2-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(6091,0)"><use data-c="31" xlink:href="#MJX-2-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(6591,0)"><use data-c="5D" xlink:href="#MJX-2-TEX-N-5D"></use></g><g data-mml-node="mo" transform="translate(7091.2,0)"><use data-c="2B" xlink:href="#MJX-2-TEX-N-2B"></use></g><g data-mml-node="mo" transform="translate(8091.4,0)"><use data-c="28" xlink:href="#MJX-2-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(8480.4,0)"><use data-c="31" xlink:href="#MJX-2-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(9202.7,0)"><use data-c="2212" xlink:href="#MJX-2-TEX-N-2212"></use></g><g data-mml-node="mi" transform="translate(10202.9,0)"><use data-c="1D458" xlink:href="#MJX-2-TEX-I-1D458"></use></g><g data-mml-node="mo" transform="translate(10723.9,0)"><use data-c="29" xlink:href="#MJX-2-TEX-N-29"></use></g><g data-mml-node="mi" transform="translate(11112.9,0)"><use data-c="1D465" xlink:href="#MJX-2-TEX-I-1D465"></use></g><g data-mml-node="mo" transform="translate(11684.9,0)"><use data-c="5B" xlink:href="#MJX-2-TEX-N-5B"></use></g><g data-mml-node="mi" transform="translate(11962.9,0)"><use data-c="1D45B" xlink:href="#MJX-2-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(12562.9,0)"><use data-c="5D" xlink:href="#MJX-2-TEX-N-5D"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>y</mi><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo><mo>=</mo><mi>k</mi><mi>y</mi><mo stretchy="false">[</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>k</mi><mo stretchy="false">)</mo><mi>x</mi><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">]</mo></math></mjx-assistive-mml></mjx-container></p>
+<p><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg style="vertical-align: -2.194ex;" xmlns="http://www.w3.org/2000/svg" width="28.743ex" height="5.498ex" role="img" focusable="false" viewBox="0 -1460 12704.3 2429.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><defs><path id="MJX-3-TEX-I-1D44C" d="M66 637Q54 637 49 637T39 638T32 641T30 647T33 664T42 682Q44 683 56 683Q104 680 165 680Q288 680 306 683H316Q322 677 322 674T320 656Q316 643 310 637H298Q242 637 242 624Q242 619 292 477T343 333L346 336Q350 340 358 349T379 373T411 410T454 461Q546 568 561 587T577 618Q577 634 545 637Q528 637 528 647Q528 649 530 661Q533 676 535 679T549 683Q551 683 578 682T657 680Q684 680 713 681T746 682Q763 682 763 673Q763 669 760 657T755 643Q753 637 734 637Q662 632 617 587Q608 578 477 424L348 273L322 169Q295 62 295 57Q295 46 363 46Q379 46 384 45T390 35Q390 33 388 23Q384 6 382 4T366 1Q361 1 324 1T232 2Q170 2 138 2T102 1Q84 1 84 9Q84 14 87 24Q88 27 89 30T90 35T91 39T93 42T96 44T101 45T107 45T116 46T129 46Q168 47 180 50T198 63Q201 68 227 171L252 274L129 623Q128 624 127 625T125 627T122 629T118 631T113 633T105 634T96 635T83 636T66 637Z"></path><path id="MJX-3-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-3-TEX-I-1D467" d="M347 338Q337 338 294 349T231 360Q211 360 197 356T174 346T162 335T155 324L153 320Q150 317 138 317Q117 317 117 325Q117 330 120 339Q133 378 163 406T229 440Q241 442 246 442Q271 442 291 425T329 392T367 375Q389 375 411 408T434 441Q435 442 449 442H462Q468 436 468 434Q468 430 463 420T449 399T432 377T418 358L411 349Q368 298 275 214T160 106L148 94L163 93Q185 93 227 82T290 71Q328 71 360 90T402 140Q406 149 409 151T424 153Q443 153 443 143Q443 138 442 134Q425 72 376 31T278 -11Q252 -11 232 6T193 40T155 57Q111 57 76 -3Q70 -11 59 -11H54H41Q35 -5 35 -2Q35 13 93 84Q132 129 225 214T340 322Q352 338 347 338Z"></path><path id="MJX-3-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-3-TEX-I-1D44B" d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z"></path><path id="MJX-3-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-3-TEX-I-1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path><path id="MJX-3-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-3-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-3-TEX-S4-2223" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-3-TEX-I-1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path id="MJX-3-TEX-I-1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path><path id="MJX-3-TEX-I-1D714" d="M495 384Q495 406 514 424T555 443Q574 443 589 425T604 364Q604 334 592 278T555 155T483 38T377 -11Q297 -11 267 66Q266 68 260 61Q201 -11 125 -11Q15 -11 15 139Q15 230 56 325T123 434Q135 441 147 436Q160 429 160 418Q160 406 140 379T94 306T62 208Q61 202 61 187Q61 124 85 100T143 76Q201 76 245 129L253 137V156Q258 297 317 297Q348 297 348 261Q348 243 338 213T318 158L308 135Q309 133 310 129T318 115T334 97T358 83T393 76Q456 76 501 148T546 274Q546 305 533 325T508 357T495 384Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mfrac"><g data-mml-node="mrow" transform="translate(264.5,710)"><g data-mml-node="mi"><use data-c="1D44C" xlink:href="#MJX-3-TEX-I-1D44C"></use></g><g data-mml-node="mo" transform="translate(763,0)"><use data-c="28" xlink:href="#MJX-3-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1152,0)"><use data-c="1D467" xlink:href="#MJX-3-TEX-I-1D467"></use></g><g data-mml-node="mo" transform="translate(1617,0)"><use data-c="29" xlink:href="#MJX-3-TEX-N-29"></use></g></g><g data-mml-node="mrow" transform="translate(220,-710)"><g data-mml-node="mi"><use data-c="1D44B" xlink:href="#MJX-3-TEX-I-1D44B"></use></g><g data-mml-node="mo" transform="translate(852,0)"><use data-c="28" xlink:href="#MJX-3-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1241,0)"><use data-c="1D467" xlink:href="#MJX-3-TEX-I-1D467"></use></g><g data-mml-node="mo" transform="translate(1706,0)"><use data-c="29" xlink:href="#MJX-3-TEX-N-29"></use></g></g><rect width="2295" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(2812.8,0)"><use data-c="3D" xlink:href="#MJX-3-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(3868.6,0)"><g data-mml-node="mi" transform="translate(3057.3,676)"><use data-c="1D458" xlink:href="#MJX-3-TEX-I-1D458"></use></g><g data-mml-node="mrow" transform="translate(220,-719.9)"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-3-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(722.2,0)"><use data-c="2212" xlink:href="#MJX-3-TEX-N-2212"></use></g><g data-mml-node="mo" transform="translate(1722.4,0)"><use data-c="28" xlink:href="#MJX-3-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(2111.4,0)"><use data-c="31" xlink:href="#MJX-3-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(2833.7,0)"><use data-c="2212" xlink:href="#MJX-3-TEX-N-2212"></use></g><g data-mml-node="mi" transform="translate(3833.9,0)"><use data-c="1D458" xlink:href="#MJX-3-TEX-I-1D458"></use></g><g data-mml-node="mo" transform="translate(4354.9,0)"><use data-c="29" xlink:href="#MJX-3-TEX-N-29"></use></g><g data-mml-node="msup" transform="translate(4743.9,0)"><g data-mml-node="mi"><use data-c="1D467" xlink:href="#MJX-3-TEX-I-1D467"></use></g><g data-mml-node="TeXAtom" transform="translate(498,289) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-3-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(778,0)"><use data-c="31" xlink:href="#MJX-3-TEX-N-31"></use></g></g></g></g><rect width="6395.6" height="60" x="120" y="220"></rect></g><g data-mml-node="msub" transform="translate(10504.1,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mo"><svg width="278" height="2047" y="-773.5" x="27.5" viewBox="0 -253.6 278 2047"><use data-c="2223" xlink:href="#MJX-3-TEX-S4-2223" transform="scale(1,3.074)"></use></svg></g></g><g data-mml-node="TeXAtom" transform="translate(366,-808.9) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D467" xlink:href="#MJX-3-TEX-I-1D467"></use></g><g data-mml-node="mo" transform="translate(465,0)"><use data-c="3D" xlink:href="#MJX-3-TEX-N-3D"></use></g><g data-mml-node="msup" transform="translate(1243,0)"><g data-mml-node="mi"><use data-c="1D452" xlink:href="#MJX-3-TEX-I-1D452"></use></g><g data-mml-node="TeXAtom" transform="translate(499,289) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D457" xlink:href="#MJX-3-TEX-I-1D457"></use></g><g data-mml-node="mi" transform="translate(412,0)"><use data-c="1D714" xlink:href="#MJX-3-TEX-I-1D714"></use></g></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mfrac><mrow><mi>Y</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mrow><mi>X</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mi>k</mi><mrow><mn>1</mn><mo>−</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>k</mi><mo stretchy="false">)</mo><msup><mi>z</mi><mrow data-mjx-texclass="ORD"><mo>−</mo><mn>1</mn></mrow></msup></mrow></mfrac><msub><mrow data-mjx-texclass="ORD"><mo minsize="2.047em" maxsize="2.047em">|</mo></mrow><mrow data-mjx-texclass="ORD"><mi>z</mi><mo>=</mo><msup><mi>e</mi><mrow data-mjx-texclass="ORD"><mi>j</mi><mi>ω</mi></mrow></msup></mrow></msub></math></mjx-assistive-mml></mjx-container></p>
+<p>I’ve plotted the frequency response of the filter (which isn’t amazing, but it runs pretty fast seeing as it’s single pole).</p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-21.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-14. Frequency response of single pole IIR LPF, k=0.1,0.2,0.3"><figcaption class="figure-caption text-center" align="center">Fig. 13-14. Frequency response of single pole IIR LPF, k=0.1,0.2,0.3</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">IMU design and integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-9 align-content-center">
+<p>I also created the conversion code from accelerometer g readings to estimated pitch and roll using the arctan function. The gravity vector is sensed by taking the dot product of the gravity vector and the axes of the accelerometer, giving 3 acceleration values. Assuming no other acceleration is present (haha like that’ll happen), the arctan function can be used to find the angle of the vector formed by the axes readings.</p>
+<p><em>IIR filter implementation within atan2 conversion</em></p>
+<pre class="language-cpp"><code class="language-cpp">accel_pitch <span class="token operator">=</span> <span class="token function">atan2</span><span class="token punctuation">(</span>accel_x<span class="token punctuation">,</span> <span class="token function">sqrt</span><span class="token punctuation">(</span>accel_z<span class="token operator">*</span>accel_z <span class="token operator">+</span> accel_y<span class="token operator">*</span>accel_y<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">180.0f</span><span class="token operator">/</span><span class="token number">3.1415963f</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.01f</span> <span class="token operator">+</span> <span class="token number">0.99f</span><span class="token operator">*</span>accel_pitch<span class="token punctuation">;</span>
+accel_roll <span class="token operator">=</span> <span class="token function">atan2</span><span class="token punctuation">(</span>accel_y<span class="token punctuation">,</span> <span class="token function">sqrt</span><span class="token punctuation">(</span>accel_z<span class="token operator">*</span>accel_z <span class="token operator">+</span> accel_x<span class="token operator">*</span>accel_x<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">180.0f</span><span class="token operator">/</span><span class="token number">3.1415963f</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.01f</span> <span class="token operator">+</span> <span class="token number">0.99f</span><span class="token operator">*</span>accel_roll<span class="token punctuation">;</span></code></pre>
+</div>
+<div class="col-lg-3 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="image-20.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-16. How the gravity vector is applied across the axes of the accelerometer (source: Analog Devices)"><figcaption class="figure-caption text-center" align="center">Fig. 13-16. How the gravity vector is applied across the axes of the accelerometer (source: Analog Devices)</figcaption></figure></div></p>
+</div>
+</div>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-16.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-17. Pitch and roll after IIR and Atan2 computation"><figcaption class="figure-caption text-center" align="center">Fig. 13-17. Pitch and roll after IIR and Atan2 computation</figcaption></figure></div></p>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">IMU design and integration</h1>
+<div class="container align-content-center" style="height: 100%">
+<p>Lastly I implemented a filter called the complementary filter, which combines the high frequency gyroscope readings (which are reliable in the short term), and the noisy but long-term stable accelerometer angle, to compute a simple estimate of the true angle. It isn’t amazing, and all these fusion steps need more work, but it’s a start, and indicates the sensors are providing reliable data.</p>
+<p><em>Complementary filter implementation</em></p>
+<pre class="language-cpp"><code class="language-cpp">compl_pitch <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token number">1.0f</span><span class="token operator">-</span>ALPHA<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token operator">-</span>gyro_rate_y<span class="token operator">*</span><span class="token number">2.0f</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>current_time <span class="token operator">-</span> last_time<span class="token punctuation">)</span> <span class="token operator">+</span> ALPHA <span class="token operator">*</span> <span class="token punctuation">(</span>accel_pitch<span class="token operator">-</span>compl_pitch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+compl_roll <span class="token operator">+=</span>  <span class="token punctuation">(</span><span class="token number">1.0f</span><span class="token operator">-</span>ALPHA<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>gyro_rate_x<span class="token operator">*</span><span class="token number">2.0f</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>current_time <span class="token operator">-</span> last_time<span class="token punctuation">)</span> <span class="token operator">+</span> ALPHA <span class="token operator">*</span> <span class="token punctuation">(</span>accel_roll<span class="token operator">-</span>compl_roll<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-17.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-19. Angle estimation using complementary filter, demonstrates no drift, and good noise tolerance"><figcaption class="figure-caption text-center" align="center">Fig. 13-19. Angle estimation using complementary filter, demonstrates no drift, and good noise tolerance</figcaption></figure></div></p>
+</div>
+</div>
 
-*Fig. 10.4. Code sample including LSB scaling and time delta.*
+<!--<img src=/engineering/drone/presentation/slide_imu_0/ class="card-img-bottom" alt="..."> --><div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-4 align-content-center">
+<p><strong>Mechanical assembly</strong></p>
+<p>As the flight controller development continues, I completed the wiring of the motors and ESC, along with the battery, as that has arrived as well. Soldering anything to the ESC is a bit of a challenge, as the heat dissipation and thermal mass of the board is so high. I have to set the temperature of the iron past 900 deg.F, and that seems to work alright. I started out by wrapping the motor cables around the arms of the frame to take up the slack in the cables, but allow for rewiring and flexing of the cable. I taped them in their positions, and then worked on mounting the ESC to the frame.</p>
+</div>
+<div class="col-lg-8 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 1. Motor cables arranged before soldering."><figcaption class="figure-caption text-center" align="center">Figure 11- 1. Motor cables arranged before soldering.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<p>The ESC wasn’t hard to mount, it simply needed ¾” M3 screws and nuts to hold it in place.
+Once the ESC was mounted, I soldered the power cable, and then the motors. Once complete, I powered it up and verified that each motor vibrated as it generated the startup sound.</p>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 3a. Battery cables soldered"><figcaption class="figure-caption text-center" align="center">Figure 11- 3a. Battery cables soldered</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 3b. ESC fully soldered."><figcaption class="figure-caption text-center" align="center">Figure 11- 3b. ESC fully soldered.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<p><strong>Flight Controller Mount Design</strong></p>
+<p>I decided to model everything in Inventor including the Pi Zero and the PCB, so I spent quite a bit of time figuring out how to export a model from KiCAD that Inventor could understand without it losing a significant amount of information. I also added the screws and nuts that we will use, both because I think it looks nice, and it makes sure that each part has the needed clearance to be screwed in.</p>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk12/image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title="PCB stack bracket"><figcaption class="figure-caption text-center" align="center">PCB stack bracket</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk12/image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="View underneath with PCBs"><figcaption class="figure-caption text-center" align="center">View underneath with PCBs</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk12/image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Perspective view"><figcaption class="figure-caption text-center" align="center">Perspective view</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk12/image-8.png" class="figure-img img-fluid rounded" alt="Alt text" title="Full chassis view"><figcaption class="figure-caption text-center" align="center">Full chassis view</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-5 align-content-center">
+<p>Once the mounting bracket was printed, I tried it out to see if it needed any changes/reprint. After removing the raft and support material, and cleaning off the thin wisps of print material, the bracket was looking good.</p>
+<p>An initial evaluation revealed however that I had forgotten a couple very important components when designing this, the motor cables and the motor controller clearance. As can be seen in Fig. 7, the bracket doesn’t leave any space between the screw holes for the motor cables to pass under, as well as coming real close to the top of the motor controller.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-6. Flight controller mounting bracket after printing"><figcaption class="figure-caption text-center" align="center">Fig. 13-6. Flight controller mounting bracket after printing</figcaption></figure></div></p>
+</div>
+<div class="col-lg-7 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-7. Clearance and cable issues with flight controller mount"><figcaption class="figure-caption text-center" align="center">Fig. 13-7. Clearance and cable issues with flight controller mount</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<p>These issues didn’t seem to be solvable without damaging the mount, or modification of the motor cable routing (which I definitely didn’t want to change), so I decided to make some modifications and reprint.</p>
+<p>I fixed both issues by extruding the part of the bracket that surrounds the mounting screws, but leaving space for the motor cables – this increased the clearance while making space for the wires, solving both issues.</p>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-9.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-8. Edited bracket after changes"><figcaption class="figure-caption text-center" align="center">Fig. 13-8. Edited bracket after changes</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-10.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-9. Fixed bracket in place within assembly"><figcaption class="figure-caption text-center" align="center">Fig. 13-9. Fixed bracket in place within assembly</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
 
-(max 245 Degrees per second, signed 16 bit number -> 32768 max value)
+<!--<img src=/engineering/drone/presentation/slide_motors_frame/ class="card-img-bottom" alt="..."> --><div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">PCB Assembly</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-5 align-content-center">
+<p>Our PCBs arrived this week from JLCPCB, allowing us to start the hardware build process. The boards look good, however not tenting the vias is going to make certain aspects of the board much harder to solder, on an already very dense and small pitch build. We’ll see how this goes. Figure 11- 1 shows one of the boards upon arrival.</p>
+<p>First, I wanted to perform some electrical tests on the board, which it passed. I tested continuity for many different nets, particularly those with very tight trace tolerances. Next I tested the physical layout of the board by comparing it to the Pi Zero, onto which it needs to mount. I was happy to see the boards fit perfectly with the Pi Zero form factor and screw positions, as well as the communication connector lining right up with the Pi Zero header.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image-5.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 4. Newly arrived boards."><figcaption class="figure-caption text-center" align="center">Figure 11- 4. Newly arrived boards.</figcaption></figure></div></p>
+</div>
+<div class="col-lg-7 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 5. Blank board with Pi Zero"><figcaption class="figure-caption text-center" align="center">Figure 11- 5. Blank board with Pi Zero</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">PCB Assembly</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p>Once satisfied that the boards weren’t total trash, I began soldering, starting with the power supply, to verify that first. This board uses mostly 0603 SMT passive components, with a couple 0402s and 1206 &amp; 1210s for power capacitors. This means the lab doesn’t have the majority of the components we need. Thankfully, I have a personal stockpile of a variety of different 0603 SMT passives, and a few assorted 1206 &amp; 1210s from previous flight controller board projects.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 6. Stockpile of various 0603 passives, and a few hard to find chips. (FT230XQ and MPU9250)"><figcaption class="figure-caption text-center" align="center">Figure 11- 6. Stockpile of various 0603 passives, and a few hard to find chips. (FT230XQ and MPU9250)</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p>I first laid out the components on the board without soldering, to get a sense of how everything was fitting, and if there were any mistakes with footprints. I then went into KiCAD and generated a plot of the reference designator and value of every component on the board, at much larger scale. This helps a lot when trying to figure out which miniscule SMT part goes where</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image-8.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 7. Plot of value, ref. designator pairs to help with soldering."><figcaption class="figure-caption text-center" align="center">Figure 11- 7. Plot of value, ref. designator pairs to help with soldering.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">PCB Assembly</h1>
+<div class="container align-content-center" style="height: 100%">
+<p>First I soldered the power capacitors, 5V switching regulator, and then the ESC connector. I then tested the regulator by wiring the connector to the ESC and powering on, and measuring the voltage and ripple.</p>
+<p>After this, I added all the 3.3V microcontroller caps, and then the microcontroller. This is one of the most difficult parts to solder, and definitely took a while. First I covered the board in flux, and brushed solder across the pads. Then I tacked a pin from each corner down, and then dragged the tinned iron across the pins. Next I added the programming header. At first this appeared to work, but after attempting to program with no success, I realized that some of the solder joints on the micro had very little solder, so I reheated multiple joints individually, and then the device was able to program.</p>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image-15.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 10. Closeup of board after micro soldered."><figcaption class="figure-caption text-center" align="center">Figure 11- 10. Closeup of board after micro soldered.</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image-16.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 11. Board running 'blink LED' test while powered by ESC."><figcaption class="figure-caption text-center" align="center">Figure 11- 11. Board running 'blink LED' test while powered by ESC.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
 
-Before this was usable however, I had to create calibration code, so that the average value returned by the gyro for angular rate would be zero. Otherwise the integration of the angular rate to get heading would result in immediate drift and a useless measurement. Therefore, the system sums up for each axis a few thousand readings at reasonable time intervals, then divides that sum by the umber of samples to get the average reading. That is then subtracted from all future readings to get a zero mean angular rate reading.
-
-```c
-for (int i = 0; i < CAL_LENGTH; i++)
-	{
-		//set precise sampling interval
-		wait(1.0f/(6.67f*1000.0f));
-
-		read_axes();
-		gyro_cal_x += gyro_raw_x;
-		gyro_cal_y += gyro_raw_y;
-		gyro_cal_z += gyro_raw_z;
-
-		accel_cal_x += accel_raw_x;
-		accel_cal_y += accel_raw_y;
-		accel_cal_z += accel_raw_z - A_RAW_1G; //Z axis experiences gravity, this cals it to 1G
-	}
-
-	gyro_cal_x = gyro_cal_x / CAL_LENGTH;
-	gyro_cal_y = gyro_cal_y / CAL_LENGTH;
-	gyro_cal_z = gyro_cal_z / CAL_LENGTH;
-
-	accel_cal_x = accel_cal_x / CAL_LENGTH;
-	accel_cal_y = accel_cal_y / CAL_LENGTH;
-	accel_cal_z = accel_cal_z / CAL_LENGTH;
-```
-
-*Fig. 10.5. Calibration code*
-
-Owen is working this week on incorporating everything into #defines so that this code is much more configurable as we start tuning these parameters.
-
-![Alt text](../wk10/image-5.png "Fig. 10.6. Integrated gyro heading data (before scaling applied)")
-
-**Code organization**
-
-Now that interfacing code is nearly complete, I am integrating each example source code project into its own driver file, headers, and separating base hardware drivers from device drivers (i.e. separate IMU driver from SPI driver). I am also ensuring all code is driven by `#define`s, so that clock frequency changes, baud rates, etc. can be quickly changed to their proper values, and register values based off those parameters can automatically scale.
-
-```log
-inc:
-crc8.h  i2c.h      matrix.h   pi_usart.h  rx_usart.h  stm32f4xx_it.h  tty.h
-fifo.h  imu.h      motors.h   pid.h       safety.h    system.h        usb_usart.h
-fir.h   lsm6ds3.h  mpu6500.h  pwm.h       spi.h       systick.h
-
-src:
-fir.c      matrix.c    pid.c            safety.c         system_stm32f4xx.c		crc8.c
-i2c.c      motors.c    preprocessor.sh  sensor_fusion.c  systick.c				fifo.c
-lsm6ds3.c  mpu6500.c   pwm.c            spi.c            tty.c
-main.c     pi_usart.c  rx_usart.c       syscalls.c       usb_usart.c
-```
-
-*Fig.10.7. Project organization.*
-
-**Lidar ToF research and debugging**
-
-Lastly, I’ve been helping those working on the LIDAR to get it working. To improve timing, I have added the systick driver, and to add debugging functionality, I implemented a USB Uart driver to allow printf to debug their incoming data.
-
-This allowed me to determine that although the primary read function was returning a not-so-accurate reading of distance, using an FIR filter on one of the internal variables to the driver provided a much higher fidelity distance measurement.
-
-Work still remains, but it is a huge jump in functionality from before!
-
-![Alt text](../wk10/image-8.png "Fig. 10.8. LIDAR internal data being printed. Note the purple trace is much higher fidelity than the returned data (green).")
-
-![Alt text](../wk10/image-9.png "Fig. 10.9. High fidelity data passed through FIR filter. Range measurement is a result of moving my hand back in forth in front of the sensor.")
-
--->
-
-
-<!--<img src=/engineering/drone/presentation/slide_imu/ class="card-img-bottom" alt="..."> -->
-            </div>
-          </div>
+<!--<img src=/engineering/drone/presentation/slide_pcb_buildup/ class="card-img-bottom" alt="..."> -->
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

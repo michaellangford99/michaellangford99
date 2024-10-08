@@ -1,0 +1,301 @@
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="google-site-verification" content="jWYz4n1G8T7OHT4uWrEfZc6Qx-KFsPUYCC6oLXvfJHs">
+
+    <!-- Bootstrap CSS -->
+   <title>Frame, motors &amp; ESCs</title> 
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!---<link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css"/>  -->
+    <!---<link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet"> -->
+   <!--- <link rel="stylesheet" href="/assets/css/prism-vs.css"/>    -->
+   <link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css">
+    <link rel="stylesheet" href="/assets/css/clean-blog.css">
+    
+  </head>
+  <body>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark d-print-none" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Michaelangelo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/hiking/">Hiking &amp; Photography</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/engineering/">Engineering</a>
+      </li>
+    </ul>
+
+<!--
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+
+        <li class="nav-item"><a class="nav-link" href="#">Hiking & Photograpy</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Engineering</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Computer Graphics</a></li>       
+        <li class="nav-item"><a class="nav-link" href="#">Thoughts</a></li>
+        
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+
+
+      </ul>
+-->
+
+      <!--<form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>-->
+    </div>
+  </div>
+</nav>
+    
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white d-print-none" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div style="padding: 100px 0 130px ">
+  <h1 class="mb-2 h1">Frame, motors &amp; ESCs</h1>
+  <p>
+    
+  </p>
+</div>
+</div>
+
+<!--<div class="container-md">
+  <div class="alert alert-primary" role="alert">
+    
+  </div>
+</div>-->
+
+    <div class="container-md d-print-none">
+        <div class="row justify-content-center">
+            
+            <div class="col-md-9 mr-auto ml-auto">
+                 <div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-4 align-content-center">
+<p><strong>Mechanical assembly</strong></p>
+<p>As the flight controller development continues, I completed the wiring of the motors and ESC, along with the battery, as that has arrived as well. Soldering anything to the ESC is a bit of a challenge, as the heat dissipation and thermal mass of the board is so high. I have to set the temperature of the iron past 900 deg.F, and that seems to work alright. I started out by wrapping the motor cables around the arms of the frame to take up the slack in the cables, but allow for rewiring and flexing of the cable. I taped them in their positions, and then worked on mounting the ESC to the frame.</p>
+</div>
+<div class="col-lg-8 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 1. Motor cables arranged before soldering."><figcaption class="figure-caption text-center" align="center">Figure 11- 1. Motor cables arranged before soldering.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<p>The ESC wasn’t hard to mount, it simply needed ¾” M3 screws and nuts to hold it in place.
+Once the ESC was mounted, I soldered the power cable, and then the motors. Once complete, I powered it up and verified that each motor vibrated as it generated the startup sound.</p>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 3a. Battery cables soldered"><figcaption class="figure-caption text-center" align="center">Figure 11- 3a. Battery cables soldered</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 3b. ESC fully soldered."><figcaption class="figure-caption text-center" align="center">Figure 11- 3b. ESC fully soldered.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<p><strong>Flight Controller Mount Design</strong></p>
+<p>I decided to model everything in Inventor including the Pi Zero and the PCB, so I spent quite a bit of time figuring out how to export a model from KiCAD that Inventor could understand without it losing a significant amount of information. I also added the screws and nuts that we will use, both because I think it looks nice, and it makes sure that each part has the needed clearance to be screwed in.</p>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk12/image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title="PCB stack bracket"><figcaption class="figure-caption text-center" align="center">PCB stack bracket</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk12/image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="View underneath with PCBs"><figcaption class="figure-caption text-center" align="center">View underneath with PCBs</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk12/image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Perspective view"><figcaption class="figure-caption text-center" align="center">Perspective view</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk12/image-8.png" class="figure-img img-fluid rounded" alt="Alt text" title="Full chassis view"><figcaption class="figure-caption text-center" align="center">Full chassis view</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-5 align-content-center">
+<p>Once the mounting bracket was printed, I tried it out to see if it needed any changes/reprint. After removing the raft and support material, and cleaning off the thin wisps of print material, the bracket was looking good.</p>
+<p>An initial evaluation revealed however that I had forgotten a couple very important components when designing this, the motor cables and the motor controller clearance. As can be seen in Fig. 7, the bracket doesn’t leave any space between the screw holes for the motor cables to pass under, as well as coming real close to the top of the motor controller.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-6. Flight controller mounting bracket after printing"><figcaption class="figure-caption text-center" align="center">Fig. 13-6. Flight controller mounting bracket after printing</figcaption></figure></div></p>
+</div>
+<div class="col-lg-7 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-7. Clearance and cable issues with flight controller mount"><figcaption class="figure-caption text-center" align="center">Fig. 13-7. Clearance and cable issues with flight controller mount</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<p>These issues didn’t seem to be solvable without damaging the mount, or modification of the motor cable routing (which I definitely didn’t want to change), so I decided to make some modifications and reprint.</p>
+<p>I fixed both issues by extruding the part of the bracket that surrounds the mounting screws, but leaving space for the motor cables – this increased the clearance while making space for the wires, solving both issues.</p>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-9.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-8. Edited bracket after changes"><figcaption class="figure-caption text-center" align="center">Fig. 13-8. Edited bracket after changes</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-10.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-9. Fixed bracket in place within assembly"><figcaption class="figure-caption text-center" align="center">Fig. 13-9. Fixed bracket in place within assembly</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="container-md d-none d-print-block">
+        <div class="row justify-content-center">
+            
+            <div class="col mr-auto ml-auto">
+                 <div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-4 align-content-center">
+<p><strong>Mechanical assembly</strong></p>
+<p>As the flight controller development continues, I completed the wiring of the motors and ESC, along with the battery, as that has arrived as well. Soldering anything to the ESC is a bit of a challenge, as the heat dissipation and thermal mass of the board is so high. I have to set the temperature of the iron past 900 deg.F, and that seems to work alright. I started out by wrapping the motor cables around the arms of the frame to take up the slack in the cables, but allow for rewiring and flexing of the cable. I taped them in their positions, and then worked on mounting the ESC to the frame.</p>
+</div>
+<div class="col-lg-8 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 1. Motor cables arranged before soldering."><figcaption class="figure-caption text-center" align="center">Figure 11- 1. Motor cables arranged before soldering.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<p>The ESC wasn’t hard to mount, it simply needed ¾” M3 screws and nuts to hold it in place.
+Once the ESC was mounted, I soldered the power cable, and then the motors. Once complete, I powered it up and verified that each motor vibrated as it generated the startup sound.</p>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image-2.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 3a. Battery cables soldered"><figcaption class="figure-caption text-center" align="center">Figure 11- 3a. Battery cables soldered</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk11/image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="Figure 11- 3b. ESC fully soldered."><figcaption class="figure-caption text-center" align="center">Figure 11- 3b. ESC fully soldered.</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<p><strong>Flight Controller Mount Design</strong></p>
+<p>I decided to model everything in Inventor including the Pi Zero and the PCB, so I spent quite a bit of time figuring out how to export a model from KiCAD that Inventor could understand without it losing a significant amount of information. I also added the screws and nuts that we will use, both because I think it looks nice, and it makes sure that each part has the needed clearance to be screwed in.</p>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk12/image-3.png" class="figure-img img-fluid rounded" alt="Alt text" title="PCB stack bracket"><figcaption class="figure-caption text-center" align="center">PCB stack bracket</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk12/image-4.png" class="figure-img img-fluid rounded" alt="Alt text" title="View underneath with PCBs"><figcaption class="figure-caption text-center" align="center">View underneath with PCBs</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk12/image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Perspective view"><figcaption class="figure-caption text-center" align="center">Perspective view</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk12/image-8.png" class="figure-img img-fluid rounded" alt="Alt text" title="Full chassis view"><figcaption class="figure-caption text-center" align="center">Full chassis view</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<div class="row">
+<div class="col-lg-5 align-content-center">
+<p>Once the mounting bracket was printed, I tried it out to see if it needed any changes/reprint. After removing the raft and support material, and cleaning off the thin wisps of print material, the bracket was looking good.</p>
+<p>An initial evaluation revealed however that I had forgotten a couple very important components when designing this, the motor cables and the motor controller clearance. As can be seen in Fig. 7, the bracket doesn’t leave any space between the screw holes for the motor cables to pass under, as well as coming real close to the top of the motor controller.</p>
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-6.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-6. Flight controller mounting bracket after printing"><figcaption class="figure-caption text-center" align="center">Fig. 13-6. Flight controller mounting bracket after printing</figcaption></figure></div></p>
+</div>
+<div class="col-lg-7 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-7.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-7. Clearance and cable issues with flight controller mount"><figcaption class="figure-caption text-center" align="center">Fig. 13-7. Clearance and cable issues with flight controller mount</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-item" style="height: 100%">
+<h1 class="text-center mt-3">Frame, motors &amp; ESCs</h1>
+<div class="container align-content-center" style="height: 100%">
+<p>These issues didn’t seem to be solvable without damaging the mount, or modification of the motor cable routing (which I definitely didn’t want to change), so I decided to make some modifications and reprint.</p>
+<p>I fixed both issues by extruding the part of the bracket that surrounds the mounting screws, but leaving space for the motor cables – this increased the clearance while making space for the wires, solving both issues.</p>
+<div class="row">
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-9.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-8. Edited bracket after changes"><figcaption class="figure-caption text-center" align="center">Fig. 13-8. Edited bracket after changes</figcaption></figure></div></p>
+</div>
+<div class="col-lg-6 align-content-center">
+<p><div class="d-flex justify-content-center"><figure class="figure justify-content-center"><img src="../wk13/image-10.png" class="figure-img img-fluid rounded" alt="Alt text" title="Fig. 13-9. Fixed bracket in place within assembly"><figcaption class="figure-caption text-center" align="center">Fig. 13-9. Fixed bracket in place within assembly</figcaption></figure></div></p>
+</div>
+</div>
+</div>
+</div>
+            </div>
+            
+        </div>
+    </div>
+
+<!--<div class="b-example-divider"></div>-->
+
+<div class="container d-print-none">
+  <footer class="flex-wrap border-top">
+      <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
+  </footer>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="/assets/js/index.js"></script>
+  <script data-goatcounter="https://michaellangford99.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
