@@ -2,6 +2,7 @@
 layout: default
 title: Engineering
 description: I need more free time
+date: 2016-01-02
 
 eleventyNavigation:
   key: engineering

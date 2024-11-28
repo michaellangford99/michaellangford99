@@ -4,6 +4,8 @@ title: Hiking & Photography
 description: Brought to you by a crappy Motorola
 background_img: IMG_20230805_090053448-PANO.jpg
 
+date: 2016-01-01
+
 eleventyNavigation:
   key: hiking
   #parent: 
