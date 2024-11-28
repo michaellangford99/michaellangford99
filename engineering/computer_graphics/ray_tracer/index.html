@@ -13,14 +13,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!---<link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css"/>  -->
     <!---<link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="/assets/css/prism-vs.css">
+   <!--- <link rel="stylesheet" href="/assets/css/prism-vs.css"/>    -->
+   <link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css">
     <link rel="stylesheet" href="/assets/css/clean-blog.css">
     
   </head>
   <body>
 
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark d-print-none" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Michaelangelo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +79,7 @@
   </div>
 </nav>
     
-<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white d-print-none" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
 <div style="padding: 100px 0 130px ">
   <h1 class="mb-2 h1">Ray Tracing</h1>
   <p>
@@ -93,7 +94,7 @@
   </div>
 </div>-->
 
-     <div class="container-md">
+    <div class="container-md d-print-none">
         <div class="row justify-content-center">
             
             <div class="col-md-9 mr-auto ml-auto">
@@ -242,9 +243,158 @@ split screen between developing render and view of where the photons have been g
         </div>
     </div>
 
+    <div class="container-md d-none d-print-block">
+        <div class="row justify-content-center">
+            
+            <div class="col mr-auto ml-auto">
+                 <p>OK. So plan is eventually to make a particle filter-esque ray tracer.</p>
+<p>first get a really simple tracer going to demo generating a CPU space image</p>
+<p>then maybe work on some correct oop organization</p>
+<p>get a proper makefile for compilaton on linux?</p>
+<p>terrain loader?</p>
+<p>basic setup:</p>
+<ul>
+<li>main program
+<ul>
+<li>camera</li>
+<li>renderer</li>
+<li>element
+<ul>
+<li>draw</li>
+<li>update</li>
+<li>imgui_render</li>
+<li>children</li>
+<li>keep track of their transforms for recursive drawing</li>
+</ul>
+</li>
+<li>triangles
+<ul>
+<li>cone</li>
+<li>box</li>
+<li>sphere</li>
+</ul>
+</li>
+<li>lines
+<ul>
+<li>circle</li>
+<li>cone</li>
+</ul>
+</li>
+<li>image</li>
+<li>shader
+<ul>
+<li>hot reloadable shader / compilation</li>
+<li>parameter temp settings</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Add:</p>
+<ul>
+<li>rendertarget</li>
+<li>pdf</li>
+<li>octree</li>
+<li>element
+<ul>
+<li>cast_ray</li>
+</ul>
+</li>
+</ul>
+<p>First progress:</p>
+<p><img src="image.png" alt="Alt text"></p>
+<p>got an initial generated image to be displayed</p>
+<pre class="language-c"><code class="language-c"><span class="token keyword">int</span> w <span class="token operator">=</span> <span class="token number">800</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> h <span class="token operator">=</span> <span class="token number">600</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> bytes <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+std<span class="token operator">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span><span class="token operator">&gt;</span> data <span class="token operator">=</span> std<span class="token operator">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>w<span class="token operator">*</span>h<span class="token operator">*</span>bytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">generate_image</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> w<span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//load and bind texture</span>
+<span class="token keyword">unsigned</span> texture0 <span class="token operator">=</span> <span class="token function">bind_rgb_texture</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> w<span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">generate_image</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span><span class="token operator">*</span> data<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token comment">//fill data with stuff</span>
+
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> width<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> height<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>
+			data<span class="token punctuation">[</span><span class="token punctuation">(</span>i <span class="token operator">+</span> j <span class="token operator">*</span> width<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">255</span> <span class="token operator">*</span> i<span class="token punctuation">)</span> <span class="token operator">/</span> width<span class="token punctuation">;</span>
+			data<span class="token punctuation">[</span><span class="token punctuation">(</span>i <span class="token operator">+</span> j <span class="token operator">*</span> width<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">255</span> <span class="token operator">*</span> j<span class="token punctuation">)</span> <span class="token operator">/</span> height<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token function">bind_rgb_texture</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span><span class="token operator">*</span> data<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">unsigned</span> <span class="token keyword">int</span> texture<span class="token punctuation">;</span>
+	<span class="token function">glGenTextures</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>texture<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glBindTexture</span><span class="token punctuation">(</span>GL_TEXTURE_2D<span class="token punctuation">,</span> texture<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token function">glTexParameteri</span><span class="token punctuation">(</span>GL_TEXTURE_2D<span class="token punctuation">,</span> GL_TEXTURE_WRAP_S<span class="token punctuation">,</span> GL_REPEAT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glTexParameteri</span><span class="token punctuation">(</span>GL_TEXTURE_2D<span class="token punctuation">,</span> GL_TEXTURE_WRAP_T<span class="token punctuation">,</span> GL_REPEAT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glTexParameteri</span><span class="token punctuation">(</span>GL_TEXTURE_2D<span class="token punctuation">,</span> GL_TEXTURE_MIN_FILTER<span class="token punctuation">,</span> GL_LINEAR_MIPMAP_LINEAR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glTexParameteri</span><span class="token punctuation">(</span>GL_TEXTURE_2D<span class="token punctuation">,</span> GL_TEXTURE_MAG_FILTER<span class="token punctuation">,</span> GL_LINEAR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token function">glTexImage2D</span><span class="token punctuation">(</span>GL_TEXTURE_2D<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> GL_RGB<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> GL_RGB<span class="token punctuation">,</span> GL_UNSIGNED_BYTE<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">glGenerateMipmap</span><span class="token punctuation">(</span>GL_TEXTURE_2D<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">else</span>
+	<span class="token punctuation">{</span>
+		std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Failed to load texture"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">return</span> texture<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>My initial goals are:</p>
+<p>create really simple situation with some balls and light sources
+write code to facilitate drawing ray paths for debugging
+have some sort of split screen where I can see the generated image and the 3D scene
+I can orbit aroung the scene and not re-render the light paths</p>
+<p>target structure</p>
+<ul>
+<li>camera</li>
+<li>scene</li>
+<li>element</li>
+<li>ray sampler</li>
+<li>material</li>
+</ul>
+<p>So some more thoughts:</p>
+<ul>
+<li>
+<p>needs to be on linux</p>
+</li>
+<li>
+<p>each program needs to be very small and run on its own so I don't have to wreck a demo to write another</p>
+</li>
+<li>
+<p>so keep repeated code in a library</p>
+</li>
+<li>
+<p>get a makefile going again</p>
+</li>
+<li>
+<p>ffmpeg stuff into video</p>
+</li>
+</ul>
+<p>It is incredibly slow to generate a full frame image on the CPU, so look into splatting photons via the vertex shader??? idk if that will work but it'd be neat
+split screen between developing render and view of where the photons have been going</p>
+<p>I think I might need to buy a linux laptop lol</p>
+
+            </div>
+            
+        </div>
+    </div>
+
 <!--<div class="b-example-divider"></div>-->
 
-<div class="container">
+<div class="container d-print-none">
   <footer class="flex-wrap border-top">
       <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
   </footer>
