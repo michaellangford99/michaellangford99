@@ -51,7 +51,8 @@ templateEngineOverride: njk,md
 <div class="col-2">
 
 <div class="container">
-<img src="IMG_9201_cropped3.png" class="figure-img img-fluid rounded-circle">
+<!--<img src="IMG_9201_cropped3.png" class="figure-img img-fluid rounded-circle">-->
+<div style="background: url('IMG_9201_cropped3.png');background-size: contain;background-repeat: no-repeat; height:100%; background-position: left;"></div>
 </div>
 
 </div>
@@ -90,9 +91,7 @@ Electrical Engineer with a focus in stochastic and radar signal processing, esti
 
 {{ summary_listing('Rincon Research Corporation', 'image.png', 'May 2023 - Present - Centennial, CO - Full Time', 'DSP Electrical Engineer 2') }}
 
-<br>
-
-<div class="card">
+<div class="card mt-1">
 <div class="card-body p-1">
 
 <div class="container">
@@ -164,6 +163,39 @@ Strong mathematical, hardware, interpersonal, communication and leadership skill
 - Coursework: electromagnetics, signal processing,radar, embedded microcontrollers, Verilog ASIC/FPGA design
 
 **Relevant Coursework:**
+
+<div class="container">
+<div class="row">
+<div class="col-4">ECE438, ECE538 DSP<br>ECE637 Image Processing</div>
+<div class="col-4">ECE600 Random Variables<br>ECE645 Estimation Theory<br>ECE695 Stochastic Processes</div>
+<div class="col-4">ECE678 Radar Engineering<br>ECE30411, ECE30412 Electromagnetics</div>
+</div>
+<div class="row">
+<div class="col-4">
+CT/DT   Math fundamentals
+<br>FFT, DFT,   filtering, z transforms, etc.
+<br>+ Linear   predictive coding             
+<br>+ Image   & audio processing             
+<br>+ Radar   & GPS tracking                 
+</div>
+<div class="col-4">
+Grad. random variables,   distributions, stochastic processes.
+<br>MLE, MMSE, MAP, BLUE, Bayesian,   Kalman filtering            
+</div>
+<div class="col-4">
+Radar fundamentals, detection, RCS,  
+<br>Antennas, beamforming,                 
+<br>Waveform design,                       
+<br>Range doppler processing.              
+<br>Maxwell’s equations, wave   propagation
+</div>
+</div>
+</div>
+
+
+
+
+
 
 | ECE438, ECE538 DSP                        | ECE600   Random Variables                                      | ECE678   Radar Engineering              |
 |-------------------------------------------|----------------------------------------------------------------|-----------------------------------------|

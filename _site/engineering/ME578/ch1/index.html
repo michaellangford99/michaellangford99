@@ -13,14 +13,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!---<link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css"/>  -->
     <!---<link href="https://unpkg.com/prismjs@1.20.0/themes/prism.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="/assets/css/prism-vs.css">
+   <!--- <link rel="stylesheet" href="/assets/css/prism-vs.css"/>    -->
+   <link rel="stylesheet" href="/assets/css/prism-vsc-dark-plus.css">
     <link rel="stylesheet" href="/assets/css/clean-blog.css">
     
   </head>
   <body>
 
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark d-print-none" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Michaelangelo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +79,7 @@
   </div>
 </nav>
     
-<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
+<div class="bg-image p-5 text-center shadow-1-strong mb-2 text-white d-print-none" style="background-image: url('/assets/images/crestone.jpg'); background-position: center; background-size:cover;">
 <div style="padding: 100px 0 130px ">
   <h1 class="mb-2 h1">ME578 Chapter 1</h1>
   <p>
@@ -93,7 +94,7 @@
   </div>
 </div>-->
 
-     <div class="container-md">
+    <div class="container-md d-print-none">
         <div class="row justify-content-center">
             
             <div class="col-md-9 mr-auto ml-auto">
@@ -117,9 +118,33 @@
         </div>
     </div>
 
+    <div class="container-md d-none d-print-block">
+        <div class="row justify-content-center">
+            
+            <div class="col mr-auto ml-auto">
+                 <p>Material to review:</p>
+<ul>
+<li>Transfer functions</li>
+<li>Laplace transform</li>
+<li>Inverse Laplace transform and partial fraction expansion</li>
+<li>Bode plots</li>
+<li>Block diagram algebra</li>
+<li>Stability</li>
+<li>Root locus plots</li>
+<li>Sensitivity</li>
+<li>Gain margin</li>
+<li>Phase margin</li>
+<li>Nyquist plots</li>
+</ul>
+
+            </div>
+            
+        </div>
+    </div>
+
 <!--<div class="b-example-divider"></div>-->
 
-<div class="container">
+<div class="container d-print-none">
   <footer class="flex-wrap border-top">
       <p class="text-center text-muted">© 2023 Michael Langford. Built with 11ty.</p>
   </footer>
